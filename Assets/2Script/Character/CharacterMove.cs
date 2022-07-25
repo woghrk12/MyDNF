@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EControlType { JOYSTICK, KEYBOARD, END }
+
 public class CharacterMove : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
-    private float hAxis = 0f;
-    private float vAxis = 0f;
+    [SerializeField] private Joystick joystick = null;
+    [SerializeField] private Keyboard keyboard = null;
+
+    private EControlType controlType = EControlType.KEYBOARD;
 
     [SerializeField] private float xMoveSpeed = 0f;
     [SerializeField] private float yMoveSpeed = 0f;
@@ -28,13 +32,12 @@ public class CharacterMove : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
-    }
+        if (Input.GetKeyDown(KeyCode.F1))
+            controlType = EControlType.JOYSTICK;
+        if (Input.GetKeyDown(KeyCode.F2))
+            controlType = EControlType.KEYBOARD;
 
-    private void GetInput()
-    {
-        hAxis = Input.GetAxisRaw("Horizontal");
-        vAxis = Input.GetAxisRaw("Vertical");
+        SetMoveDirection();
     }
 
     private void FixedUpdate()
@@ -49,10 +52,21 @@ public class CharacterMove : MonoBehaviour
         return p_vector;
     }
 
+    private void SetMoveDirection()
+    {
+        switch (controlType)
+        {
+            case EControlType.JOYSTICK:
+                moveDir = HandleInput(joystick.Direction);
+                break;
+            case EControlType.KEYBOARD:
+                moveDir = HandleInput(keyboard.Direction);
+                break;
+        }
+    }
+
     private void Move()
     {
-        moveDir = HandleInput(Vector3.ClampMagnitude(new Vector3(hAxis, vAxis, 0f), 1f));
-
         transform.position += moveDir * Time.deltaTime;
         anim.SetBool("isWalk", isMove);
 
