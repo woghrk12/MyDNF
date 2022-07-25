@@ -17,6 +17,9 @@ public class CharacterMove : MonoBehaviour
     [SerializeField] private float yMoveSpeed = 0f;
     private Vector3 moveDir = Vector3.zero;
 
+    [SerializeField] private float minX = 0f, maxX = 0f;
+    [SerializeField] private float minY = 0f, maxY = 0f;
+
     public bool isMove { get { return moveDir != Vector3.zero; } }
 
     private bool isLeft = false;
@@ -65,9 +68,23 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
+    private Vector3 LimitArea(Vector3 t_playerPos)
+    {
+        Vector3 t_pos = t_playerPos;
+
+        if (t_pos.x < minX) t_pos.x = minX;
+        if (t_pos.x > maxX) t_pos.x = maxX;
+        if (t_pos.y < minY) t_pos.y = minY;
+        if (t_pos.y > maxY) t_pos.y = maxY;
+
+        return t_pos;
+    }
+
     private void Move()
     {
-        transform.position += moveDir * Time.deltaTime;
+        var t_pos = transform.position + moveDir * Time.deltaTime;
+        transform.position = LimitArea(t_pos);
+
         anim.SetBool("isWalk", isMove);
 
         if (moveDir.x != 0)
