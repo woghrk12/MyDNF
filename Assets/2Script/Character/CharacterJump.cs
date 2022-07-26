@@ -12,8 +12,6 @@ public class CharacterJump : MonoBehaviour
     private float jumpPower = 8f;
     public float JumpPower { set { jumpPower = value < 1f ? 1f : value; } get { return jumpPower; } }
 
-    private bool isJump = false;
-    
     private float jumpTime = 0f;
     private float criteria = 0f;
     private float originY = 0f;
@@ -21,14 +19,6 @@ public class CharacterJump : MonoBehaviour
     private void Awake()
     {
         originY = spriteObject.position.y;
-    }
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Jump") && !isJump)
-        {
-            StartCoroutine(Jump());
-        }
     }
 
     private float CalculateMaxHeight(float p_gravity, float p_power)
@@ -41,11 +31,12 @@ public class CharacterJump : MonoBehaviour
         return (p_jumpTime * p_jumpTime * (-p_gravity) / 2) + (p_jumpTime * p_power);
     }
 
-    private IEnumerator Jump()
+    public IEnumerator Jump() => JumpCo();
+
+    private IEnumerator JumpCo()
     {
         jumpTime = 0f;
-        isJump = true;
-        anim.SetBool("isJump", isJump);
+        anim.SetBool("isJump", true);
 
         criteria = 0.8f * CalculateMaxHeight(Gravity, JumpPower) + originY;
 
@@ -60,11 +51,7 @@ public class CharacterJump : MonoBehaviour
         yield return JumpDown(originY);
 
         jumpTime = 0f;
-        isJump = false;
-        anim.SetBool("isJump", isJump);
-
-        anim.ResetTrigger("Up");
-        anim.ResetTrigger("Down");
+        anim.SetBool("isJump", false);
     }
 
     private IEnumerator JumpUp(float p_criteria)

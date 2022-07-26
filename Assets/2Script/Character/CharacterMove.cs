@@ -33,6 +33,21 @@ public class CharacterMove : MonoBehaviour
         get { return isLeft; }
     }
 
+    private bool canMove = true;
+    public bool CanMove 
+    {
+        set 
+        {
+            canMove = value;
+            if (!canMove)
+            {
+                moveDir = Vector3.zero;
+                anim.SetBool("isWalk", false);
+            }
+        }
+        get { return canMove; }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
@@ -45,6 +60,8 @@ public class CharacterMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!CanMove) return;
+
         Move();
     }
 
