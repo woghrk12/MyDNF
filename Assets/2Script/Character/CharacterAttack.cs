@@ -14,9 +14,11 @@ public class CharacterAttack : MonoBehaviour
     private int numClicks = 0;
     [SerializeField] private float maxComboDelay = 0f;
 
-    public IEnumerator Attack() => GetInput();
+    private bool isAttack = false;
 
-    private IEnumerator GetInput()
+    public IEnumerator Attack() => AttackCo();
+    public IEnumerator GetInput() => GetInputCo();
+    private IEnumerator GetInputCo()
     {
         attackCo = StartCoroutine(AttackCo());
         
@@ -24,7 +26,7 @@ public class CharacterAttack : MonoBehaviour
         while (t_timer <= maxComboDelay)
         {
             if (Input.GetButtonDown("Attack")) numClicks++;
-
+            if (!isAttack) break;
             t_timer += Time.deltaTime;
             yield return null;
         }
@@ -34,6 +36,8 @@ public class CharacterAttack : MonoBehaviour
     
     private IEnumerator AttackCo()
     {
+        isAttack = true;
+
         yield return AttackOne();
 
         if (numClicks >= 2)
@@ -43,6 +47,7 @@ public class CharacterAttack : MonoBehaviour
             yield return AttackThree();
 
         attackCo = null;
+        isAttack = false;
     }
     
     private IEnumerator AttackOne()
