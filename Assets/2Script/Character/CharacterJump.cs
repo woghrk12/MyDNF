@@ -25,7 +25,7 @@ public class CharacterJump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
+        if (Input.GetButtonDown("Jump") && !isJump)
         {
             StartCoroutine(Jump());
         }
