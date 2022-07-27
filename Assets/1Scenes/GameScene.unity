@@ -363,7 +363,6 @@ Transform:
   - {fileID: 2143839193}
   - {fileID: 1871150506}
   - {fileID: 1810099770}
-  - {fileID: 1864677842}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,7 +734,7 @@ Transform:
   m_Children:
   - {fileID: 175372802}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &779741259
 Animator:
@@ -769,10 +768,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 175372802}
-  sizeX: 0.5
+  sizeX: 1
   sizeUpY: 0.25
   sizeDownY: 0.25
-  sizeZ: 0.25
+  sizeZ: 0.5
   minHitBoxX: 0
   maxHitBoxX: 0
   minHitBoxY: 0
@@ -967,7 +966,7 @@ Transform:
   - {fileID: 1833172952}
   - {fileID: 698430318}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413736347
 GameObject:
@@ -1142,10 +1141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 1413736348}
-  sizeX: 0.5
+  sizeX: 1
   sizeUpY: 0.6
   sizeDownY: 1.1
-  sizeZ: 0.2
+  sizeZ: 0.4
   minHitBoxX: 0
   maxHitBoxX: 0
   minHitBoxY: 0
@@ -1567,8 +1566,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2001988227}
-  m_Father: {fileID: 376192194}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866588605
 GameObject:
@@ -1694,10 +1693,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 567347160}
-  sizeX: 0.25
+  sizeX: 0.5
   sizeUpY: 0.5
   sizeDownY: 0.5
-  sizeZ: 0.1
+  sizeZ: 0.4
   minHitBoxX: 0
   maxHitBoxX: 0
   minHitBoxY: 0
