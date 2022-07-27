@@ -58,13 +58,6 @@ public class CharacterMove : MonoBehaviour
         SetMoveDirection();
     }
 
-    private void FixedUpdate()
-    {
-        if (!CanMove) return;
-
-        Move();
-    }
-
     private Vector3 HandleInput(Vector3 p_vector)
     {
         p_vector.x *= xMoveSpeed;
@@ -97,7 +90,9 @@ public class CharacterMove : MonoBehaviour
         return t_pos;
     }
 
-    private void Move()
+    public void Move() => MoveCharacter();
+
+    private void MoveCharacter()
     {
         var t_pos = transform.position + moveDir * Time.deltaTime;
         transform.position = LimitArea(t_pos);

@@ -20,6 +20,15 @@ public class GamePlayer : MonoBehaviour
             StartCoroutine(Jump());
     }
 
+    private void FixedUpdate()
+    {
+        if (!CanMove) return;
+
+        Move();
+    }
+
+    private void Move() => moveController.Move();
+
     private IEnumerator Attack()
     {
         canAttack = false;
