@@ -714,6 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779741258}
   - component: {fileID: 779741259}
+  - component: {fileID: 779741260}
   m_Layer: 0
   m_Name: Charged
   m_TagString: Untagged
@@ -729,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779741257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11, y: 0, z: 0}
+  m_LocalPosition: {x: 2.429, y: -0.029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 175372802}
@@ -755,6 +756,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &779741260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779741257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 175372802}
+  sizeX: 0.5
+  sizeUpY: 0.25
+  sizeDownY: 0.25
+  sizeZ: 0.25
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &1090006288
 GameObject:
   m_ObjectHideFlags: 0
