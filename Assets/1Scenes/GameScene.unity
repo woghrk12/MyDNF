@@ -330,6 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9513aec3f7859074393e1fa47a32b2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: {fileID: 1864677841}
+  enemiesHitBox: []
 --- !u!1 &376192193
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567347158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.577, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2001988227}
@@ -1537,7 +1539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864677841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9179806, y: 1.3288153, z: 4.477798}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2001988227}
@@ -1632,6 +1634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001988227}
+  - component: {fileID: 2001988228}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -1647,13 +1650,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001988226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.4120193, y: -1.3288153, z: -4.477798}
+  m_LocalPosition: {x: 4.261, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 567347160}
   m_Father: {fileID: 1864677842}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2001988228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001988226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 567347160}
+  sizeX: 0.25
+  sizeUpY: 0.5
+  sizeDownY: 0.5
+  sizeZ: 0.1
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &2143839192
 GameObject:
   m_ObjectHideFlags: 0
