@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private HitBox hitBox = null;
-
+    
     [SerializeField] private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
-    private void OnEnable()
+    [SerializeField] private float duration = 0f;
+
+    private void Awake()
     {
-        enemies = roomManager.enemiesHitBox;
+        roomManager = GameObject.FindObjectOfType<RoomManager>();
+    }
+
+    private void Start()
+    {
+        enemies = roomManager.enemiesHitBox.ToList();
     }
 
     private void Update()
@@ -33,4 +41,7 @@ public class Projectile : MonoBehaviour
             Debug.Log("Hit");
         }
     }
+
+    public void DestroyProjectile() => Destroy(this.gameObject, duration);
 }
+

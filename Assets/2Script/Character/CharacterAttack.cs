@@ -16,12 +16,14 @@ public class CharacterAttack : MonoBehaviour
 
     private bool isAttack = false;
 
+    [SerializeField] private Projectile baseAttack = null;
+
     public IEnumerator Attack() => AttackCo();
     public IEnumerator GetInput() => GetInputCo();
     private IEnumerator GetInputCo()
     {
-        attackCo = StartCoroutine(AttackCo());
-        
+        isAttack = true;
+
         var t_timer = 0f;
         while (t_timer <= maxComboDelay)
         {
@@ -36,8 +38,6 @@ public class CharacterAttack : MonoBehaviour
     
     private IEnumerator AttackCo()
     {
-        isAttack = true;
-
         yield return AttackOne();
 
         if (numClicks >= 2)
@@ -53,12 +53,16 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator AttackOne()
     {
         anim.SetTrigger("Attack");
+        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator AttackTwo()
     {
         anim.SetBool("isAttackTwo", true);
+        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.2f);
         anim.SetBool("isAttackTwo", false);
     }
@@ -66,6 +70,8 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator AttackThree()
     {
         anim.SetBool("isAttackThree", true);
+        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isAttackThree", false);
     }
