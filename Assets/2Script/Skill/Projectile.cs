@@ -38,6 +38,7 @@ public class Projectile : MonoBehaviour
             if (hitBox.maxHitBoxY < t_enemies[i].minHitBoxY || hitBox.minHitBoxY > t_enemies[i].maxHitBoxY) continue;
 
             enemies.Remove(t_enemies[i]);
+            Debug.Log("hit");
         }
     }
 

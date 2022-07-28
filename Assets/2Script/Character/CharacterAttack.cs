@@ -16,7 +16,7 @@ public class CharacterAttack : MonoBehaviour
 
     public IEnumerator Attack() => AttackCo();
     public IEnumerator GetInput() => GetInputCo();
-    public IEnumerator SkillA(float p_delay) => SkillACo(p_delay);
+    public IEnumerator SkillA(float p_delay, bool p_isLeft) => SkillACo(p_delay, p_isLeft);
 
     private IEnumerator GetInputCo()
     {
@@ -73,10 +73,11 @@ public class CharacterAttack : MonoBehaviour
         anim.SetBool("isAttackThree", false);
     }
 
-    private IEnumerator SkillACo(float p_delay)
+    private IEnumerator SkillACo(float p_delay, bool p_isLeft)
     {
         anim.SetTrigger("SkillA");
         var t_effect = ObjectPoolingManager.SpawnObject("SkillA", transform.position, Quaternion.identity).GetComponent<Projectile>();
+        t_effect.transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
         t_effect.DestroyProjectile();
         yield return new WaitForSeconds(p_delay);
     }
