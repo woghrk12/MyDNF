@@ -61,7 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 2556034128602463861}
-  sizeX: 3
+  sizeRightX: 2.5
+  sizeLeftX: 1
   sizeUpY: 1
   sizeDownY: 1
   sizeZ: 0.5

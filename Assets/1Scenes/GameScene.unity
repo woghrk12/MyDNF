@@ -985,7 +985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 1413736348}
-  sizeX: 1
+  sizeRightX: 0
+  sizeLeftX: 0
   sizeUpY: 0.6
   sizeDownY: 1.1
   sizeZ: 0.4
@@ -1322,7 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: 
+  - tag: BaseAttack
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
 --- !u!1 &1810099769
@@ -1585,7 +1586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 567347160}
-  sizeX: 0.5
+  sizeRightX: 0
+  sizeLeftX: 0
   sizeUpY: 0.5
   sizeDownY: 0.5
   sizeZ: 0.4

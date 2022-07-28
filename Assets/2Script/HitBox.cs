@@ -6,12 +6,12 @@ public class HitBox : MonoBehaviour
 {
     [SerializeField] private Transform spriteObject = null;
 
-    [SerializeField] private float sizeX = 0f;
+    [SerializeField] private float sizeRightX = 0f;
+    [SerializeField] private float sizeLeftX = 0f;
     [SerializeField] private float sizeUpY = 0f;
     [SerializeField] private float sizeDownY = 0f;
     [SerializeField] private float sizeZ = 0f;
 
-    private float raidusX = 0f;
     private float radiusZ = 0f;
 
     public float minHitBoxX = 0f;
@@ -23,14 +23,13 @@ public class HitBox : MonoBehaviour
 
     private void Awake()
     {
-        raidusX = sizeX * 0.5f;
         radiusZ = sizeZ * 0.5f;
     }
 
     public void Update()
     {
-        minHitBoxX = transform.position.x - raidusX;
-        maxHitBoxX = transform.position.x + raidusX;
+        minHitBoxX = transform.position.x - sizeLeftX;
+        maxHitBoxX = transform.position.x + sizeRightX;
         minHitBoxZ = transform.position.y - radiusZ;
         maxHitBoxZ = transform.position.y + radiusZ;
         minHitBoxY = spriteObject.localPosition.y - sizeDownY;
