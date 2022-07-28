@@ -53,7 +53,7 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator AttackOne()
     {
         anim.SetTrigger("Attack");
-        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack", transform.position, Quaternion.identity).GetComponent<Projectile>();
         t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
     }
@@ -61,7 +61,7 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator AttackTwo()
     {
         anim.SetBool("isAttackTwo", true);
-        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack", transform.position, Quaternion.identity).GetComponent<Projectile>();
         t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.2f);
         anim.SetBool("isAttackTwo", false);
@@ -70,7 +70,7 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator AttackThree()
     {
         anim.SetBool("isAttackThree", true);
-        var t_effect = Instantiate(baseAttack, transform.position, Quaternion.identity);
+        var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack", transform.position, Quaternion.identity).GetComponent<Projectile>();
         t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isAttackThree", false);

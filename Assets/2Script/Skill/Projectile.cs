@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         enemies = roomManager.enemiesHitBox.ToList();
     }
@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void DestroyProjectile() => Destroy(this.gameObject, duration);
+    public void DestroyProjectile()
+        => ObjectPoolingManager.ReturnObject(this.gameObject, duration);
 }
 
