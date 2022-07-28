@@ -12,10 +12,14 @@ public class GamePlayer : MonoBehaviour
     private bool canJump = true;
     private bool canAttack = true;
 
+    [SerializeField] private float skillADelay = 0f;
+
     private void Update()
     {
         if (Input.GetButtonDown("Attack") && canAttack)
             StartCoroutine(Attack());
+        if (Input.GetButtonDown("SkillA") && canAttack)
+            StartCoroutine(SkillA(skillADelay));
         if (Input.GetButtonDown("Jump") && canJump)
             StartCoroutine(Jump());
     }
@@ -52,5 +56,18 @@ public class GamePlayer : MonoBehaviour
         
         canAttack = true; 
         canJump = true;
+    }
+
+    private IEnumerator SkillA(float p_delay)
+    {
+        canAttack = false;
+        canJump = false;
+        CanMove = false;
+
+        yield return attackController.SkillA(p_delay);
+
+        CanMove = true;
+        canJump = true;
+        canAttack = true;
     }
 }

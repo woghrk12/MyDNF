@@ -8,18 +8,16 @@ public class CharacterAttack : MonoBehaviour
 
     private float attackSpeed = 1f;
     public float AttackSpeed { set { attackSpeed = value < 1f ? 1f : value; } get { return attackSpeed; } }
-
-    private Coroutine attackCo = null;
     
     private int numClicks = 0;
     [SerializeField] private float maxComboDelay = 0f;
 
     private bool isAttack = false;
 
-    [SerializeField] private Projectile baseAttack = null;
-
     public IEnumerator Attack() => AttackCo();
     public IEnumerator GetInput() => GetInputCo();
+    public IEnumerator SkillA(float p_delay) => SkillACo(p_delay);
+
     private IEnumerator GetInputCo()
     {
         isAttack = true;
@@ -46,7 +44,6 @@ public class CharacterAttack : MonoBehaviour
         if (numClicks >= 3)
             yield return AttackThree();
 
-        attackCo = null;
         isAttack = false;
     }
     
@@ -74,5 +71,13 @@ public class CharacterAttack : MonoBehaviour
         t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isAttackThree", false);
+    }
+
+    private IEnumerator SkillACo(float p_delay)
+    {
+        anim.SetTrigger("SkillA");
+        var t_effect = ObjectPoolingManager.SpawnObject("SkillA", transform.position, Quaternion.identity).GetComponent<Projectile>();
+        t_effect.DestroyProjectile();
+        yield return new WaitForSeconds(p_delay);
     }
 }

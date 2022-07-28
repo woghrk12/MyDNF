@@ -1024,7 +1024,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
   maxComboDelay: 1.2
-  baseAttack: {fileID: 2556034128053169437, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
 --- !u!114 &1545136976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1039,7 @@ MonoBehaviour:
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
+  skillADelay: 0.5
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1331,9 @@ MonoBehaviour:
     size: 10
   - tag: BaseAttack3
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
+    size: 10
+  - tag: SkillA
+    prefab: {fileID: 2556034128053169438, guid: bb717a7a030096747b06d23ba12250c0, type: 3}
     size: 10
 --- !u!1 &1810099769
 GameObject:
