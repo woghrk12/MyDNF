@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
+    [SerializeField] private float preDelay = 0f;
     [SerializeField] private float duration = 0f;
 
     private void Awake()
@@ -17,14 +18,28 @@ public class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    private void OnEnable()
+    public void InvokeSkill(bool p_isLeft)
     {
         enemies = roomManager.enemiesHitBox.ToList();
+        transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
+        hitBox.SetDirection(p_isLeft);
+        StartCoroutine(InvokeSkillCo());
     }
 
-    private void Update()
+    private IEnumerator InvokeSkillCo()
     {
-        CheckOnHit();
+        yield return new WaitForSeconds(preDelay);
+
+        var t_timer = 0f;
+
+        while (t_timer <= duration)
+        {
+            CheckOnHit();
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+
+        ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 
     private void CheckOnHit()
@@ -41,8 +56,5 @@ public class Projectile : MonoBehaviour
             Debug.Log("hit");
         }
     }
-
-    public void DestroyProjectile()
-        => ObjectPoolingManager.ReturnObject(this.gameObject, duration);
 }
 

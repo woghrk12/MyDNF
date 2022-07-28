@@ -40,9 +40,7 @@ public class ObjectPoolingManager : MonoBehaviour
         => instance.SpawnFromPool(p_tag, p_position, p_rotation);
     public static void ReturnObject(GameObject p_obj)
         => instance.ReturnToPool(p_obj);
-    public static void ReturnObject(GameObject p_obj, float p_time)
-        => instance.StartCoroutine(instance.ReturnToPool(p_obj, p_time));
-
+    
     private GameObject SpawnFromPool(string p_tag, Vector3 p_position, Quaternion p_rotation)
     {
         Queue<GameObject> t_poolQueue = poolDictionary[p_tag];
@@ -63,14 +61,6 @@ public class ObjectPoolingManager : MonoBehaviour
 
     private void ReturnToPool(GameObject p_obj)
     {
-        p_obj.SetActive(false);
-        poolDictionary[p_obj.name].Enqueue(p_obj);
-    }
-
-    private IEnumerator ReturnToPool(GameObject p_obj, float p_time)
-    {
-        yield return new WaitForSeconds(p_time);
-
         p_obj.SetActive(false);
         poolDictionary[p_obj.name].Enqueue(p_obj);
     }

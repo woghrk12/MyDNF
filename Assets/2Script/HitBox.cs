@@ -26,7 +26,7 @@ public class HitBox : MonoBehaviour
         radiusZ = sizeZ * 0.5f;
     }
 
-    public void Update()
+    private void Update()
     {
         minHitBoxX = transform.position.x - sizeLeftX;
         maxHitBoxX = transform.position.x + sizeRightX;
@@ -34,5 +34,10 @@ public class HitBox : MonoBehaviour
         maxHitBoxZ = transform.position.y + radiusZ;
         minHitBoxY = spriteObject.localPosition.y - sizeDownY;
         maxHitBoxY = spriteObject.localPosition.y + sizeUpY;
+    }
+
+    public void SetDirection(bool p_isLeft)
+    {
+        if (p_isLeft) { sizeLeftX *= -1; sizeRightX *= -1; }
     }
 }

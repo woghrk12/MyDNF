@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBox: {fileID: 2556034128053169436}
   roomManager: {fileID: 0}
+  preDelay: 0.01
   duration: 1
 --- !u!114 &2556034128053169436
 MonoBehaviour:

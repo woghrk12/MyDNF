@@ -8,7 +8,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;
 
-    private bool isLeft { get { return moveController.IsLeft; } }
+    private bool IsLeft { get { return moveController.IsLeft; } }
 
     public bool CanMove { set { moveController.CanMove = value; } get { return moveController.CanMove; } }
     private bool canJump = true;
@@ -66,7 +66,7 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         CanMove = false;
 
-        yield return attackController.SkillA(p_delay, isLeft);
+        yield return attackController.SkillA(p_delay, IsLeft);
 
         CanMove = true;
         canJump = true;

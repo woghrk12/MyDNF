@@ -51,7 +51,6 @@ public class CharacterAttack : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack1", transform.position, Quaternion.identity).GetComponent<Projectile>();
-        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
     }
 
@@ -59,7 +58,6 @@ public class CharacterAttack : MonoBehaviour
     {
         anim.SetBool("isAttackTwo", true);
         var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack2", transform.position, Quaternion.identity).GetComponent<Projectile>();
-        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.2f);
         anim.SetBool("isAttackTwo", false);
     }
@@ -68,7 +66,6 @@ public class CharacterAttack : MonoBehaviour
     {
         anim.SetBool("isAttackThree", true);
         var t_effect = ObjectPoolingManager.SpawnObject("BaseAttack3", transform.position, Quaternion.identity).GetComponent<Projectile>();
-        t_effect.DestroyProjectile();
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isAttackThree", false);
     }
@@ -77,8 +74,7 @@ public class CharacterAttack : MonoBehaviour
     {
         anim.SetTrigger("SkillA");
         var t_effect = ObjectPoolingManager.SpawnObject("SkillA", transform.position, Quaternion.identity).GetComponent<Projectile>();
-        t_effect.transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
-        t_effect.DestroyProjectile();
+        t_effect.InvokeSkill(p_isLeft);
         yield return new WaitForSeconds(p_delay);
     }
 }
