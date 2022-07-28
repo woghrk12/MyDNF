@@ -1323,7 +1323,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: BaseAttack
+  - tag: BaseAttack1
+    prefab: {fileID: 2556034128053169438, guid: 86b2b60b3f40cd94eb70d535dd04f1d8, type: 3}
+    size: 10
+  - tag: BaseAttack2
+    prefab: {fileID: 2556034128053169438, guid: 7b6b500b42016f645a3d4886cf1f5c6c, type: 3}
+    size: 10
+  - tag: BaseAttack3
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
 --- !u!1 &1810099769

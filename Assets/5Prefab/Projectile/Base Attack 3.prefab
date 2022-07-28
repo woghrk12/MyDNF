@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2556034128053169437}
   - component: {fileID: 2556034128053169436}
   m_Layer: 0
-  m_Name: Base Attack
+  m_Name: Base Attack 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
