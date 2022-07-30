@@ -17,17 +17,17 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] private SkillA skillA = null;
 
     public IEnumerator Attack() => AttackCo();
-    public IEnumerator GetInput() => GetInputCo();
+    public IEnumerator InputCombo(string p_buttonName) => InputComboCo(p_buttonName);
     public IEnumerator SkillA(float p_delay, bool p_isLeft) => SkillACo(p_delay, p_isLeft);
     
-    private IEnumerator GetInputCo()
+    private IEnumerator InputComboCo(string p_buttonName)
     {
         isAttack = true;
 
         var t_timer = 0f;
         while (t_timer <= maxComboDelay)
         {
-            if (Input.GetButtonDown("Attack")) numClicks++;
+            if (Input.GetButtonDown(p_buttonName)) numClicks++;
             if (!isAttack) break;
             t_timer += Time.deltaTime;
             yield return null;

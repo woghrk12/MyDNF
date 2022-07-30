@@ -42,7 +42,7 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         CanMove = false;
 
-        StartCoroutine(attackController.GetInput());
+        StartCoroutine(attackController.InputCombo("Attack"));
         yield return attackController.Attack();
 
         CanMove = true;
