@@ -1636,6 +1636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001988227}
   - component: {fileID: 2001988228}
+  - component: {fileID: 2001988229}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -1671,8 +1672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 567347160}
-  sizeRightX: 0
-  sizeLeftX: 0
+  sizeRightX: 0.25
+  sizeLeftX: 0.25
   sizeUpY: 0.5
   sizeDownY: 0.5
   sizeZ: 0.4
@@ -1682,6 +1683,19 @@ MonoBehaviour:
   maxHitBoxY: 0
   minHitBoxZ: 0
   maxHitBoxZ: 0
+--- !u!114 &2001988229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001988226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f3531ee42cc0b4c8b20aa2921a356a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 2001988228}
 --- !u!1 &2143839192
 GameObject:
   m_ObjectHideFlags: 0

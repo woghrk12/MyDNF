@@ -19,5 +19,7 @@ public abstract class Skill : MonoBehaviour
         if (waitingTime > 0f)
             waitingTime -= Time.deltaTime;
     }
+
+    public abstract void UseSkill(bool p_isLeft);
 }
 

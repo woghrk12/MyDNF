@@ -15,7 +15,14 @@ public class HitBox : MonoBehaviour
     private float rangeRightX = 0f;
     private float rangeLeftX = 0f;
     private float radiusZ = 0f;
-
+    /*
+    [HideInInspector] public float minHitBoxX = 0f;
+    [HideInInspector] public float maxHitBoxX = 0f;
+    [HideInInspector] public float minHitBoxY = 0f;
+    [HideInInspector] public float maxHitBoxY = 0f;
+    [HideInInspector] public float minHitBoxZ = 0f;
+    [HideInInspector] public float maxHitBoxZ = 0f;
+    */
     public float minHitBoxX = 0f;
     public float maxHitBoxX = 0f;
     public float minHitBoxY = 0f;
@@ -25,12 +32,12 @@ public class HitBox : MonoBehaviour
 
     private void Awake()
     {
-        rangeRightX = sizeRightX;
         rangeLeftX = sizeLeftX;
+        rangeRightX = sizeRightX;
         radiusZ = sizeZ * 0.5f;
     }
 
-    private void Update()
+    public void CalculateHitBox()
     {
         minHitBoxX = transform.position.x - rangeLeftX;
         maxHitBoxX = transform.position.x + rangeRightX;
@@ -42,9 +49,7 @@ public class HitBox : MonoBehaviour
 
     public void SetDirection(bool p_isLeft)
     {
-        if (!p_isLeft) return;
-
-        rangeLeftX = -1 * sizeLeftX;
-        rangeRightX = -1 * sizeRightX;
+        rangeLeftX = p_isLeft ? sizeRightX : sizeLeftX;
+        rangeRightX = p_isLeft ? sizeLeftX : sizeRightX;
     }
 }

@@ -17,7 +17,7 @@ public class ActiveSkill : Skill
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    public void UseSkill(bool p_isLeft) => InvokeSkill(p_isLeft);
+    public override void UseSkill(bool p_isLeft) => InvokeSkill(p_isLeft);
 
     private void InvokeSkill(bool p_isLeft)
     {
@@ -27,8 +27,8 @@ public class ActiveSkill : Skill
         var t_effect = ObjectPoolingManager.SpawnObject(skillEffect, transform.position, Quaternion.identity);
         t_effect.transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
 
-        enemies = roomManager.enemiesHitBox.ToList();
         hitBox.SetDirection(p_isLeft);
+        enemies = roomManager.enemiesHitBox.ToList();
 
         StartCoroutine(InvokeSkillCo(t_effect));
     }
@@ -39,6 +39,7 @@ public class ActiveSkill : Skill
 
         while (t_timer <= duration)
         {
+            hitBox.CalculateHitBox();
             CheckOnHit();
             t_timer += Time.deltaTime;
             yield return null;
