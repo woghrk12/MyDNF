@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
-    [SerializeField] private float preDelay = 0f;
     [SerializeField] private float duration = 0f;
 
     private void Awake()
@@ -28,8 +27,6 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator InvokeSkillCo()
     {
-        yield return new WaitForSeconds(preDelay);
-
         var t_timer = 0f;
 
         while (t_timer <= duration)

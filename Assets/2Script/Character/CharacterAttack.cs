@@ -13,11 +13,13 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] private float maxComboDelay = 0f;
 
     private bool isAttack = false;
+    private bool canSkill = false;
+    [SerializeField] private SkillA skillA = null;
 
     public IEnumerator Attack() => AttackCo();
     public IEnumerator GetInput() => GetInputCo();
     public IEnumerator SkillA(float p_delay, bool p_isLeft) => SkillACo(p_delay, p_isLeft);
-
+    
     private IEnumerator GetInputCo()
     {
         isAttack = true;
@@ -72,9 +74,15 @@ public class CharacterAttack : MonoBehaviour
 
     private IEnumerator SkillACo(float p_delay, bool p_isLeft)
     {
-        anim.SetTrigger("SkillA");
-        var t_effect = ObjectPoolingManager.SpawnObject("SkillA", transform.position, Quaternion.identity).GetComponent<Projectile>();
-        t_effect.InvokeSkill(p_isLeft);
+        canSkill = skillA.UseSkill(p_isLeft);
+
+        if (!canSkill)
+        {
+            Debug.Log("Can't use Skill");
+            yield break;
+        } 
+        anim.SetTrigger(skillA.skillMotion);
+
         yield return new WaitForSeconds(p_delay);
     }
 }
