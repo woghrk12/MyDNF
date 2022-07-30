@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Projectile : MonoBehaviour
+public class ActiveSkill : Skill
 {
     [SerializeField] private HitBox hitBox = null;
-    
-    [SerializeField] private RoomManager roomManager = null;
+
+    private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
     [SerializeField] private float duration = 0f;
 
- 
-
-    public void InvokeSkill(bool p_isLeft)
+    private void Awake()
     {
-        enemies = roomManager.enemiesHitBox.ToList();
-        transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
-        hitBox.SetDirection(p_isLeft);
-        StartCoroutine(InvokeSkillCo());
+        roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    private IEnumerator InvokeSkillCo()
+    public void UseSkill(bool p_isLeft) => InvokeSkill(p_isLeft);
+
+    private void InvokeSkill(bool p_isLeft)
+    {
+        if (!CanUse) return;
+        waitingTime = coolTime;
+        
+        var t_effect = ObjectPoolingManager.SpawnObject(skillEffect, transform.position, Quaternion.identity);
+        t_effect.transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
+
+        enemies = roomManager.enemiesHitBox.ToList();
+        hitBox.SetDirection(p_isLeft);
+
+        StartCoroutine(InvokeSkillCo(t_effect));
+    }
+
+    private IEnumerator InvokeSkillCo(GameObject p_obj)
     {
         var t_timer = 0f;
 
@@ -33,7 +44,7 @@ public class Projectile : MonoBehaviour
             yield return null;
         }
 
-        ObjectPoolingManager.ReturnObject(this.gameObject);
+        ObjectPoolingManager.ReturnObject(p_obj.gameObject);
     }
 
     private void CheckOnHit()
@@ -51,4 +62,3 @@ public class Projectile : MonoBehaviour
         }
     }
 }
-

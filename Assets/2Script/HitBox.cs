@@ -12,6 +12,8 @@ public class HitBox : MonoBehaviour
     [SerializeField] private float sizeDownY = 0f;
     [SerializeField] private float sizeZ = 0f;
 
+    private float rangeRightX = 0f;
+    private float rangeLeftX = 0f;
     private float radiusZ = 0f;
 
     public float minHitBoxX = 0f;
@@ -23,13 +25,15 @@ public class HitBox : MonoBehaviour
 
     private void Awake()
     {
+        rangeRightX = sizeRightX;
+        rangeLeftX = sizeLeftX;
         radiusZ = sizeZ * 0.5f;
     }
 
     private void Update()
     {
-        minHitBoxX = transform.position.x - sizeLeftX;
-        maxHitBoxX = transform.position.x + sizeRightX;
+        minHitBoxX = transform.position.x - rangeLeftX;
+        maxHitBoxX = transform.position.x + rangeRightX;
         minHitBoxZ = transform.position.y - radiusZ;
         maxHitBoxZ = transform.position.y + radiusZ;
         minHitBoxY = spriteObject.localPosition.y - sizeDownY;
@@ -38,6 +42,9 @@ public class HitBox : MonoBehaviour
 
     public void SetDirection(bool p_isLeft)
     {
-        if (p_isLeft) { sizeLeftX *= -1; sizeRightX *= -1; }
+        if (!p_isLeft) return;
+
+        rangeLeftX = -1 * sizeLeftX;
+        rangeRightX = -1 * sizeRightX;
     }
 }

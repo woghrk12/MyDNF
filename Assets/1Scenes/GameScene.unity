@@ -790,6 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131014789}
   - component: {fileID: 1131014790}
+  - component: {fileID: 1131014791}
   m_Layer: 0
   m_Name: Skill A
   m_TagString: Untagged
@@ -820,14 +821,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131014788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef65a65d03b066b47b31c64f014291b0, type: 3}
+  m_Script: {fileID: 11500000, guid: e8a9f304a86bd174d80043e554825440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  delay: 0.5
-  projectile: SkillA
+  coefficientValue: 10
+  skillEffect: SkillA
   skillMotion: SkillA
-  coolDown: 0
+  coolTime: 5
+  hitBox: {fileID: 1131014791}
+  duration: 1
+--- !u!114 &1131014791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131014788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 1413736348}
+  sizeRightX: 13
+  sizeLeftX: 0
+  sizeUpY: 1
+  sizeDownY: 1
+  sizeZ: 1
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &1400205249
 GameObject:
   m_ObjectHideFlags: 0

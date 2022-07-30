@@ -25,6 +25,7 @@ public class GamePlayer : MonoBehaviour
             StartCoroutine(SkillA(skillADelay));
         if (Input.GetButtonDown("Jump") && canJump)
             StartCoroutine(Jump());
+        
     }
 
     private void FixedUpdate()
