@@ -12,11 +12,6 @@ public class CharacterAttack : MonoBehaviour
     public IEnumerator UseSkill(Skill p_skill, bool p_isLeft) => UseSkillCo(p_skill, p_isLeft);
     private IEnumerator UseSkillCo(Skill p_skill, bool p_isLeft)
     {
-        if (!p_skill.CanUse)
-        {
-            Debug.Log("Can't use Skill");
-            yield break;
-        }
         StartCoroutine(p_skill.UseSkill(p_isLeft));
         anim.SetTrigger("Attack");
 

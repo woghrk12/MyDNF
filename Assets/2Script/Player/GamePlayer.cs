@@ -14,13 +14,12 @@ public class GamePlayer : MonoBehaviour
     public bool CanMove { set { moveController.CanMove = value; } get { return moveController.CanMove; } }
     private bool canJump = true;
     private bool canAttack = true;
-    private bool canSkillA = true;
 
     private void Update()
     {
         if (Input.GetButtonDown("X") && canAttack)
             StartCoroutine(UseSKill(skillManager.BaseAttack));
-        if (Input.GetButtonDown("A") && canSkillA)
+        if (Input.GetButtonDown("A") && canAttack)
             StartCoroutine(UseSKill(skillManager.ASkill));
         if (Input.GetButtonDown("Jump") && canJump)
             StartCoroutine(Jump());
@@ -49,7 +48,8 @@ public class GamePlayer : MonoBehaviour
 
     private IEnumerator UseSKill(Skill p_skill)
     {
-        canSkillA = false;
+        if (!p_skill.CanUse) yield break;
+
         canAttack = false;
         canJump = false;
         CanMove = false;
@@ -59,6 +59,5 @@ public class GamePlayer : MonoBehaviour
         CanMove = true;
         canJump = true;
         canAttack = true;
-        canSkillA = true;
     }
 }
