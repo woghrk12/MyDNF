@@ -279,6 +279,7 @@ Transform:
   m_Children:
   - {fileID: 1797689433}
   - {fileID: 369212703}
+  - {fileID: 1305453205}
   - {fileID: 2143839193}
   - {fileID: 1871150506}
   - {fileID: 1810099770}
@@ -790,6 +791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131014789}
   - component: {fileID: 1131014791}
+  - component: {fileID: 1131014790}
   m_Layer: 0
   m_Name: Skill A
   m_TagString: Untagged
@@ -804,13 +806,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131014788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1545136970}
-  m_RootOrder: 2
+  m_Father: {fileID: 1305453205}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131014790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131014788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 1131014791}
+  skillEffect: SkillA
+  skillMotion: SkillA
+  coefficientValue: 5
+  duration: 0.5
+  coolTime: 5
 --- !u!114 &1131014791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +855,55 @@ MonoBehaviour:
   maxHitBoxY: 0
   minHitBoxZ: 0
   maxHitBoxZ: 0
+--- !u!1 &1305453204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305453205}
+  - component: {fileID: 1305453206}
+  m_Layer: 0
+  m_Name: Skill Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305453205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305453204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1131014789}
+  m_Father: {fileID: 376192194}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305453206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305453204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98df24a785d9ac3489c55bd4040e756b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAttack: {fileID: 0}
+  aSkill: {fileID: 1131014790}
+  sSkill: {fileID: 0}
+  dSkill: {fileID: 0}
+  fSkill: {fileID: 0}
 --- !u!1 &1400205249
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1053,6 @@ Transform:
   m_Children:
   - {fileID: 1413736348}
   - {fileID: 1091435869}
-  - {fileID: 1131014789}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1080,7 +1148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
   maxComboDelay: 1.2
-  skillA: {fileID: 0}
 --- !u!114 &1545136976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1163,7 @@ MonoBehaviour:
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
+  skillManager: {fileID: 1305453206}
   skillADelay: 0.5
 --- !u!1 &1607389625
 GameObject:
@@ -1421,7 +1489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 376192194}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1810099771
 MonoBehaviour:
@@ -1605,7 +1673,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 376192194}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001988226
 GameObject:
@@ -1710,7 +1778,7 @@ RectTransform:
   - {fileID: 736136165}
   - {fileID: 1866588606}
   m_Father: {fileID: 376192194}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

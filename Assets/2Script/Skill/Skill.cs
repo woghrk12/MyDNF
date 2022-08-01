@@ -5,17 +5,17 @@ using System.Linq;
 
 public class Skill : MonoBehaviour
 {
-    [SerializeField] private float coefficientValue = 0f;
+    [SerializeField] private HitBox hitBox = null;
     [SerializeField] private string skillEffect = null;
     [SerializeField] private string skillMotion = "";
+
+    [SerializeField] private float coefficientValue = 0f;
     [SerializeField] private float duration = 0f;
     [SerializeField] private float coolTime = 0f;
     protected float waitingTime = 0f;
 
     public bool CanUse { get { return waitingTime <= 0f; } }
     public string SkillMotion { get { return skillMotion; } }
-
-    [SerializeField] private HitBox hitBox = null;
 
     private RoomManager roomManager = null;
     private List<HitBox> enemies = null;

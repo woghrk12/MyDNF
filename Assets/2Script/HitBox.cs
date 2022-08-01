@@ -15,20 +15,13 @@ public class HitBox : MonoBehaviour
     private float rangeRightX = 0f;
     private float rangeLeftX = 0f;
     private float radiusZ = 0f;
-    /*
+    
     [HideInInspector] public float minHitBoxX = 0f;
     [HideInInspector] public float maxHitBoxX = 0f;
     [HideInInspector] public float minHitBoxY = 0f;
     [HideInInspector] public float maxHitBoxY = 0f;
     [HideInInspector] public float minHitBoxZ = 0f;
     [HideInInspector] public float maxHitBoxZ = 0f;
-    */
-    public float minHitBoxX = 0f;
-    public float maxHitBoxX = 0f;
-    public float minHitBoxY = 0f;
-    public float maxHitBoxY = 0f;
-    public float minHitBoxZ = 0f;
-    public float maxHitBoxZ = 0f;
 
     private void Awake()
     {

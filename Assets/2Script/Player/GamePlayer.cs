@@ -7,6 +7,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;
+    [SerializeField] private SkillManager skillManager = null;
 
     private bool IsLeft { get { return moveController.IsLeft; } }
 
@@ -21,8 +22,8 @@ public class GamePlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack") && canAttack)
             StartCoroutine(Attack());
-        if (Input.GetButtonDown("SkillA") && canSkillA)
-            StartCoroutine(SkillA(skillADelay));
+        if (Input.GetButtonDown("A") && canSkillA)
+            StartCoroutine(UseSKill(skillManager.ASkill, skillADelay));
         if (Input.GetButtonDown("Jump") && canJump)
             StartCoroutine(Jump());
         
@@ -62,14 +63,14 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator SkillA(float p_delay)
+    private IEnumerator UseSKill(Skill p_skill, float p_delay)
     {
         canSkillA = false;
         canAttack = false;
         canJump = false;
         CanMove = false;
 
-        yield return attackController.SkillA(p_delay, IsLeft);
+        yield return attackController.UseSkill(p_skill, p_delay, IsLeft);
 
         CanMove = true;
         canJump = true;
