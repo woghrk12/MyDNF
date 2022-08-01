@@ -789,7 +789,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131014789}
-  - component: {fileID: 1131014790}
   - component: {fileID: 1131014791}
   m_Layer: 0
   m_Name: Skill A
@@ -812,24 +811,6 @@ Transform:
   m_Father: {fileID: 1545136970}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131014790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131014788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a9f304a86bd174d80043e554825440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coefficientValue: 10
-  skillEffect: SkillA
-  skillMotion: SkillA
-  coolTime: 5
-  hitBox: {fileID: 1131014791}
-  duration: 1
 --- !u!114 &1131014791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
   maxComboDelay: 1.2
-  skillA: {fileID: 1131014790}
+  skillA: {fileID: 0}
 --- !u!114 &1545136976
 MonoBehaviour:
   m_ObjectHideFlags: 0
