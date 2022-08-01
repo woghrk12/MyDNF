@@ -7,15 +7,15 @@ public class Skill : MonoBehaviour
 {
     [SerializeField] private HitBox hitBox = null;
     [SerializeField] private string skillEffect = null;
-    [SerializeField] private string skillMotion = "";
-
-    [SerializeField] private float coefficientValue = 0f;
     [SerializeField] private float duration = 0f;
+    [SerializeField] private float coefficientValue = 0f;
+    [SerializeField] private float delay = 0f;
+
     [SerializeField] private float coolTime = 0f;
     protected float waitingTime = 0f;
 
     public bool CanUse { get { return waitingTime <= 0f; } }
-    public string SkillMotion { get { return skillMotion; } }
+    public float Delay { get { return delay; } }
 
     private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
@@ -31,36 +31,41 @@ public class Skill : MonoBehaviour
             waitingTime -= Time.deltaTime;
     }
 
-    public void UseSkill(bool p_isLeft)
+    public IEnumerator UseSkill(bool p_isLeft)
     {
-        if (!CanUse) return;
         waitingTime = coolTime;
 
+        StartCoroutine(OnEffect(p_isLeft));
+        yield return CheckOnHit(p_isLeft);
+    }
+
+    private IEnumerator OnEffect(bool p_isLeft)
+    {
         var t_effect = ObjectPoolingManager.SpawnObject(skillEffect, transform.position, Quaternion.identity);
         t_effect.transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
 
+        yield return new WaitForSeconds(duration);
+
+        ObjectPoolingManager.ReturnObject(t_effect);
+    }
+
+    private IEnumerator CheckOnHit(bool p_isLeft)
+    {
         hitBox.SetDirection(p_isLeft);
         enemies = roomManager.enemiesHitBox.ToList();
 
-        StartCoroutine(InvokeSkillCo(t_effect));
-    }
-
-    private IEnumerator InvokeSkillCo(GameObject p_obj)
-    {
         var t_timer = 0f;
 
         while (t_timer <= duration)
         {
             hitBox.CalculateHitBox();
-            CheckOnHit();
+            CalculateOnHit();
             t_timer += Time.deltaTime;
             yield return null;
         }
-
-        ObjectPoolingManager.ReturnObject(p_obj.gameObject);
     }
 
-    private void CheckOnHit()
+    private void CalculateOnHit()
     {
         var t_enemies = enemies;
 
@@ -69,7 +74,7 @@ public class Skill : MonoBehaviour
             if (hitBox.maxHitBoxX < t_enemies[i].minHitBoxX || hitBox.minHitBoxX > t_enemies[i].maxHitBoxX) continue;
             if (hitBox.maxHitBoxZ < t_enemies[i].minHitBoxZ || hitBox.minHitBoxZ > t_enemies[i].maxHitBoxZ) continue;
             if (hitBox.maxHitBoxY < t_enemies[i].minHitBoxY || hitBox.minHitBoxY > t_enemies[i].maxHitBoxY) continue;
-
+            
             enemies.Remove(t_enemies[i]);
             Debug.Log("hit");
         }

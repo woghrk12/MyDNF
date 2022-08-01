@@ -16,14 +16,12 @@ public class GamePlayer : MonoBehaviour
     private bool canAttack = true;
     private bool canSkillA = true;
 
-    [SerializeField] private float skillADelay = 0f;
-
     private void Update()
     {
-        if (Input.GetButtonDown("Attack") && canAttack)
-            StartCoroutine(Attack());
+        if (Input.GetButtonDown("X") && canAttack)
+            StartCoroutine(UseSKill(skillManager.BaseAttack));
         if (Input.GetButtonDown("A") && canSkillA)
-            StartCoroutine(UseSKill(skillManager.ASkill, skillADelay));
+            StartCoroutine(UseSKill(skillManager.ASkill));
         if (Input.GetButtonDown("Jump") && canJump)
             StartCoroutine(Jump());
         
@@ -38,20 +36,6 @@ public class GamePlayer : MonoBehaviour
 
     private void Move() => moveController.Move();
 
-    private IEnumerator Attack()
-    {
-        canAttack = false;
-        canJump = false;
-        CanMove = false;
-
-        StartCoroutine(attackController.InputCombo("Attack"));
-        yield return attackController.Attack();
-
-        CanMove = true;
-        canJump = true;
-        canAttack = true;
-    }
-
     private IEnumerator Jump()
     {
         canJump = false;
@@ -63,14 +47,14 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator UseSKill(Skill p_skill, float p_delay)
+    private IEnumerator UseSKill(Skill p_skill)
     {
         canSkillA = false;
         canAttack = false;
         canJump = false;
         CanMove = false;
 
-        yield return attackController.UseSkill(p_skill, p_delay, IsLeft);
+        yield return attackController.UseSkill(p_skill, IsLeft);
 
         CanMove = true;
         canJump = true;

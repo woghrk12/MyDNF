@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2556034128053169439}
-  - component: {fileID: 2556034128053169437}
   - component: {fileID: 2556034128053169436}
+  - component: {fileID: 4727816098986854571}
   m_Layer: 0
   m_Name: Base Attack 3
   m_TagString: Untagged
@@ -33,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2556034128053169437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556034128053169438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed59f03c971b87241afdb3c94966881a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitBox: {fileID: 2556034128053169436}
-  roomManager: {fileID: 0}
-  duration: 0.5
 --- !u!114 &2556034128053169436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +57,24 @@ MonoBehaviour:
   maxHitBoxY: 0
   minHitBoxZ: 0
   maxHitBoxZ: 0
+--- !u!114 &4727816098986854571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 2556034128053169436}
+  skillEffect: 
+  skillMotion: 
+  coefficientValue: 0
+  duration: 0
+  coolTime: 0
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
