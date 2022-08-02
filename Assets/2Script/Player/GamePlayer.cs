@@ -11,7 +11,7 @@ public class GamePlayer : MonoBehaviour
 
     private bool IsLeft { get { return moveController.IsLeft; } }
 
-    public bool CanMove { set { moveController.CanMove = value; } get { return moveController.CanMove; } }
+    private bool CanMove { set { moveController.CanMove = value; } get { return moveController.CanMove; } }
     private bool canJump = true;
     private bool canAttack = true;
 
@@ -54,16 +54,12 @@ public class GamePlayer : MonoBehaviour
         switch (p_skill.skillType)
         {
             case ESkillType.SINGLE:
-                StartCoroutine(UseSkillCo(p_skill));
-                break;
-
-            case ESkillType.COMBO:
-                StartCoroutine(UseSkillCo(p_skill.GetComponent<ComboSkill>(), p_button));
+                StartCoroutine(UseSingleSkillCo(p_skill.GetComponent<SingleSkill>()));
                 break;
         }
     }
 
-    private IEnumerator UseSkillCo(Skill p_skill)
+    private IEnumerator UseSingleSkillCo(SingleSkill p_skill)
     {
         if (!p_skill.CanUse) yield break;
 
@@ -78,19 +74,4 @@ public class GamePlayer : MonoBehaviour
         canAttack = true;
     }
 
-    private IEnumerator UseSkillCo(ComboSkill p_skill, string p_button)
-    {
-        if (!p_skill.CanUse) yield break;
-
-        canAttack = false;
-        canJump = false;
-        CanMove = false;
-
-        StartCoroutine(attackController.InputCombo(p_skill, p_button));
-        yield return attackController.UseSkill(p_skill, IsLeft);
-
-        CanMove = true;
-        canJump = true;
-        canAttack = true;
-    }
 }
