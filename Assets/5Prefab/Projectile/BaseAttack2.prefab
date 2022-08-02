@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2556034128053169439}
   - component: {fileID: 4177254832099215806}
   - component: {fileID: 8188759228777575254}
+  - component: {fileID: 5989634129341241780}
   m_Layer: 0
   m_Name: BaseAttack2
   m_TagString: Untagged
@@ -69,8 +70,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2762dabcba4d63e45894cde8d97aa185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   hitBox: {fileID: 4177254832099215806}
   duration: 0.2
+--- !u!95 &5989634129341241780
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25912de3c0fcd09438f64928715ba912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ef69770c17cd47219e76038736e9e8f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,6 +171,6 @@ SpriteRenderer:
   m_Size: {x: 0.63, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
