@@ -10,8 +10,7 @@ public class CharacterAttack : MonoBehaviour
     private IEnumerator UseSkillCo(Skill p_skill, bool p_isLeft)
     {
         StartCoroutine(p_skill.UseSkill(p_isLeft));
-        anim.SetTrigger("Attack");
-
+        
         yield return new WaitForSeconds(p_skill.Delay);
     }
 

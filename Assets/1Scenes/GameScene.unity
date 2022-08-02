@@ -850,7 +850,7 @@ MonoBehaviour:
   - 1
   - 2
   - 3
-  delay: 0.5
+  delay: 0
   coolTime: 0
   totalNumCombo: 3
   maxComboTime: 1.2
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   - 0.5
   coefficientValue:
   - 5
-  delay: 0.5
+  delay: 0
   coolTime: 5
 --- !u!114 &1131014791
 MonoBehaviour:
