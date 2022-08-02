@@ -13,7 +13,7 @@ public abstract class Projectile : MonoBehaviour
     private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
-    private void Awake()
+    protected void Awake()
     {
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
