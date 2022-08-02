@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
     [SerializeField] private HitBox hitBox = null;
@@ -21,19 +21,15 @@ public class Projectile : MonoBehaviour
     public void StartProjectile(bool p_isLeft)
     {
         transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
-        StartCoroutine(OnEffect(duration));
         StartCoroutine(CheckOnHit(p_isLeft, duration));
+        StartCoroutine(MoveProjectile(p_isLeft, duration));
     }
 
-    private IEnumerator OnEffect(float p_duration)
-    {
-        anim.SetTrigger("Shot");
-        yield return new WaitForSeconds(p_duration);
-        ObjectPoolingManager.ReturnObject(this.gameObject);
-    }
+    protected abstract IEnumerator MoveProjectile(bool p_isLeft, float p_duration);
 
     private IEnumerator CheckOnHit(bool p_isLeft, float p_duration)
     {
+        anim.SetTrigger("Shot");
         hitBox.SetDirection(p_isLeft);
         enemies = roomManager.enemiesHitBox.ToList();
 
