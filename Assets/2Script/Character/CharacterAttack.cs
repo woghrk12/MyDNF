@@ -6,9 +6,6 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
-    private float attackSpeed = 1f;
-    public float AttackSpeed { set { attackSpeed = value < 1f ? 1f : value; } get { return attackSpeed; } }
-
     public IEnumerator UseSkill(Skill p_skill, bool p_isLeft) => UseSkillCo(p_skill, p_isLeft);
     private IEnumerator UseSkillCo(Skill p_skill, bool p_isLeft)
     {
@@ -18,4 +15,21 @@ public class CharacterAttack : MonoBehaviour
         yield return new WaitForSeconds(p_skill.Delay);
     }
 
+    public IEnumerator InputCombo(ComboSkill p_skill, string p_buttonName) => InputComboCo(p_skill, p_buttonName);
+    private IEnumerator InputComboCo(ComboSkill p_skill, string p_buttonName)
+    {
+        p_skill.IsAttack = true;
+
+        var t_timer = 0f;
+
+        while (t_timer < p_skill.MaxComboTime)
+        {
+            if (Input.GetButtonDown(p_buttonName)) p_skill.NumOfClicks++;
+            if (!p_skill.IsAttack) break;
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+
+        p_skill.NumOfClicks = 0;
+    }
 }

@@ -205,6 +205,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &294583591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294583592}
+  - component: {fileID: 294583593}
+  m_Layer: 0
+  m_Name: Base Attack 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294583592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294583591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837117461}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &294583593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294583591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 1413736348}
+  sizeRightX: 1.5
+  sizeLeftX: 1.5
+  sizeUpY: 1
+  sizeDownY: 1
+  sizeZ: 0.5
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &369212702
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +305,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: {fileID: 1864677841}
   enemiesHitBox: []
+--- !u!1 &372065963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372065964}
+  - component: {fileID: 372065965}
+  m_Layer: 0
+  m_Name: Base Attack 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &372065964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372065963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837117461}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372065965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372065963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 1413736348}
+  sizeRightX: 2
+  sizeLeftX: 1
+  sizeUpY: 1
+  sizeDownY: 1
+  sizeZ: 0.5
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &376192193
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +612,61 @@ Transform:
   m_Father: {fileID: 2001988227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664478800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664478801}
+  - component: {fileID: 664478802}
+  m_Layer: 0
+  m_Name: Base Attack 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &664478801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664478800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837117461}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &664478802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664478800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 1413736348}
+  sizeRightX: 2.5
+  sizeLeftX: 1
+  sizeUpY: 1
+  sizeDownY: 1
+  sizeZ: 0.5
+  minHitBoxX: 0
+  maxHitBoxX: 0
+  minHitBoxY: 0
+  maxHitBoxY: 0
+  minHitBoxZ: 0
+  maxHitBoxZ: 0
 --- !u!1 &698430315
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,8 +796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837117461}
-  - component: {fileID: 837117463}
-  - component: {fileID: 837117462}
+  - component: {fileID: 837117464}
   m_Layer: 0
   m_Name: Base Attack
   m_TagString: Untagged
@@ -650,11 +814,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 372065964}
+  - {fileID: 294583592}
+  - {fileID: 664478801}
   m_Father: {fileID: 1305453205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &837117462
+--- !u!114 &837117464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -663,39 +830,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 837117460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
+  m_Script: {fileID: 11500000, guid: a467676666c65e349af67c9c23434fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBox: {fileID: 837117463}
-  skillEffect: BaseAttack
-  duration: 0.5
-  coefficientValue: 1
+  skillType: 1
+  hitBox:
+  - {fileID: 372065965}
+  - {fileID: 294583593}
+  - {fileID: 664478802}
+  skillEffect:
+  - BaseAttack1
+  - BaseAttack2
+  - BaseAttack3
+  duration:
+  - 0.5
+  - 0.3
+  - 0.5
+  coefficientValue:
+  - 1
+  - 2
+  - 3
   delay: 0.5
   coolTime: 0
---- !u!114 &837117463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837117460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteObject: {fileID: 1413736348}
-  sizeRightX: 2
-  sizeLeftX: 1
-  sizeUpY: 1
-  sizeDownY: 1
-  sizeZ: 0.5
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
+  totalNumCombo: 3
+  maxComboTime: 1.2
 --- !u!1 &1090006288
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,10 +1056,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBox: {fileID: 1131014791}
-  skillEffect: SkillA
-  duration: 0.5
-  coefficientValue: 5
+  skillType: 0
+  hitBox:
+  - {fileID: 1131014791}
+  skillEffect:
+  - SkillA
+  duration:
+  - 0.5
+  coefficientValue:
+  - 5
   delay: 0.5
   coolTime: 5
 --- !u!114 &1131014791
@@ -973,7 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98df24a785d9ac3489c55bd4040e756b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttack: {fileID: 837117462}
+  baseAttack: {fileID: 837117464}
   aSkill: {fileID: 1131014790}
   sSkill: {fileID: 0}
   dSkill: {fileID: 0}
@@ -1238,6 +1401,9 @@ MonoBehaviour:
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
   skillManager: {fileID: 1305453206}
+  xButton: X
+  aButton: A
+  jumpButton: Jump
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,8 +1687,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: BaseAttack
+  - tag: BaseAttack1
     prefab: {fileID: 2556034128053169438, guid: 86b2b60b3f40cd94eb70d535dd04f1d8, type: 3}
+    size: 10
+  - tag: BaseAttack2
+    prefab: {fileID: 2556034128053169438, guid: 7b6b500b42016f645a3d4886cf1f5c6c, type: 3}
+    size: 10
+  - tag: BaseAttack3
+    prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
   - tag: SkillA
     prefab: {fileID: 2556034128053169438, guid: bb717a7a030096747b06d23ba12250c0, type: 3}

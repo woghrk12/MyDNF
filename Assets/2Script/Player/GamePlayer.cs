@@ -15,15 +15,18 @@ public class GamePlayer : MonoBehaviour
     private bool canJump = true;
     private bool canAttack = true;
 
+    [SerializeField] private string xButton = "X";
+    [SerializeField] private string aButton = "A";
+    [SerializeField] private string jumpButton = "Jump";
+
     private void Update()
     {
-        if (Input.GetButtonDown("X") && canAttack)
-            StartCoroutine(UseSKill(skillManager.BaseAttack));
-        if (Input.GetButtonDown("A") && canAttack)
-            StartCoroutine(UseSKill(skillManager.ASkill));
-        if (Input.GetButtonDown("Jump") && canJump)
+        if (Input.GetButtonDown(xButton) && canAttack)
+            UseSkill(skillManager.BaseAttack, xButton);
+        if (Input.GetButtonDown(aButton) && canAttack)
+            UseSkill(skillManager.ASkill, aButton);
+        if (Input.GetButtonDown(jumpButton) && canJump)
             StartCoroutine(Jump());
-        
     }
 
     private void FixedUpdate()
@@ -46,7 +49,21 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator UseSKill(Skill p_skill)
+    private void UseSkill(Skill p_skill, string p_button)
+    {
+        switch (p_skill.skillType)
+        {
+            case ESkillType.SINGLE:
+                StartCoroutine(UseSkillCo(p_skill));
+                break;
+
+            case ESkillType.COMBO:
+                StartCoroutine(UseSkillCo(p_skill.GetComponent<ComboSkill>(), p_button));
+                break;
+        }
+    }
+
+    private IEnumerator UseSkillCo(Skill p_skill)
     {
         if (!p_skill.CanUse) yield break;
 
@@ -54,6 +71,22 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         CanMove = false;
 
+        yield return attackController.UseSkill(p_skill, IsLeft);
+
+        CanMove = true;
+        canJump = true;
+        canAttack = true;
+    }
+
+    private IEnumerator UseSkillCo(ComboSkill p_skill, string p_button)
+    {
+        if (!p_skill.CanUse) yield break;
+
+        canAttack = false;
+        canJump = false;
+        CanMove = false;
+
+        StartCoroutine(attackController.InputCombo(p_skill, p_button));
         yield return attackController.UseSkill(p_skill, IsLeft);
 
         CanMove = true;
