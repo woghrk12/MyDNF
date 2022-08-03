@@ -248,10 +248,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: SkillS
-  skillMotion: SkillS
-  duration: 0.5
-  coefficientValue: 0
+  numCombo: 1
+  projectile:
+  - SkillS
+  skillMotion:
+  - isSkillS
+  duration:
+  - 0.5
+  coefficientValue:
+  - 0
+  maxKeyTime: 0
   coolTime: 0
 --- !u!1 &369212702
 GameObject:
@@ -680,6 +686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837117461}
+  - component: {fileID: 837117462}
   m_Layer: 0
   m_Name: Base Attack
   m_TagString: Untagged
@@ -701,6 +708,33 @@ Transform:
   m_Father: {fileID: 1305453205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &837117462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837117460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numCombo: 2
+  projectile:
+  - BaseAttack
+  - BaseAttack
+  skillMotion:
+  - isBaseAttack1
+  - isBaseAttack2
+  duration:
+  - 0.5
+  - 0.2
+  coefficientValue:
+  - 0
+  - 0
+  maxKeyTime: 0.6
+  coolTime: 0
 --- !u!1 &1090006288
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,10 +936,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: SkillA
-  skillMotion: SkillA
-  duration: 0.5
-  coefficientValue: 0
+  numCombo: 1
+  projectile:
+  - SkillA
+  skillMotion:
+  - isSkillA
+  duration:
+  - 0.5
+  coefficientValue:
+  - 0
+  maxKeyTime: 0
   coolTime: 0
 --- !u!1 &1305453204
 GameObject:
@@ -953,7 +993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98df24a785d9ac3489c55bd4040e756b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttack: {fileID: 0}
+  baseAttack: {fileID: 837117462}
   aSkill: {fileID: 1131014790}
   sSkill: {fileID: 182411865}
   dSkill: {fileID: 0}
@@ -1217,10 +1257,10 @@ MonoBehaviour:
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
   skillManager: {fileID: 1305453206}
-  xButton: X
-  aButton: A
-  sButton: S
-  jumpButton: Jump
+  xButton: 120
+  aButton: 97
+  sButton: 115
+  jumpButton: 32
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,14 +1547,11 @@ MonoBehaviour:
   - tag: BaseAttack
     prefab: {fileID: 2556034128053169438, guid: 86b2b60b3f40cd94eb70d535dd04f1d8, type: 3}
     size: 10
-  - tag: BaseAttack2
-    prefab: {fileID: 2556034128053169438, guid: 7b6b500b42016f645a3d4886cf1f5c6c, type: 3}
+  - tag: SkillA
+    prefab: {fileID: 2556034128053169438, guid: bb717a7a030096747b06d23ba12250c0, type: 3}
     size: 10
   - tag: SkillS
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
-    size: 10
-  - tag: SkillA
-    prefab: {fileID: 2556034128053169438, guid: bb717a7a030096747b06d23ba12250c0, type: 3}
     size: 10
 --- !u!1 &1810099769
 GameObject:

@@ -23,7 +23,7 @@ public class GamePlayer : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(xButton) && canAttack)
-            UseSkill(skillManager.BaseAttack, xButton);
+            StartCoroutine(UseSkill(skillManager.BaseAttack, xButton));
         if (Input.GetKeyDown(aButton) && canAttack)
             StartCoroutine(UseSkill(skillManager.ASkill, aButton));
         if (Input.GetKeyDown(sButton) && canAttack)

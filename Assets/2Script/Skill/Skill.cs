@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    [SerializeField] private string projectile = null;
-    [SerializeField] private string skillMotion = null;
-    [SerializeField] private float duration = 0f;
-    [SerializeField] private float coefficientValue = 0f;
+    [SerializeField] private int numCombo = 1;
+    [SerializeField] private string[] projectile = null;
+    [SerializeField] private string[] skillMotion = null;
+    [SerializeField] private float[] duration = null;
+    [SerializeField] private float[] coefficientValue = null;
     [SerializeField] private float maxKeyTime = 0f;
     [SerializeField] private float coolTime = 0f;
     private float waitingTime = 0f;
@@ -26,11 +27,26 @@ public class Skill : MonoBehaviour
     public IEnumerator UseSkill(Animator p_anim, bool p_isLeft)
     {
         waitingTime = coolTime;
+        var t_cnt = 0;
 
-        p_anim.SetTrigger(skillMotion);
-        var t_projectile = ObjectPoolingManager.SpawnObject(projectile, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
-        t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
-        yield return new WaitForSeconds(duration);
+        while (t_cnt < numCombo)
+        {
+            p_anim.SetBool(skillMotion[t_cnt], true);
+            var t_projectile = ObjectPoolingManager.SpawnObject(projectile[t_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
+            t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
+            
+            yield return new WaitForSeconds(duration[t_cnt]);
+            
+            t_cnt++;
+            if (NumOfClick <= t_cnt) break;
+        }
+        ResetAnimation(p_anim);
+    }
+
+    private void ResetAnimation(Animator p_anim)
+    {
+        for (int i = 0; i < skillMotion.Length; i++)
+            p_anim.SetBool(skillMotion[i], false);
     }
 }
 
