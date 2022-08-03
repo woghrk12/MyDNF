@@ -18,8 +18,9 @@ public abstract class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    public void StartProjectile(bool p_isLeft)
+    public void StartProjectile(Vector3 p_position, bool p_isLeft)
     {
+        transform.position = p_position;
         transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
         StartCoroutine(CheckOnHit(p_isLeft, duration));
         StartCoroutine(MoveProjectile(p_isLeft, duration));

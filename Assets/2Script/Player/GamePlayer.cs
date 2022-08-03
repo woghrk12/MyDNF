@@ -17,6 +17,7 @@ public class GamePlayer : MonoBehaviour
 
     [SerializeField] private string xButton = "X";
     [SerializeField] private string aButton = "A";
+    [SerializeField] private string sButton = "S";
     [SerializeField] private string jumpButton = "Jump";
 
     private void Update()
@@ -25,6 +26,9 @@ public class GamePlayer : MonoBehaviour
             UseSkill(skillManager.BaseAttack, xButton);
         if (Input.GetButtonDown(aButton) && canAttack)
             UseSkill(skillManager.ASkill, aButton);
+        if (Input.GetButtonDown(sButton) && canAttack)
+            UseSkill(skillManager.SSkill, sButton);
+
         if (Input.GetButtonDown(jumpButton) && canJump)
             StartCoroutine(Jump());
     }

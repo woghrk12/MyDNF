@@ -205,6 +205,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &182411863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182411864}
+  - component: {fileID: 182411865}
+  m_Layer: 0
+  m_Name: Skill S
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182411864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182411863}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305453205}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &182411865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182411863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5aa8d3f6eaa674d8ede817982e5923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 0
+  coolTime: 0
+  projectile: SkillS
+  skillMotion: SkillS
+  duration: 0.5
+  coefficientValue: 0
 --- !u!1 &369212702
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +283,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 376192194}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &369212704
 MonoBehaviour:
@@ -277,6 +326,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1305453205}
   - {fileID: 1797689433}
   - {fileID: 369212703}
   - {fileID: 2143839193}
@@ -757,7 +807,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1545136970}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1091435870
 SpriteRenderer:
@@ -855,8 +905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 0
   coolTime: 0
-  skillEffect: SkillA
-  skillMotion: isSkillA
+  projectile: SkillA
+  skillMotion: SkillA
   duration: 0.5
   coefficientValue: 0
 --- !u!1 &1305453204
@@ -889,7 +939,8 @@ Transform:
   m_Children:
   - {fileID: 837117461}
   - {fileID: 1131014789}
-  m_Father: {fileID: 1545136970}
+  - {fileID: 182411864}
+  m_Father: {fileID: 376192194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1305453206
@@ -906,7 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAttack: {fileID: 0}
   aSkill: {fileID: 1131014790}
-  sSkill: {fileID: 0}
+  sSkill: {fileID: 182411865}
   dSkill: {fileID: 0}
   fSkill: {fileID: 0}
 --- !u!1 &1400205249
@@ -970,7 +1021,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1545136970}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1413736349
 SpriteRenderer:
@@ -1056,7 +1107,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1305453205}
   - {fileID: 1413736348}
   - {fileID: 1091435869}
   m_Father: {fileID: 0}
@@ -1171,6 +1221,7 @@ MonoBehaviour:
   skillManager: {fileID: 1305453206}
   xButton: X
   aButton: A
+  sButton: S
   jumpButton: Jump
 --- !u!1 &1607389625
 GameObject:
@@ -1440,7 +1491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 376192194}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1797689434
 MonoBehaviour:
@@ -1455,13 +1506,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: BaseAttack1
+  - tag: BaseAttack
     prefab: {fileID: 2556034128053169438, guid: 86b2b60b3f40cd94eb70d535dd04f1d8, type: 3}
     size: 10
   - tag: BaseAttack2
     prefab: {fileID: 2556034128053169438, guid: 7b6b500b42016f645a3d4886cf1f5c6c, type: 3}
     size: 10
-  - tag: BaseAttack3
+  - tag: SkillS
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
   - tag: SkillA
@@ -1496,7 +1547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 376192194}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1810099771
 MonoBehaviour:
@@ -1680,7 +1731,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 376192194}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001988226
 GameObject:
@@ -1785,7 +1836,7 @@ RectTransform:
   - {fileID: 736136165}
   - {fileID: 1866588606}
   m_Father: {fileID: 376192194}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
