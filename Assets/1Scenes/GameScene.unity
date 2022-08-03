@@ -722,23 +722,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numCombo: 2
+  numCombo: 3
   projectile:
+  - BaseAttack
   - BaseAttack
   - BaseAttack
   skillMotion:
   - isAttack1
   - isAttack2
+  - isAttack3
   duration:
   - 0.5
   - 0.2
+  - 0.5
   delay:
   - 0.1
   - 0.05
+  - 0.1
   coefficientValue:
   - 0
   - 0
-  maxKeyTime: 0.6
+  - 0
+  maxKeyTime: 1
   coolTime: 0
 --- !u!1 &1090006288
 GameObject:
