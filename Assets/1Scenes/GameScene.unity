@@ -245,15 +245,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 182411863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5aa8d3f6eaa674d8ede817982e5923, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 0
-  coolTime: 0
   projectile: SkillS
   skillMotion: SkillS
   duration: 0.5
   coefficientValue: 0
+  coolTime: 0
 --- !u!1 &369212702
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,15 +899,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131014788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5aa8d3f6eaa674d8ede817982e5923, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8cece1973599545af6c37a2705ecff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 0
-  coolTime: 0
   projectile: SkillA
   skillMotion: SkillA
   duration: 0.5
   coefficientValue: 0
+  coolTime: 0
 --- !u!1 &1305453204
 GameObject:
   m_ObjectHideFlags: 0

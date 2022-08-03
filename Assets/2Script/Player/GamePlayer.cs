@@ -25,10 +25,9 @@ public class GamePlayer : MonoBehaviour
         if (Input.GetButtonDown(xButton) && canAttack)
             UseSkill(skillManager.BaseAttack, xButton);
         if (Input.GetButtonDown(aButton) && canAttack)
-            UseSkill(skillManager.ASkill, aButton);
+            StartCoroutine(UseSkill(skillManager.ASkill, aButton));
         if (Input.GetButtonDown(sButton) && canAttack)
-            UseSkill(skillManager.SSkill, sButton);
-
+            StartCoroutine(UseSkill(skillManager.SSkill, sButton));
         if (Input.GetButtonDown(jumpButton) && canJump)
             StartCoroutine(Jump());
     }
@@ -53,17 +52,7 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private void UseSkill(Skill p_skill, string p_button)
-    {
-        switch (p_skill.skillType)
-        {
-            case ESkillType.SINGLE:
-                StartCoroutine(UseSingleSkillCo(p_skill.GetComponent<SingleSkill>()));
-                break;
-        }
-    }
-
-    private IEnumerator UseSingleSkillCo(SingleSkill p_skill)
+    private IEnumerator UseSkill(Skill p_skill, string p_button)
     {
         if (!p_skill.CanUse) yield break;
 
@@ -71,7 +60,7 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         CanMove = false;
 
-        yield return attackController.UseSkill(p_skill, IsLeft);
+        yield return attackController.UseSkill(p_skill, IsLeft, p_button);
 
         CanMove = true;
         canJump = true;
