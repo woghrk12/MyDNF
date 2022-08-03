@@ -8,11 +8,14 @@ public class Skill : MonoBehaviour
     [SerializeField] private string skillMotion = null;
     [SerializeField] private float duration = 0f;
     [SerializeField] private float coefficientValue = 0f;
-
+    [SerializeField] private float maxKeyTime = 0f;
     [SerializeField] private float coolTime = 0f;
     private float waitingTime = 0f;
+    private int numOfClick = 0;
 
     public bool CanUse { get { return waitingTime <= 0f; } }
+    public float MaxKeyTime { get { return maxKeyTime; } }
+    public int NumOfClick { set { numOfClick = value; } get { return numOfClick; } }
 
     private void Update()
     {
