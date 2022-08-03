@@ -40,17 +40,12 @@ public class Skill : MonoBehaviour
             t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
             
             yield return new WaitForSeconds(duration[t_cnt] - delay[t_cnt]);
-            
+
+            p_anim.SetBool(skillMotion[t_cnt], false);
+
             t_cnt++;
             if (NumOfClick <= t_cnt) break;
         }
-        ResetAnimation(p_anim);
-    }
-
-    private void ResetAnimation(Animator p_anim)
-    {
-        for (int i = 0; i < skillMotion.Length; i++)
-            p_anim.SetBool(skillMotion[i], false);
     }
 }
 

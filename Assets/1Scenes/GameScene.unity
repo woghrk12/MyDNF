@@ -252,7 +252,7 @@ MonoBehaviour:
   projectile:
   - SkillS
   skillMotion:
-  - isSkillS
+  - isAttack3
   duration:
   - 0.5
   delay:
@@ -727,8 +727,8 @@ MonoBehaviour:
   - BaseAttack
   - BaseAttack
   skillMotion:
-  - isBaseAttack1
-  - isBaseAttack2
+  - isAttack1
+  - isAttack2
   duration:
   - 0.5
   - 0.2
@@ -945,7 +945,7 @@ MonoBehaviour:
   projectile:
   - SkillA
   skillMotion:
-  - isSkillA
+  - isAttack3
   duration:
   - 0.5
   delay:
