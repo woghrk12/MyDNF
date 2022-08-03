@@ -6,7 +6,7 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
-    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, string p_button)
+    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, KeyCode p_button)
     {
         yield return p_skill.UseSkill(anim, p_isLeft);
     }

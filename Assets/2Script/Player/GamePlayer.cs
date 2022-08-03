@@ -15,20 +15,20 @@ public class GamePlayer : MonoBehaviour
     private bool canJump = true;
     private bool canAttack = true;
 
-    [SerializeField] private string xButton = "X";
-    [SerializeField] private string aButton = "A";
-    [SerializeField] private string sButton = "S";
-    [SerializeField] private string jumpButton = "Jump";
+    [SerializeField] private KeyCode xButton = KeyCode.X;
+    [SerializeField] private KeyCode aButton = KeyCode.A;
+    [SerializeField] private KeyCode sButton = KeyCode.S;
+    [SerializeField] private KeyCode jumpButton = KeyCode.Space;
 
     private void Update()
     {
-        if (Input.GetButtonDown(xButton) && canAttack)
+        if (Input.GetKeyDown(xButton) && canAttack)
             UseSkill(skillManager.BaseAttack, xButton);
-        if (Input.GetButtonDown(aButton) && canAttack)
+        if (Input.GetKeyDown(aButton) && canAttack)
             StartCoroutine(UseSkill(skillManager.ASkill, aButton));
-        if (Input.GetButtonDown(sButton) && canAttack)
+        if (Input.GetKeyDown(sButton) && canAttack)
             StartCoroutine(UseSkill(skillManager.SSkill, sButton));
-        if (Input.GetButtonDown(jumpButton) && canJump)
+        if (Input.GetKeyDown(jumpButton) && canJump)
             StartCoroutine(Jump());
     }
 
@@ -52,7 +52,7 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator UseSkill(Skill p_skill, string p_button)
+    private IEnumerator UseSkill(Skill p_skill, KeyCode p_button)
     {
         if (!p_skill.CanUse) yield break;
 
