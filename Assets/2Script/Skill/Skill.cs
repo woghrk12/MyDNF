@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
     [SerializeField] private string[] projectile = null;
     [SerializeField] private string[] skillMotion = null;
     [SerializeField] private float[] duration = null;
+    [SerializeField] private float[] delay = null;
     [SerializeField] private float[] coefficientValue = null;
     [SerializeField] private float maxKeyTime = 0f;
     [SerializeField] private float coolTime = 0f;
@@ -32,10 +33,13 @@ public class Skill : MonoBehaviour
         while (t_cnt < numCombo)
         {
             p_anim.SetBool(skillMotion[t_cnt], true);
+
+            yield return new WaitForSeconds(delay[t_cnt]);
+            
             var t_projectile = ObjectPoolingManager.SpawnObject(projectile[t_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
             t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
             
-            yield return new WaitForSeconds(duration[t_cnt]);
+            yield return new WaitForSeconds(duration[t_cnt] - delay[t_cnt]);
             
             t_cnt++;
             if (NumOfClick <= t_cnt) break;

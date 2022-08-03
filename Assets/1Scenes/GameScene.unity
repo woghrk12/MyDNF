@@ -255,6 +255,8 @@ MonoBehaviour:
   - isSkillS
   duration:
   - 0.5
+  delay:
+  - 0.1
   coefficientValue:
   - 0
   maxKeyTime: 0
@@ -730,6 +732,9 @@ MonoBehaviour:
   duration:
   - 0.5
   - 0.2
+  delay:
+  - 0.1
+  - 0.05
   coefficientValue:
   - 0
   - 0
@@ -943,6 +948,8 @@ MonoBehaviour:
   - isSkillA
   duration:
   - 0.5
+  delay:
+  - 0.1
   coefficientValue:
   - 0
   maxKeyTime: 0
