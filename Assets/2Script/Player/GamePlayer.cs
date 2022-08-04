@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GamePlayer : MonoBehaviour
 {
+    [SerializeField] private KeyboardManager inputController = null;
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;
@@ -15,22 +16,17 @@ public class GamePlayer : MonoBehaviour
     private bool canJump = true;
     private bool canAttack = true;
 
-    [SerializeField] private KeyCode xButton = KeyCode.X;
-    [SerializeField] private KeyCode aButton = KeyCode.A;
-    [SerializeField] private KeyCode sButton = KeyCode.S;
-    [SerializeField] private KeyCode jumpButton = KeyCode.Space;
-
     private Coroutine runningCo = null;
 
     private void Update()
     {
-        if (Input.GetKeyDown(xButton) && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, xButton));
-        if (Input.GetKeyDown(aButton) && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.ASkill, aButton));
-        if (Input.GetKeyDown(sButton) && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.SSkill, sButton));
-        if (Input.GetKeyDown(jumpButton) && canJump)
+        if (inputController.XDown && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, inputController.XButton));
+        if (inputController.ADown && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.ASkill, inputController.AButton));
+        if (inputController.SDown && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.SSkill, inputController.SButton));
+        if (inputController.JDown && canJump)
             StartCoroutine(Jump());
     }
 
@@ -41,7 +37,7 @@ public class GamePlayer : MonoBehaviour
         Move();
     }
 
-    private void Move() => moveController.Move();
+    private void Move() => moveController.Move(inputController.Direction);
 
     private IEnumerator Jump()
     {

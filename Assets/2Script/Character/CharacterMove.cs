@@ -8,11 +8,6 @@ public class CharacterMove : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
-    [SerializeField] private Joystick joystick = null;
-    [SerializeField] private Keyboard keyboard = null;
-
-    private EControlType controlType = EControlType.KEYBOARD;
-
     [SerializeField] private float xMoveSpeed = 0f;
     [SerializeField] private float yMoveSpeed = 0f;
     private Vector3 moveDir = Vector3.zero;
@@ -48,34 +43,13 @@ public class CharacterMove : MonoBehaviour
         get { return canMove; }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-            controlType = EControlType.JOYSTICK;
-        if (Input.GetKeyDown(KeyCode.F2))
-            controlType = EControlType.KEYBOARD;
-
-        SetMoveDirection();
-    }
+    public void Move(Vector3 p_moveDir) => MoveCharacter(p_moveDir);
 
     private Vector3 HandleInput(Vector3 p_vector)
     {
         p_vector.x *= xMoveSpeed;
         p_vector.y *= yMoveSpeed;
         return p_vector;
-    }
-
-    private void SetMoveDirection()
-    {
-        switch (controlType)
-        {
-            case EControlType.JOYSTICK:
-                moveDir = HandleInput(joystick.Direction);
-                break;
-            case EControlType.KEYBOARD:
-                moveDir = HandleInput(keyboard.Direction);
-                break;
-        }
     }
 
     private Vector3 LimitArea(Vector3 t_playerPos)
@@ -90,18 +64,17 @@ public class CharacterMove : MonoBehaviour
         return t_pos;
     }
 
-    public void Move() => MoveCharacter();
-
-    private void MoveCharacter()
+    private void MoveCharacter(Vector3 p_moveDir)
     {
+        moveDir = HandleInput(p_moveDir);
         var t_pos = transform.position + moveDir * Time.deltaTime;
         transform.position = LimitArea(t_pos);
 
         anim.SetBool("isWalk", isMove);
 
-        if (moveDir.x != 0)
+        if (p_moveDir.x != 0)
         {
-            IsLeft = moveDir.x < 0;
+            IsLeft = p_moveDir.x < 0;
         }
     }
 }
