@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EControlType { JOYSTICK, KEYBOARD, END }
-
 public class CharacterMove : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
