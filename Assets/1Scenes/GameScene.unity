@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76685806bd189541a1b60b1149a91f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpButton: 32
+  jumpButton: 99
   xButton: 120
   aButton: 97
   sButton: 115
@@ -1251,8 +1251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
-  joystick: {fileID: 736136166}
-  keyboard: {fileID: 0}
   xMoveSpeed: 5
   yMoveSpeed: 3
   minX: -11.5
