@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GamePlayer : MonoBehaviour
 {
-    [SerializeField] private ScreenInputManager inputController = null;
+    [SerializeField] private InputManager inputController = null;
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;

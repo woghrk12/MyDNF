@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f827f64cfc03498c0a1680b650e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputController: {fileID: 1035758830}
+  inputController: {fileID: 2042768663}
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
