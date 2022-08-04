@@ -14,4 +14,12 @@ public class SkillManager : MonoBehaviour
     public Skill DSkill { get { return dSkill; } }
     [SerializeField] private Skill fSkill = null;
     public Skill FSkill { get { return fSkill; } }
+
+    public bool CheckCanCancel(Skill p_fromSkill, Skill p_toSkill)
+    {
+        if (p_fromSkill == null) return true;
+        if (p_fromSkill.CanCancelList.Count == 0) return false;
+
+        return p_fromSkill.CanCancelList.Find(x => x == p_toSkill) != null;
+    }
 }

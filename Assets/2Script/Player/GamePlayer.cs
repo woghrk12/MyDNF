@@ -20,14 +20,16 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private KeyCode sButton = KeyCode.S;
     [SerializeField] private KeyCode jumpButton = KeyCode.Space;
 
+    private Coroutine runningCo = null;
+
     private void Update()
     {
         if (Input.GetKeyDown(xButton) && canAttack)
-            StartCoroutine(UseSkill(skillManager.BaseAttack, xButton));
+            StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, xButton));
         if (Input.GetKeyDown(aButton) && canAttack)
-            StartCoroutine(UseSkill(skillManager.ASkill, aButton));
+            StartCoroutine(CheckCanUseSkill(skillManager.ASkill, aButton));
         if (Input.GetKeyDown(sButton) && canAttack)
-            StartCoroutine(UseSkill(skillManager.SSkill, sButton));
+            StartCoroutine(CheckCanUseSkill(skillManager.SSkill, sButton));
         if (Input.GetKeyDown(jumpButton) && canJump)
             StartCoroutine(Jump());
     }
@@ -52,19 +54,32 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator UseSkill(Skill p_skill, KeyCode p_button)
+    private IEnumerator CheckCanUseSkill(Skill p_skill, KeyCode p_button)
     {
         if (!p_skill.CanUse) yield break;
 
-        canAttack = false;
         canJump = false;
         CanMove = false;
 
+        if (runningCo != null)
+        {
+            if (!skillManager.CheckCanCancel(attackController.runningSkill, p_skill)) yield break;
+
+            StopCoroutine(runningCo);
+            attackController.CancelSkill(attackController.runningSkill);
+            yield return null;
+        }
+
+        runningCo = StartCoroutine(UseSkill(p_skill, p_button));
+    }
+
+    private IEnumerator UseSkill(Skill p_skill, KeyCode p_button)
+    {
         yield return attackController.UseSkill(p_skill, IsLeft, p_button);
 
         CanMove = true;
         canJump = true;
-        canAttack = true;
-    }
 
+        runningCo = null;
+    }
 }

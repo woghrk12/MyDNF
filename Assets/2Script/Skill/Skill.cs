@@ -15,6 +15,7 @@ public class Skill : MonoBehaviour
     private float waitingTime = 0f;
     private int numOfClick = 0;
 
+    public List<Skill> CanCancelList = new List<Skill>();
     public bool CanUse { get { return waitingTime <= 0f; } }
     public float MaxKeyTime { get { return maxKeyTime; } }
     public int NumOfClick { set { numOfClick = value; } get { return numOfClick; } }
@@ -46,6 +47,12 @@ public class Skill : MonoBehaviour
             t_cnt++;
             if (NumOfClick <= t_cnt) break;
         }
+    }
+
+    public void ResetSkillMotion(Animator p_anim)
+    {
+        for (int i = 0; i < skillMotion.Length; i++)
+            p_anim.SetBool(skillMotion[i], false);
     }
 }
 

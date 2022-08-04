@@ -6,14 +6,17 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
     private bool flag = false;
+    public Skill runningSkill = null;
 
     public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, KeyCode p_button)
     {
         flag = true;
-
+        runningSkill = p_skill;
         StartCoroutine(CheckNumInput(p_skill, p_button, p_skill.MaxKeyTime));
         yield return p_skill.UseSkill(anim, p_isLeft);
+        
         p_skill.NumOfClick = 0;
+        runningSkill = null;
         flag = false;
     }
 
@@ -29,5 +32,13 @@ public class CharacterAttack : MonoBehaviour
             t_timer += Time.deltaTime;
             yield return null;
         }
+    }
+
+    public void CancelSkill(Skill p_skill)
+    {
+        p_skill.NumOfClick = 0;
+        p_skill.ResetSkillMotion(anim);
+        runningSkill = null;
+        flag = false;
     }
 }

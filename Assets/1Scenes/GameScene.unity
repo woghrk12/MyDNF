@@ -260,7 +260,9 @@ MonoBehaviour:
   coefficientValue:
   - 0
   maxKeyTime: 0
-  coolTime: 0
+  coolTime: 5
+  CanCancelList:
+  - {fileID: 1131014790}
 --- !u!1 &369212702
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,8 +734,8 @@ MonoBehaviour:
   - isAttack2
   - isAttack3
   duration:
-  - 0.5
-  - 0.2
+  - 0.45
+  - 0.28
   - 0.5
   delay:
   - 0.1
@@ -745,6 +747,8 @@ MonoBehaviour:
   - 0
   maxKeyTime: 1
   coolTime: 0
+  CanCancelList:
+  - {fileID: 1131014790}
 --- !u!1 &1090006288
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +963,7 @@ MonoBehaviour:
   - 0
   maxKeyTime: 0
   coolTime: 0
+  CanCancelList: []
 --- !u!1 &1305453204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
+  runningSkill: {fileID: 0}
 --- !u!114 &1545136976
 MonoBehaviour:
   m_ObjectHideFlags: 0
