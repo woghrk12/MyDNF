@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
+    [SerializeField] private SpriteRenderer originSprite = null;
+    [SerializeField] private SpriteRenderer cancelEffect = null;
+
     private bool flag = false;
     public Skill runningSkill = null;
 
@@ -40,5 +43,16 @@ public class CharacterAttack : MonoBehaviour
         p_skill.ResetSkillMotion(anim);
         runningSkill = null;
         flag = false;
+
+        StartCoroutine(CancelEffect());
+    }
+
+    private IEnumerator CancelEffect()
+    {
+        cancelEffect.sprite = originSprite.sprite;
+
+        cancelEffect.enabled = true;
+        yield return new WaitForSeconds(0.08f);
+        cancelEffect.enabled = false;
     }
 }
