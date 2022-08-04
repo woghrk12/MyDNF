@@ -15,7 +15,6 @@ public class KeyboardManager : MonoBehaviour
     public KeyCode AButton { get { return aButton; } }
     public KeyCode SButton { get { return sButton; } }
 
-
     private Vector2 inputDir = Vector2.zero;
     private float hAxis = 0f;
     private float vAxis = 0f;
@@ -24,7 +23,6 @@ public class KeyboardManager : MonoBehaviour
     private bool xDown = false;
     private bool aDown = false;
     private bool sDown = false;
-    
 
     [SerializeField] private KeyCode jumpButton = KeyCode.Space;
     [SerializeField] private KeyCode xButton = KeyCode.X;

@@ -38,7 +38,7 @@ public class GamePlayer : MonoBehaviour
     }
 
     private void Move() => moveController.Move(inputController.Direction);
-
+    
     private IEnumerator Jump()
     {
         canJump = false;
