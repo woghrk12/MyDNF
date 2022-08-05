@@ -18,9 +18,9 @@ public class Keyboard : MonoBehaviour
 
     private void GetInput()
     {
-        hAxis = Input.GetAxis("Horizontal");
-        vAxis = Input.GetAxis("Vertical");
-
+        hAxis = Input.GetAxisRaw("Horizontal");
+        vAxis = Input.GetAxisRaw("Vertical");
+        
         inputManager.Direction = Vector3.ClampMagnitude(new Vector3(hAxis, vAxis, 0f), 1f);
     }
 }

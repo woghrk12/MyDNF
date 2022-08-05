@@ -39,7 +39,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
     private void ControlLever(PointerEventData p_eventData)
-    {
+    { 
         inputDir = (p_eventData.position - (Vector2)background.position) / radius;
         HandleInput(inputDir.magnitude);
         handle.anchoredPosition = inputDir * radius * handleRange;
