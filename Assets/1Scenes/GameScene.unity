@@ -306,6 +306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8678c12de341c854dafc28e802a91bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jButton: Jump
+  xButton: X
+  aButton: A
+  sButton: S
 --- !u!1 &369212702
 GameObject:
   m_ObjectHideFlags: 0

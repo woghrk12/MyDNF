@@ -18,13 +18,25 @@ public class InputManager : MonoBehaviour
     private bool aDown = false;
     private bool sDown = false;
 
-    public EButtonState JButton { set { jButton = value; } get { return jButton; } }
-    public EButtonState XButton { set { xButton = value; } get { return xButton; } }
-    public EButtonState AButton { set { aButton = value; } get { return aButton; } }
-    public EButtonState SButton { set { sButton = value; } get { return sButton; } }
+    public static Dictionary<string, EButtonState> Buttons { get { return buttons; } }
+    private static Dictionary<string, EButtonState> buttons = null;
 
-    private EButtonState jButton = EButtonState.IDLE;
-    private EButtonState xButton = EButtonState.IDLE;
-    private EButtonState aButton = EButtonState.IDLE;
-    private EButtonState sButton = EButtonState.IDLE;
+    [SerializeField] private string jButton = "Jump";
+    [SerializeField] private string xButton = "X";
+    [SerializeField] private string aButton = "A";
+    [SerializeField] private string sButton = "S";
+    private EButtonState jState = EButtonState.IDLE;
+    private EButtonState xState = EButtonState.IDLE;
+    private EButtonState aState = EButtonState.IDLE;
+    private EButtonState sState = EButtonState.IDLE;
+
+    private void Awake()
+    {
+        buttons = new Dictionary<string, EButtonState>();
+
+        Buttons.Add(jButton, jState);
+        Buttons.Add(xButton, xState);
+        Buttons.Add(aButton, aState);
+        Buttons.Add(sButton, sState);
+    }
 }
