@@ -14,6 +14,8 @@ public class HitBox : MonoBehaviour
 
     private float rangeRightX = 0f;
     private float rangeLeftX = 0f;
+    private float rangeUpY = 0f;
+    private float rangeDownY = 0f;
     private float radiusZ = 0f;
     
     [HideInInspector] public float minHitBoxX = 0f;
@@ -23,10 +25,12 @@ public class HitBox : MonoBehaviour
     [HideInInspector] public float minHitBoxZ = 0f;
     [HideInInspector] public float maxHitBoxZ = 0f;
 
-    private void Awake()
+    private void OnEnable()
     {
         rangeLeftX = sizeLeftX;
         rangeRightX = sizeRightX;
+        rangeUpY = sizeUpY;
+        rangeDownY = sizeDownY;
         radiusZ = sizeZ * 0.5f;
     }
 
@@ -36,13 +40,24 @@ public class HitBox : MonoBehaviour
         maxHitBoxX = transform.position.x + rangeRightX;
         minHitBoxZ = transform.position.y - radiusZ;
         maxHitBoxZ = transform.position.y + radiusZ;
-        minHitBoxY = spriteObject.localPosition.y - sizeDownY;
-        maxHitBoxY = spriteObject.localPosition.y + sizeUpY;
+        minHitBoxY = spriteObject.localPosition.y - rangeDownY;
+        maxHitBoxY = spriteObject.localPosition.y + rangeUpY;
     }
 
     public void SetDirection(bool p_isLeft)
     {
-        rangeLeftX = p_isLeft ? sizeRightX : sizeLeftX;
-        rangeRightX = p_isLeft ? sizeLeftX : sizeRightX;
+        var t_left = rangeLeftX; var t_right = rangeRightX;
+
+        rangeLeftX = p_isLeft ? t_right : t_left;
+        rangeRightX = p_isLeft ? t_left : t_right;
+    }
+
+    public void ScaleHitBox(float p_value)
+    {
+        rangeLeftX *= p_value;
+        rangeRightX *= p_value;
+        rangeDownY *= p_value;
+        rangeUpY *= p_value;
+        radiusZ *= p_value;
     }
 }

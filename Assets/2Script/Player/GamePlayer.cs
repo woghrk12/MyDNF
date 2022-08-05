@@ -26,6 +26,8 @@ public class GamePlayer : MonoBehaviour
             StartCoroutine(CheckCanUseSkill(skillManager.ASkill, inputController.AButton));
         if (inputController.GetButtonDown(inputController.SButton) && canAttack)
             StartCoroutine(CheckCanUseSkill(skillManager.SSkill, inputController.SButton));
+        if (inputController.GetButtonDown(inputController.DButton) && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.DSkill, inputController.DButton));
         if (inputController.GetButtonDown(inputController.JButton) && canJump)
             StartCoroutine(Jump());
     }

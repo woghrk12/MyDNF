@@ -18,16 +18,15 @@ public abstract class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    public void StartProjectile(Vector3 p_position, bool p_isLeft)
+    public void StartProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff = 1f)
     {
         transform.position = p_position;
-        transform.localScale = new Vector3(p_isLeft ? -1f : 1f, 1f, 1f);
+        transform.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
+        hitBox.ScaleHitBox(p_sizeEff);
         StartCoroutine(CheckOnHit(p_isLeft, duration));
         StartCoroutine(MoveProjectile(p_isLeft, duration));
     }
-
-    protected abstract IEnumerator MoveProjectile(bool p_isLeft, float p_duration);
-
+   
     private IEnumerator CheckOnHit(bool p_isLeft, float p_duration)
     {
         anim.SetTrigger("Shot");
@@ -61,4 +60,6 @@ public abstract class Projectile : MonoBehaviour
             Debug.Log("hit");
         }
     }
+
+    protected abstract IEnumerator MoveProjectile(bool p_isLeft, float p_duration);
 }

@@ -260,7 +260,7 @@ MonoBehaviour:
   coefficientValue:
   - 0
   maxKeyTime: 0
-  coolTime: 5
+  coolTime: 0
   CanCancelList:
   - {fileID: 1131014791}
 --- !u!1 &272158638
@@ -1165,6 +1165,7 @@ MonoBehaviour:
   coolTime: 0
   CanCancelList:
   - {fileID: 1131014791}
+  - {fileID: 1431178266}
 --- !u!1 &1035758828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1657,7 @@ Transform:
   - {fileID: 837117461}
   - {fileID: 1131014789}
   - {fileID: 182411864}
+  - {fileID: 1431178264}
   m_Father: {fileID: 376192194}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1674,7 +1676,7 @@ MonoBehaviour:
   baseAttack: {fileID: 837117463}
   aSkill: {fileID: 1131014791}
   sSkill: {fileID: 182411866}
-  dSkill: {fileID: 0}
+  dSkill: {fileID: 1431178266}
   fSkill: {fileID: 0}
 --- !u!1 &1366175960
 GameObject:
@@ -1924,6 +1926,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1431178263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1431178264}
+  - component: {fileID: 1431178266}
+  m_Layer: 0
+  m_Name: Skill D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1431178264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431178263}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305453205}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431178266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431178263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee1ff5d78c6b80499f3f6ec88f457c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numCombo: 1
+  projectile:
+  - SkillS
+  skillMotion:
+  - isAttack2
+  duration:
+  - 0.28
+  delay:
+  - 0.05
+  coefficientValue:
+  - 0
+  maxKeyTime: 1
+  coolTime: 0
+  CanCancelList: []
 --- !u!1 &1545136969
 GameObject:
   m_ObjectHideFlags: 0
