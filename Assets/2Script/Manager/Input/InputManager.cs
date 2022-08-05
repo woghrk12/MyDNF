@@ -7,19 +7,17 @@ public enum EButtonState { IDLE, DOWN, PRESSED, UP }
 public class InputManager : MonoBehaviour
 {
     public Vector2 Direction { set { inputDir = value; } get { return inputDir; } }
-    public bool JDown { set { jDown = value; } get { return jDown; } }
-    public bool XDown { set { xDown = value; } get { return xDown; } }
-    public bool ADown { set { aDown = value; } get { return aDown; } }
-    public bool SDown { set { sDown = value; } get { return sDown; } }
-
-    private Vector2 inputDir = Vector2.zero;
-    private bool jDown = false;
-    private bool xDown = false;
-    private bool aDown = false;
-    private bool sDown = false;
+    public string JButton { set { jButton = value; } get { return jButton; } }
+    public string XButton { set { xButton = value; } get { return xButton; } }
+    public string AButton { set { aButton = value; } get { return aButton; } }
+    public string SButton { set { sButton = value; } get { return sButton; } }
+    public string DButton { set { dButton = value; } get { return dButton; } }
+    public string FButton { set { fButton = value; } get { return fButton; } }
 
     public static Dictionary<string, EButtonState> Buttons { get { return buttons; } }
     private static Dictionary<string, EButtonState> buttons = null;
+
+    private Vector2 inputDir = Vector2.zero;
 
     [SerializeField] private string jButton = "Jump";
     [SerializeField] private string xButton = "X";
@@ -45,4 +43,7 @@ public class InputManager : MonoBehaviour
         Buttons.Add(dButton, dState);
         Buttons.Add(fButton, fState);
     }
+
+    public bool GetButtonDown(string p_buttonName) { return buttons[p_buttonName] == EButtonState.DOWN; }
+            
 }

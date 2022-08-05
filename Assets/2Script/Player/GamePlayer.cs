@@ -20,13 +20,13 @@ public class GamePlayer : MonoBehaviour
 
     private void Update()
     {
-        if (inputController.XDown && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, inputController.XDown));
-        if (inputController.ADown && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.ASkill, inputController.ADown));
-        if (inputController.SDown && canAttack)
-            StartCoroutine(CheckCanUseSkill(skillManager.SSkill, inputController.SDown));
-        if (inputController.JDown && canJump)
+        if (inputController.GetButtonDown(inputController.XButton) && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, inputController.XButton));
+        if (inputController.GetButtonDown(inputController.AButton) && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.ASkill, inputController.AButton));
+        if (inputController.GetButtonDown(inputController.SButton) && canAttack)
+            StartCoroutine(CheckCanUseSkill(skillManager.SSkill, inputController.SButton));
+        if (inputController.GetButtonDown(inputController.JButton) && canJump)
             StartCoroutine(Jump());
     }
 
@@ -50,7 +50,7 @@ public class GamePlayer : MonoBehaviour
         canJump = true;
     }
 
-    private IEnumerator CheckCanUseSkill(Skill p_skill, bool p_button)
+    private IEnumerator CheckCanUseSkill(Skill p_skill, string p_button)
     {
         if (!p_skill.CanUse) yield break;
 
@@ -69,7 +69,7 @@ public class GamePlayer : MonoBehaviour
         runningCo = StartCoroutine(UseSkill(p_skill, p_button));
     }
 
-    private IEnumerator UseSkill(Skill p_skill, bool p_button)
+    private IEnumerator UseSkill(Skill p_skill, string p_button)
     {
         yield return attackController.UseSkill(p_skill, IsLeft, p_button);
 

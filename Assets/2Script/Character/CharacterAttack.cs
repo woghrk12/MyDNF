@@ -11,7 +11,7 @@ public class CharacterAttack : MonoBehaviour
     private bool flag = false;
     public Skill runningSkill = null;
 
-    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, bool p_button)
+    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, string p_button)
     {
         flag = true;
         runningSkill = p_skill;
@@ -23,13 +23,13 @@ public class CharacterAttack : MonoBehaviour
         flag = false;
     }
 
-    private IEnumerator CheckNumInput(Skill p_skill, bool p_button, float p_maxKeyTime)
+    private IEnumerator CheckNumInput(Skill p_skill, string p_button, float p_maxKeyTime)
     {
         var t_timer = 0f;
 
         while (t_timer <= p_maxKeyTime)
         {
-            if (p_button) p_skill.NumOfClick++;
+            if (InputManager.Buttons[p_button] == EButtonState.DOWN) p_skill.NumOfClick++;
             if (!flag) break; 
             
             t_timer += Time.deltaTime;
