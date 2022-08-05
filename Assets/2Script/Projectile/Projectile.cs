@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
     [SerializeField] private HitBox hitBox = null;
-
+    [SerializeField] private Transform scaleObject = null;
     [SerializeField] private float duration = 0f;
 
     private RoomManager roomManager = null;
@@ -18,10 +18,15 @@ public abstract class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
+    private void OnEnable()
+    {
+        scaleObject.localScale = new Vector3(1f, 1f, 1f);
+    }
+
     public void StartProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff = 1f)
     {
         transform.position = p_position;
-        transform.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
+        scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
         StartCoroutine(CheckOnHit(p_isLeft, duration));
         StartCoroutine(MoveProjectile(p_isLeft, duration));
