@@ -1220,10 +1220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 272158640}
-  jumpButton: 99
-  xButton: 120
-  aButton: 97
-  sButton: 115
+  playerKey:
+  - {fileID: 1642599121}
+  - {fileID: 1912395934}
+  - {fileID: 542820963}
+  - {fileID: 498007651}
+  - {fileID: 1037472627}
+  - {fileID: 2017830412}
 --- !u!1 &1037472625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,6 +3155,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 272158640}
   joystick: {fileID: 736136166}
+  buttons:
+  - {fileID: 1760827729}
+  - {fileID: 539629001}
+  - {fileID: 1366175965}
+  - {fileID: 545979546}
+  - {fileID: 1809788374}
+  - {fileID: 1184169918}
 --- !u!1 &2143839192
 GameObject:
   m_ObjectHideFlags: 0
