@@ -25,10 +25,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] private string xButton = "X";
     [SerializeField] private string aButton = "A";
     [SerializeField] private string sButton = "S";
+    [SerializeField] private string dButton = "D";
+    [SerializeField] private string fButton = "F";
     private EButtonState jState = EButtonState.IDLE;
     private EButtonState xState = EButtonState.IDLE;
     private EButtonState aState = EButtonState.IDLE;
     private EButtonState sState = EButtonState.IDLE;
+    private EButtonState dState = EButtonState.IDLE;
+    private EButtonState fState = EButtonState.IDLE;
 
     private void Awake()
     {
@@ -38,5 +42,7 @@ public class InputManager : MonoBehaviour
         Buttons.Add(xButton, xState);
         Buttons.Add(aButton, aState);
         Buttons.Add(sButton, sState);
+        Buttons.Add(dButton, dState);
+        Buttons.Add(fButton, fState);
     }
 }
