@@ -16,7 +16,7 @@ public class CharacterAttack : MonoBehaviour
         flag = true;
         runningSkill = p_skill;
         StartCoroutine(CheckNumInput(p_skill, p_button, p_skill.MaxKeyTime));
-        yield return p_skill.UseSkill(anim, p_isLeft);
+        yield return p_skill.UseSkill(anim, p_isLeft, p_button);
         
         p_skill.NumOfClick = 0;
         runningSkill = null;
