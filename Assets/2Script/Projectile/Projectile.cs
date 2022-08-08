@@ -18,7 +18,7 @@ public abstract class Projectile : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
     }
