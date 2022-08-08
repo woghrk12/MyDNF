@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChargingSkill : Skill
 {
+    [SerializeField] private float maxChargingValue = 0f;
     private float chargingValue = 0f;
 
     public override IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button)
@@ -39,7 +40,7 @@ public class ChargingSkill : Skill
             if (InputManager.Buttons[p_button] == EButtonState.IDLE) break;
 
             t_timer += Time.deltaTime;
-            chargingValue += 0.01f;
+            chargingValue = chargingValue < maxChargingValue ? chargingValue + 0.01f : maxChargingValue;
             yield return null;
         }
 

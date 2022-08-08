@@ -1983,6 +1983,7 @@ MonoBehaviour:
   maxKeyTime: 1
   coolTime: 0
   CanCancelList: []
+  maxChargingValue: 1.8
 --- !u!1 &1545136969
 GameObject:
   m_ObjectHideFlags: 0
