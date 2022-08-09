@@ -45,5 +45,6 @@ public class InputManager : MonoBehaviour
     }
 
     public bool GetButtonDown(string p_buttonName) { return buttons[p_buttonName] == EButtonState.DOWN; }
-            
+    public bool GetButtonPressed(string p_buttonName) { return buttons[p_buttonName] != EButtonState.IDLE; }
+    public bool GetButtonUp(string p_buttonName) { return buttons[p_buttonName] == EButtonState.UP; }
 }
