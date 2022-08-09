@@ -36,3 +36,13 @@ public interface IChargingSkill
     public IEnumerator CheckCharging();
 }
 
+public interface IProjectileSkill
+{ 
+    public string[] Projectile { set; get; }
+}
+
+public interface IHitboxSkill
+{ 
+    public HitBox[] HitBox { set; get; }
+}
+
