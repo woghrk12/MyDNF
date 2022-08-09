@@ -10,6 +10,9 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] private Transform scaleObject = null;
     [SerializeField] private float duration = 0f;
 
+    public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
+    private Vector3 direction = Vector3.zero;
+
     private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
@@ -29,7 +32,7 @@ public abstract class Projectile : MonoBehaviour
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
         StartCoroutine(CheckOnHit(p_isLeft, duration));
-        StartCoroutine(MoveProjectile(p_isLeft, duration));
+        StartCoroutine(MoveProjectile(Direction, p_isLeft, duration));
     }
    
     private IEnumerator CheckOnHit(bool p_isLeft, float p_duration)
@@ -66,5 +69,5 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    protected abstract IEnumerator MoveProjectile(bool p_isLeft, float p_duration);
+    protected abstract IEnumerator MoveProjectile(Vector3 p_dir, bool p_isLeft, float p_duration);
 }
