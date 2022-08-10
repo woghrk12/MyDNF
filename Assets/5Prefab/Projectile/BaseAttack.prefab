@@ -123,7 +123,7 @@ MonoBehaviour:
   anim: {fileID: 247463147661672841}
   hitBox: {fileID: 7088931286106190659}
   scaleObject: {fileID: 1627902723101909785}
-  duration: 0.5
+  duration: 1
   startSpeed: 20
   boostFlag: 0
 --- !u!1 &2556034128602463860

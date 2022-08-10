@@ -52,6 +52,7 @@ public abstract class Projectile : MonoBehaviour
             yield return null;
         }
 
+        anim.SetTrigger("End");
         ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 
