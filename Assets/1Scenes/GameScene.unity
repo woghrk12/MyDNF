@@ -2607,6 +2607,9 @@ MonoBehaviour:
   - tag: SkillS
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
+  - tag: ExplosionA
+    prefab: {fileID: 1639214155191870941, guid: 5438f49b85c34e3498e87701a11611ad, type: 3}
+    size: 10
 --- !u!1 &1809788369
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,8 @@ public class Projectile : MonoBehaviour
         }
 
         anim.SetTrigger("End");
+        var explosion = ObjectPoolingManager.SpawnObject("ExplosionA", Vector3.zero, Quaternion.identity).GetComponent<Explosive>();
+        explosion.StartExplosion(transform.position);
         ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 
