@@ -13,12 +13,10 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected float maxKeyTime = 0f;
     [SerializeField] protected float coolTime = 0f;
     protected float waitingTime = 0f;
-    private int numOfClick = 0;
 
     public List<Skill> CanCancelList = new List<Skill>();
     public bool CanUse { get { return waitingTime <= 0f; } }
     public float MaxKeyTime { get { return maxKeyTime; } }
-    public int NumOfClick { set { numOfClick = value; } get { return numOfClick; } }
 
     protected void Update()
     {

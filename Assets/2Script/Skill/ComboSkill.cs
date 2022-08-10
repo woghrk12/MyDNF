@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ComboSkill : Skill
 {
+    private int numOfClick = 0;
+    public int NumOfClick { get { return numOfClick; } }
+
     private bool flag = false;
 
     public override IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button)
@@ -29,7 +32,7 @@ public class ComboSkill : Skill
             p_anim.SetBool(skillMotion[t_cnt], false);
 
             t_cnt++;
-            if (NumOfClick <= t_cnt) break;
+            if (numOfClick <= t_cnt) break;
         }
 
         flag = false;
@@ -41,18 +44,20 @@ public class ComboSkill : Skill
 
         while (t_timer <= p_maxKeyTime)
         {
-            if (InputManager.Buttons[p_button] == EButtonState.DOWN) NumOfClick++;
+            if (InputManager.Buttons[p_button] == EButtonState.DOWN) numOfClick++;
             if (!flag) break;
 
             t_timer += Time.deltaTime;
             yield return null;
         }
+
+        numOfClick = 0;
     }
 
     public override void ResetSkill(Animator p_anim)
     {
         base.ResetSkill(p_anim);
 
-        NumOfClick = 0;
+        numOfClick = 0;
     }
 }

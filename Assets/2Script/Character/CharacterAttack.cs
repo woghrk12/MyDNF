@@ -16,13 +16,11 @@ public class CharacterAttack : MonoBehaviour
         
         yield return p_skill.UseSkill(anim, p_isLeft, p_button);
         
-        p_skill.NumOfClick = 0;
         runningSkill = null;
     }
 
     public void CancelSkill(Skill p_skill)
     {
-        p_skill.NumOfClick = 0;
         p_skill.ResetSkill(anim);
         runningSkill = null;
 
