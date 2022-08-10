@@ -28,7 +28,7 @@ public abstract class Skill : MonoBehaviour
 
     public abstract IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button);
 
-    public void ResetSkillMotion(Animator p_anim)
+    public virtual void ResetSkill(Animator p_anim)
     {
         for (int i = 0; i < skillMotion.Length; i++)
             p_anim.SetBool(skillMotion[i], false);

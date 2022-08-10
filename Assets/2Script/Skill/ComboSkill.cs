@@ -48,4 +48,11 @@ public class ComboSkill : Skill
             yield return null;
         }
     }
+
+    public override void ResetSkill(Animator p_anim)
+    {
+        base.ResetSkill(p_anim);
+
+        NumOfClick = 0;
+    }
 }

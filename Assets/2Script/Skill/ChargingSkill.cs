@@ -46,4 +46,11 @@ public class ChargingSkill : Skill
 
         p_anim.SetFloat("motionSpeed", t_motionSpeed);
     }
+
+    public override void ResetSkill(Animator p_anim)
+    {
+        base.ResetSkill(p_anim);
+
+        chargingValue = 1f;
+    }
 }

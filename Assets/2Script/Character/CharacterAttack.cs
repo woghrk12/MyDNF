@@ -23,7 +23,7 @@ public class CharacterAttack : MonoBehaviour
     public void CancelSkill(Skill p_skill)
     {
         p_skill.NumOfClick = 0;
-        p_skill.ResetSkillMotion(anim);
+        p_skill.ResetSkill(anim);
         runningSkill = null;
 
         StartCoroutine(CancelEffect());
