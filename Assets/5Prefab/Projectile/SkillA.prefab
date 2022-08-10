@@ -86,13 +86,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2556034128053169438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f63d1deaabd70468dd2a203f01263e, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5331f9ca135394da99e0bc7ca44ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5949269624555040748}
   hitBox: {fileID: 9160086298614008777}
   scaleObject: {fileID: 8316264840173721227}
   duration: 0.5
+  startSpeed: 1
+  boostFlag: 0
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
