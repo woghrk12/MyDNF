@@ -74,7 +74,7 @@ MonoBehaviour:
   hitBox: {fileID: 2326749456571133846}
   scaleObject: {fileID: 7341674000744309111}
   duration: 0.5
-  startSpeed: 1
+  startSpeed: 15
   boostFlag: 0
 --- !u!95 &2712754441599575562
 Animator:

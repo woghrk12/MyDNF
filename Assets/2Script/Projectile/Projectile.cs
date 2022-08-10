@@ -31,6 +31,7 @@ public abstract class Projectile : MonoBehaviour
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
+        Direction = p_isLeft ? Vector3.left : Vector3.right;
         StartCoroutine(CheckOnHit(p_isLeft, duration));
         StartCoroutine(MoveProjectile(Direction, p_isLeft, duration));
     }

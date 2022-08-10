@@ -93,7 +93,7 @@ MonoBehaviour:
   hitBox: {fileID: 9160086298614008777}
   scaleObject: {fileID: 8316264840173721227}
   duration: 0.5
-  startSpeed: 1
+  startSpeed: 10
   boostFlag: 0
 --- !u!1 &2556034128602463860
 GameObject:
