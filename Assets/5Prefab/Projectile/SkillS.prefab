@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2556034128053169439}
   - component: {fileID: 2326749456571133846}
-  - component: {fileID: 1050705348952246432}
   - component: {fileID: 2712754441599575562}
+  - component: {fileID: 1050705348952246432}
   m_Layer: 0
   m_Name: SkillS
   m_TagString: Untagged
@@ -58,24 +58,6 @@ MonoBehaviour:
   maxHitBoxY: 0
   minHitBoxZ: 0
   maxHitBoxZ: 0
---- !u!114 &1050705348952246432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556034128053169438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5331f9ca135394da99e0bc7ca44ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 2712754441599575562}
-  hitBox: {fileID: 2326749456571133846}
-  scaleObject: {fileID: 7341674000744309111}
-  duration: 1
-  startSpeed: 15
-  boostFlag: 1
 --- !u!95 &2712754441599575562
 Animator:
   serializedVersion: 3
@@ -95,6 +77,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1050705348952246432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2762dabcba4d63e45894cde8d97aa185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2712754441599575562}
+  hitBox: {fileID: 2326749456571133846}
+  scaleObject: {fileID: 7341674000744309111}
+  duration: 1
+  startSpeed: 10
+  boostFlag: 1
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

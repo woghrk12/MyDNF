@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public abstract class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
     [SerializeField] private HitBox hitBox = null;
@@ -13,15 +13,18 @@ public abstract class Projectile : MonoBehaviour
     public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
     private Vector3 direction = Vector3.zero;
 
+    [SerializeField] private float startSpeed = 0f;
+    [SerializeField] private bool boostFlag = false;
+
     private RoomManager roomManager = null;
     private List<HitBox> enemies = null;
 
-    protected void Awake()
+    private void Awake()
     {
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    protected void OnEnable()
+    private void OnEnable()
     {
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
     }
@@ -71,5 +74,19 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    protected abstract IEnumerator MoveProjectile(Vector3 p_dir, bool p_isLeft, float p_duration);
+    private IEnumerator MoveProjectile(Vector3 p_dir, bool p_isLeft, float p_duration)
+    {
+        var t_timer = 0f;
+        var t_speed = boostFlag ? startSpeed : 0f;
+
+        while (t_timer < p_duration)
+        {
+            t_speed = boostFlag
+                ? Mathf.Lerp(startSpeed, 0f, t_timer / p_duration)
+                : Mathf.Lerp(0f, startSpeed, t_timer / p_duration);
+            transform.position += p_dir * t_speed * Time.deltaTime;
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+    }
 }
