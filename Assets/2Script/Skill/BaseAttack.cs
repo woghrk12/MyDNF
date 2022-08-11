@@ -22,7 +22,7 @@ public class BaseAttack : Skill
             yield return new WaitForSeconds(delay[t_cnt]);
 
             var t_projectile = ObjectPoolingManager.SpawnObject(projectile[t_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
-            t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
+            t_projectile.Shot(p_anim.transform.position, Vector3.right, p_isLeft);
 
             yield return new WaitForSeconds(duration[t_cnt] - delay[t_cnt]);
 

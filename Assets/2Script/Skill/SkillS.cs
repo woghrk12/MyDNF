@@ -13,7 +13,7 @@ public class SkillS : Skill
         yield return new WaitForSeconds(delay[0]);
 
         var t_projectile = ObjectPoolingManager.SpawnObject(projectile[0], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
-        t_projectile.StartProjectile(p_anim.transform.position, p_isLeft);
+        t_projectile.Shot(p_anim.transform.position + new Vector3(p_isLeft ? -3f : 3f, 0f, 0f), Vector3.zero, p_isLeft);
 
         yield return new WaitForSeconds(duration[0] - delay[0]);
 

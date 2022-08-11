@@ -17,7 +17,7 @@ public class SkillD : Skill
         yield return new WaitForSeconds(delay[0]);
 
         var t_projectile = ObjectPoolingManager.SpawnObject(projectile[0], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
-        t_projectile.StartProjectile(p_anim.transform.position, p_isLeft, chargingController.ChargingValue);
+        t_projectile.Shot(p_anim.transform.position, Vector3.right, p_isLeft, chargingController.ChargingValue);
         
         yield return new WaitForSeconds(duration[0] - delay[0]);
 

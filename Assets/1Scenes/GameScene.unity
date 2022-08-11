@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile:
-  - SkillS
+  - SkillD
   skillMotion:
   - isAttack2
   duration:
@@ -2628,6 +2628,9 @@ MonoBehaviour:
     prefab: {fileID: 2556034128053169438, guid: bb717a7a030096747b06d23ba12250c0, type: 3}
     size: 10
   - tag: SkillS
+    prefab: {fileID: 2556034128053169438, guid: 4346ad50d6ebd384182813d8e590acb4, type: 3}
+    size: 10
+  - tag: SkillD
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
   - tag: ExplosionA

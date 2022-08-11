@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Transform scaleObject = null;
     [SerializeField] private float duration = 0f;
 
-    public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
     private Vector3 direction = Vector3.zero;
 
     [SerializeField] private float startSpeed = 0f;
@@ -29,20 +28,55 @@ public class Projectile : MonoBehaviour
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
     }
 
-    public void StartProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff = 1f)
+    public void Shot(Vector3 p_position, Vector3 p_dir, bool p_isLeft = false, float p_sizeEff = 1f) 
+        => StartCoroutine(ShotCo(p_position, p_dir, p_isLeft, p_sizeEff));
+
+    private IEnumerator ShotCo(Vector3 p_position, Vector3 p_dir, bool p_isLeft, float p_sizeEff = 1f)
+    {
+        SetProjectile(p_position, p_dir, p_isLeft, p_sizeEff);
+        ShotProjectile();
+
+        StartCoroutine(CheckOnHitCo(duration));
+
+        yield return new WaitForSeconds(duration);
+
+        EndProjectile();
+    }
+
+    protected virtual void SetProjectile(Vector3 p_position, Vector3 p_dir, bool p_isLeft, float p_sizeEff = 1f)
     {
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
-        Direction = p_isLeft ? Vector3.left : Vector3.right;
-        StartCoroutine(CheckOnHitCo(p_isLeft, duration));
-        StartCoroutine(MoveProjectile(Direction, p_isLeft, duration));
+        hitBox.SetDirection(p_isLeft);
+
+        direction = new Vector3(p_isLeft ? -p_dir.x : p_dir.x, p_dir.y, p_dir.z).normalized;
     }
-   
-    private IEnumerator CheckOnHitCo(bool p_isLeft, float p_duration)
+
+    protected virtual void ShotProjectile()
     {
         anim.SetTrigger("Shot");
-        hitBox.SetDirection(p_isLeft);
+        StartCoroutine(MoveProjectile(direction, duration));
+    }
+
+    private IEnumerator MoveProjectile(Vector3 p_dir, float p_duration)
+    {
+        var t_timer = 0f;
+        var t_speed = boostFlag ? startSpeed : 0f;
+
+        while (t_timer < p_duration)
+        {
+            t_speed = boostFlag
+                ? Mathf.Lerp(startSpeed, 0f, t_timer / p_duration)
+                : Mathf.Lerp(0f, startSpeed, t_timer / p_duration);
+            transform.position += p_dir * t_speed * Time.deltaTime;
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator CheckOnHitCo(float p_duration)
+    {
         enemies = roomManager.enemiesHitBox.ToList();
 
         var t_timer = 0f;
@@ -54,11 +88,6 @@ public class Projectile : MonoBehaviour
             t_timer += Time.deltaTime;
             yield return null;
         }
-
-        anim.SetTrigger("End");
-        var explosion = ObjectPoolingManager.SpawnObject("ExplosionA", Vector3.zero, Quaternion.identity).GetComponent<Explosive>();
-        explosion.StartExplosion(transform.position);
-        ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 
     private void CheckOnHit(List<HitBox> p_enemies)
@@ -75,19 +104,10 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveProjectile(Vector3 p_dir, bool p_isLeft, float p_duration)
+    protected virtual void EndProjectile()
     {
-        var t_timer = 0f;
-        var t_speed = boostFlag ? startSpeed : 0f;
+        anim.SetTrigger("End");
 
-        while (t_timer < p_duration)
-        {
-            t_speed = boostFlag
-                ? Mathf.Lerp(startSpeed, 0f, t_timer / p_duration)
-                : Mathf.Lerp(0f, startSpeed, t_timer / p_duration);
-            transform.position += p_dir * t_speed * Time.deltaTime;
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
+        ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1639214155191870940}
   - component: {fileID: 1639214155191870943}
   - component: {fileID: 1639214155191870942}
-  - component: {fileID: 6193280545261572780}
+  - component: {fileID: 2717990886623947355}
   m_Layer: 0
   m_Name: ExplosionA
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   maxHitBoxY: 0
   minHitBoxZ: 0
   maxHitBoxZ: 0
---- !u!114 &6193280545261572780
+--- !u!114 &2717990886623947355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,11 +86,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639214155191870941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06f9ca38cdd0b6449d8c7c96149f54e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2762dabcba4d63e45894cde8d97aa185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1639214155191870943}
   hitBox: {fileID: 1639214155191870942}
+  scaleObject: {fileID: 1639214155292327787}
+  duration: 0.6
+  startSpeed: 0
+  boostFlag: 0
 --- !u!1 &1639214155236620868
 GameObject:
   m_ObjectHideFlags: 0
