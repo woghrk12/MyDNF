@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1639214155191870943}
   - component: {fileID: 1639214155191870942}
   - component: {fileID: 2717990886623947355}
+  - component: {fileID: 4702572481502261055}
   m_Layer: 0
   m_Name: ExplosionA
   m_TagString: Untagged
@@ -95,6 +96,20 @@ MonoBehaviour:
   duration: 0.6
   startSpeed: 0
   boostFlag: 0
+--- !u!114 &4702572481502261055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639214155191870941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d1f017d3f55544e94606b39eb4a2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRender: {fileID: 1639214155236620870}
+  sortingType: 1
 --- !u!1 &1639214155236620868
 GameObject:
   m_ObjectHideFlags: 0

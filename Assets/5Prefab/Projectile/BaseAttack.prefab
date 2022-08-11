@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 247463147661672841}
   - component: {fileID: 7088931286106190659}
   - component: {fileID: 1544924383071236787}
+  - component: {fileID: 1975402742339022350}
   m_Layer: 0
   m_Name: BaseAttack
   m_TagString: Untagged
@@ -126,6 +127,20 @@ MonoBehaviour:
   duration: 1
   startSpeed: 20
   boostFlag: 0
+--- !u!114 &1975402742339022350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d1f017d3f55544e94606b39eb4a2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRender: {fileID: 7792209397885707244}
+  sortingType: 1
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

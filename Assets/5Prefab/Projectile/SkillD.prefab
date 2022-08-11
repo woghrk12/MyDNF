@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2326749456571133846}
   - component: {fileID: 2712754441599575562}
   - component: {fileID: 8757174495665326286}
+  - component: {fileID: 5388025554466246841}
   m_Layer: 0
   m_Name: SkillD
   m_TagString: Untagged
@@ -96,6 +97,20 @@ MonoBehaviour:
   startSpeed: 10
   boostFlag: 1
   explosion: ExplosionA
+--- !u!114 &5388025554466246841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d1f017d3f55544e94606b39eb4a2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRender: {fileID: 4694962892396320436}
+  sortingType: 1
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
