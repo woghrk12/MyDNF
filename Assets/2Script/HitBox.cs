@@ -60,4 +60,13 @@ public class HitBox : MonoBehaviour
         rangeUpY *= p_value;
         radiusZ *= p_value;
     }
+
+    public bool CalculateOnHit(HitBox p_target)
+    {
+        if (maxHitBoxX < p_target.minHitBoxX || minHitBoxX > p_target.maxHitBoxX) return false;
+        if (maxHitBoxZ < p_target.minHitBoxZ || minHitBoxZ > p_target.maxHitBoxZ) return false;
+        if (maxHitBoxY < p_target.minHitBoxY || minHitBoxY > p_target.maxHitBoxY) return false;
+
+        return true;
+    }
 }

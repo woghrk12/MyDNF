@@ -35,11 +35,11 @@ public class Projectile : MonoBehaviour
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
         Direction = p_isLeft ? Vector3.left : Vector3.right;
-        StartCoroutine(CheckOnHit(p_isLeft, duration));
+        StartCoroutine(CheckOnHitCo(p_isLeft, duration));
         StartCoroutine(MoveProjectile(Direction, p_isLeft, duration));
     }
    
-    private IEnumerator CheckOnHit(bool p_isLeft, float p_duration)
+    private IEnumerator CheckOnHitCo(bool p_isLeft, float p_duration)
     {
         anim.SetTrigger("Shot");
         hitBox.SetDirection(p_isLeft);
@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
         while (t_timer <= p_duration)
         {
             hitBox.CalculateHitBox();
-            CalculateOnHit(hitBox, enemies);
+            CheckOnHit(enemies);
             t_timer += Time.deltaTime;
             yield return null;
         }
@@ -61,18 +61,17 @@ public class Projectile : MonoBehaviour
         ObjectPoolingManager.ReturnObject(this.gameObject);
     }
 
-    private void CalculateOnHit(HitBox p_hitBox, List<HitBox> p_enemies)
+    private void CheckOnHit(List<HitBox> p_enemies)
     {
         var t_enemies = p_enemies.ToList();
 
         for (int i = 0; i < t_enemies.Count; i++)
         {
-            if (p_hitBox.maxHitBoxX < t_enemies[i].minHitBoxX || p_hitBox.minHitBoxX > t_enemies[i].maxHitBoxX) continue;
-            if (p_hitBox.maxHitBoxZ < t_enemies[i].minHitBoxZ || p_hitBox.minHitBoxZ > t_enemies[i].maxHitBoxZ) continue;
-            if (p_hitBox.maxHitBoxY < t_enemies[i].minHitBoxY || p_hitBox.minHitBoxY > t_enemies[i].maxHitBoxY) continue;
-
-            p_enemies.Remove(t_enemies[i]);
-            Debug.Log("hit");
+            if (hitBox.CalculateOnHit(t_enemies[i]))
+            {
+                p_enemies.Remove(t_enemies[i]);
+                Debug.Log("Hit");
+            }
         }
     }
 
