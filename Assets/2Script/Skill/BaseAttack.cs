@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComboSkill : Skill
+public class BaseAttack : Skill
 {
-    private int numOfClick = 0;
-    public int NumOfClick { get { return numOfClick; } }
-
-    private bool flag = false;
+    [SerializeField] private ComboInput comboController = null;
 
     public override IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button)
     {
         waitingTime = coolTime;
-
-        flag = true;
-        StartCoroutine(CheckNumInput(p_button, MaxKeyTime));
         
+        comboController.Flag = true;
+        StartCoroutine(comboController.CheckNumInput(p_button));
+
         var t_cnt = 0;
 
-        while (t_cnt < numCombo)
+        while (t_cnt < comboController.NumCombo)
         {
             p_anim.SetBool(skillMotion[t_cnt], true);
 
@@ -32,32 +29,16 @@ public class ComboSkill : Skill
             p_anim.SetBool(skillMotion[t_cnt], false);
 
             t_cnt++;
-            if (numOfClick <= t_cnt) break;
+            if (comboController.NumOfClick <= t_cnt) break;
         }
 
-        flag = false;
-    }
-
-    private IEnumerator CheckNumInput(string p_button, float p_maxKeyTime)
-    {
-        var t_timer = 0f;
-
-        while (t_timer <= p_maxKeyTime)
-        {
-            if (InputManager.Buttons[p_button] == EButtonState.DOWN) numOfClick++;
-            if (!flag) break;
-
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
-
-        numOfClick = 0;
+        comboController.Flag = false;
     }
 
     public override void ResetSkill(Animator p_anim)
     {
         base.ResetSkill(p_anim);
 
-        numOfClick = 0;
+        comboController.ResetValue();
     }
 }
