@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    //[SerializeField] protected int numCombo = 1;
     [SerializeField] protected string[] projectile = null;
     [SerializeField] protected string[] skillMotion = null;
     [SerializeField] protected float[] duration = null;
@@ -23,6 +22,28 @@ public abstract class Skill : MonoBehaviour
     }
 
     public abstract IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button);
+
+    protected void ApplyCoolTime() { waitingTime = coolTime; }
+
+    protected IEnumerator PreDelay(Animator p_anim, int p_cnt)
+    {
+        p_anim.SetBool(skillMotion[p_cnt], true);
+
+        yield return new WaitForSeconds(delay[p_cnt]);
+    }
+
+    protected void ActivateSkill(Animator p_anim, bool p_isLeft, int p_cnt, float p_chargingValue = 1f)
+    {
+        var t_projectile = ObjectPoolingManager.SpawnObject(projectile[p_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
+        t_projectile.Shot(p_anim.transform.position, Vector3.right, p_isLeft, p_chargingValue);
+    }
+
+    protected IEnumerator PostDelay(Animator p_anim, int p_cnt)
+    {
+        yield return new WaitForSeconds(duration[p_cnt] - delay[p_cnt]);
+
+        p_anim.SetBool(skillMotion[p_cnt], false);
+    }
 
     public virtual void ResetSkill(Animator p_anim)
     {
