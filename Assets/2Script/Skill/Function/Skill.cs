@@ -10,9 +10,10 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected float[] delay = null;
     [SerializeField] protected float coolTime = 0f;
     protected float waitingTime = 0f;
+    private bool canUse = true;
 
     public List<Skill> CanCancelList = new List<Skill>();
-    public bool CanUse { get { return waitingTime <= 0f; } }
+    public bool CanUse { set { canUse = value; } get { return waitingTime <= 0f && canUse; } }
 
     protected void Update()
     {

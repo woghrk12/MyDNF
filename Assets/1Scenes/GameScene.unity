@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182411864}
-  - component: {fileID: 182411865}
+  - component: {fileID: 182411866}
   m_Layer: 0
   m_Name: Skill S
   m_TagString: Untagged
@@ -236,7 +236,7 @@ Transform:
   m_Father: {fileID: 1305453205}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &182411865
+--- !u!114 &182411866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 182411863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22052b1129aecb4b86dbf5552f2f1c4, type: 3}
+  m_Script: {fileID: 11500000, guid: ea852ee15bffb37408a943910430929e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile:
@@ -259,6 +259,7 @@ MonoBehaviour:
   coolTime: 0
   CanCancelList:
   - {fileID: 1131014790}
+  reEnterTime: 1.5
 --- !u!1 &272158638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1188,7 @@ MonoBehaviour:
   coolTime: 0
   CanCancelList:
   - {fileID: 1131014790}
-  - {fileID: 182411865}
+  - {fileID: 182411866}
   numCombo: 3
   comboController: {fileID: 837117464}
 --- !u!114 &837117464
@@ -1755,7 +1756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAttack: {fileID: 837117463}
   aSkill: {fileID: 1131014790}
-  sSkill: {fileID: 182411865}
+  sSkill: {fileID: 182411866}
   dSkill: {fileID: 1431178266}
   fSkill: {fileID: 0}
 --- !u!1 &1366175960
