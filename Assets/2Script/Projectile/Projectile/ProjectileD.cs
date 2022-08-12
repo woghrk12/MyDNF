@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ProjectileD : Projectile
 {
+    [SerializeField] private InstanceHit hitController = null;
     [SerializeField] private float canExplosion = 0f;
     [SerializeField] private string explosion = null;
     private bool explosionFlag = false;
@@ -20,37 +21,10 @@ public class ProjectileD : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration)
     {
-        StartCoroutine(CheckOnHit(duration));
+        StartCoroutine(hitController.CheckOnHit(duration, hitBox, enemies));
         StartCoroutine(MoveProjectile(duration));
 
         yield return new WaitForSeconds(p_duration);
-    }
-
-    protected override IEnumerator CheckOnHit(float p_duration)
-    {
-        var t_timer = 0f;
-
-        while (t_timer <= p_duration)
-        {
-            hitBox.CalculateHitBox();
-            CalculateOnHitEnemy();
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    private void CalculateOnHitEnemy()
-    {
-        var t_enemies = enemies.ToList();
-
-        for (int i = 0; i < t_enemies.Count; i++)
-        {
-            if (hitBox.CalculateOnHit(t_enemies[i]))
-            {
-                enemies.Remove(t_enemies[i]);
-                Debug.Log("Hit");
-            }
-        }
     }
 
     private bool CheckExplosion(float p_value) { return p_value >= canExplosion; }

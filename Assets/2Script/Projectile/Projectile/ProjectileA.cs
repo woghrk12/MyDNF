@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileA : Projectile
 {
-    [SerializeField] private float damageInterval = 0f;
+    [SerializeField] private ContinuousHit hitController = null;
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
@@ -16,33 +16,9 @@ public class ProjectileA : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration)
     {
-        StartCoroutine(CheckOnHit(duration));
+        StartCoroutine(hitController.CheckOnHit(duration, hitBox, enemies));
         StartCoroutine(MoveProjectile(duration));
 
         yield return new WaitForSeconds(p_duration);
-    }
-
-    protected override IEnumerator CheckOnHit(float p_duration)
-    {
-        var t_timer = 0f;
-
-        while (t_timer <= p_duration)
-        {
-            hitBox.CalculateHitBox();
-            CalculateOnHitEnemy();
-            t_timer += damageInterval;
-            yield return new WaitForSeconds(damageInterval);
-        }
-    }
-
-    private void CalculateOnHitEnemy()
-    {
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            if (hitBox.CalculateOnHit(enemies[i]))
-            {
-                Debug.Log("Hit");
-            }
-        }
     }
 }

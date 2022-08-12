@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9160086298614008777}
   - component: {fileID: 1149600668913314714}
   - component: {fileID: 3377285908605111394}
+  - component: {fileID: -9062064680699486590}
   m_Layer: 0
   m_Name: SkillA
   m_TagString: Untagged
@@ -111,7 +112,20 @@ MonoBehaviour:
   direction: {x: 1, y: 0, z: 0}
   startSpeed: 10
   boostFlag: 0
-  damageInterval: 0.3
+  hitController: {fileID: -9062064680699486590}
+--- !u!114 &-9062064680699486590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6aa9aa4fde4e54d9a910ef2eadf89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageInterval: 0.2
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,8 +70,6 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    protected abstract IEnumerator CheckOnHit(float duration);
-
     protected virtual void EndProjectile()
     {
         anim.SetTrigger("End");

@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ProjectileS : Projectile
 {
+    [SerializeField] private ContinuousHit hitController = null;
     [SerializeField] private string explosion = null;
     private Coroutine runningCo = null;
 
@@ -19,36 +20,9 @@ public class ProjectileS : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration)
     {
-        runningCo = StartCoroutine(CheckOnHit(duration));
+        runningCo = StartCoroutine(hitController.CheckOnHit(duration, hitBox, enemies));
 
         yield return new WaitForSeconds(p_duration);
-    }
-
-    protected override IEnumerator CheckOnHit(float p_duration)
-    {
-        var t_timer = 0f;
-
-        while (t_timer <= p_duration)
-        {
-            hitBox.CalculateHitBox();
-            CalculateOnHitEnemy();
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    private void CalculateOnHitEnemy()
-    {
-        var t_enemies = enemies.ToList();
-
-        for (int i = 0; i < t_enemies.Count; i++)
-        {
-            if (hitBox.CalculateOnHit(t_enemies[i]))
-            {
-                enemies.Remove(t_enemies[i]);
-                Debug.Log("Hit");
-            }
-        }
     }
 
     private IEnumerator AdditionalControl(string p_button, float p_duration)
