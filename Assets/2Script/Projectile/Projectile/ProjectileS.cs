@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SkillS : Projectile
+public class ProjectileS : Projectile
 {
     [SerializeField] private string explosion = null;
     private Coroutine runningCo = null;

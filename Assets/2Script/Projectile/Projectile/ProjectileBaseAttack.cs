@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class BaseAttack : Projectile
+public class ProjectileBaseAttack : Projectile
 {
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
@@ -48,3 +48,5 @@ public class BaseAttack : Projectile
         }
     }
 }
+
+

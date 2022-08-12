@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillA : Projectile
+public class ProjectileA : Projectile
 {
     [SerializeField] private float damageInterval = 0f;
 
