@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5949269624555040748}
   - component: {fileID: 9160086298614008777}
   - component: {fileID: 8332314942670237801}
+  - component: {fileID: -6826632411486081248}
   m_Layer: 0
   m_Name: SkillS
   m_TagString: Untagged
@@ -91,6 +92,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRender: {fileID: 5168459978346452502}
   sortingType: 1
+--- !u!114 &-6826632411486081248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5232c53ac1ae293478acb5d7b03ca99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5949269624555040748}
+  hitBox: {fileID: 9160086298614008777}
+  scaleObject: {fileID: 8316264840173721227}
+  duration: 1.5
+  direction: {x: 1, y: 0, z: 0}
+  startSpeed: 15
+  boostFlag: 1
+  explosion: ExplosionD
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
