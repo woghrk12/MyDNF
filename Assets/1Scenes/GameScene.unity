@@ -256,8 +256,6 @@ MonoBehaviour:
   - 0.5
   delay:
   - 0.1
-  coefficientValue:
-  - 0
   coolTime: 0
   CanCancelList:
   - {fileID: 1131014790}
@@ -1185,10 +1183,6 @@ MonoBehaviour:
   - 0.1
   - 0.05
   - 0.1
-  coefficientValue:
-  - 0
-  - 0
-  - 0
   coolTime: 0
   CanCancelList:
   - {fileID: 1131014790}
@@ -1562,8 +1556,6 @@ MonoBehaviour:
   - 0.5
   delay:
   - 0.1
-  coefficientValue:
-  - 0
   coolTime: 0
   CanCancelList: []
 --- !u!1 &1184169913
@@ -2051,8 +2043,6 @@ MonoBehaviour:
   - 0.28
   delay:
   - 0.05
-  coefficientValue:
-  - 0
   coolTime: 0
   CanCancelList: []
   maxChargingValue: 1.8
@@ -2728,7 +2718,7 @@ MonoBehaviour:
   - tag: SkillD
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
-  - tag: ExplosionA
+  - tag: ExplosionD
     prefab: {fileID: 1639214155191870941, guid: 5438f49b85c34e3498e87701a11611ad, type: 3}
     size: 10
 --- !u!1 &1809788369
