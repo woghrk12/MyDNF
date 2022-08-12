@@ -10,7 +10,7 @@ public class SkillS : Skill
     {
         ApplyCoolTime();
         yield return PreDelay(p_anim, 0);
-        ActivateSkill(p_anim, p_isLeft, p_button, 0);
+        ActivateSkill(p_anim, p_isLeft, p_button, 0, p_anim.transform.position + new Vector3(p_isLeft? -5f : 5f, 0f, 0f));
         yield return PostDelay(p_anim, 0);
         StartCoroutine(AdditionalControl(p_button, reEnterTime));
     }

@@ -11,7 +11,7 @@ public class SkillD : Skill
         ApplyCoolTime();
         yield return PreDelay(p_anim, 0);
         yield return chargingController.CheckCharging(p_anim, p_button);
-        ActivateSkill(p_anim, p_isLeft, p_button, 0, chargingController.ChargingValue);
+        ActivateSkill(p_anim, p_isLeft, p_button, 0, null, chargingController.ChargingValue);
         yield return PostDelay(p_anim, 0);
     }
 
