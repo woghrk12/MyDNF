@@ -5,10 +5,10 @@ using System.Linq;
 
 public abstract class Projectile : MonoBehaviour
 {
-    [SerializeField] private Animator anim = null;
-    [SerializeField] private HitBox hitBox = null;
-    [SerializeField] private Transform scaleObject = null;
-    [SerializeField] private float duration = 0f;
+    [SerializeField] protected Animator anim = null;
+    [SerializeField] protected HitBox hitBox = null;
+    [SerializeField] protected Transform scaleObject = null;
+    [SerializeField] protected float duration = 0f;
 
     [SerializeField] private Vector3 direction = Vector3.zero;
     public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
@@ -17,14 +17,14 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] private bool boostFlag = false;
 
     private RoomManager roomManager = null;
-    private List<HitBox> enemies = null;
+    protected List<HitBox> enemies = null;
 
-    private void Awake()
+    protected void Awake()
     {
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
 
@@ -34,14 +34,9 @@ public abstract class Projectile : MonoBehaviour
     public void Shot(Vector3 p_position, string p_button = null, bool p_isLeft = false, float p_sizeEff = 1f)
         => StartCoroutine(ShotCo(p_position, p_button, p_isLeft, p_sizeEff));
 
-    private IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
-    {
-        SetProjectile(p_position, p_isLeft, p_sizeEff);
-        yield return ActivateProjectile(p_button);
-        EndProjectile();
-    }
+    protected abstract IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff);
 
-    private void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
+    protected virtual void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
     {
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
@@ -52,7 +47,12 @@ public abstract class Projectile : MonoBehaviour
         Direction = new Vector3(p_isLeft ? -t_dir.x : t_dir.x, t_dir.y, t_dir.z).normalized;
     }
 
-    protected abstract IEnumerator ActivateProjectile(string p_button);
+    protected virtual void StartProjectile()
+    {
+        anim.SetTrigger("Shot");
+    }
+
+    protected abstract IEnumerator ActivateProjectile(float p_duration);
 
     protected IEnumerator MoveProjectile(float p_duration)
     {
@@ -71,8 +71,6 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected abstract IEnumerator CheckOnHit(float duration);
-
-    protected abstract IEnumerator AdditionalControl(string p_button);
 
     protected virtual void EndProjectile()
     {
