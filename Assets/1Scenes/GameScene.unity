@@ -1133,7 +1133,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837117461}
-  - component: {fileID: 837117462}
+  - component: {fileID: 837117463}
+  - component: {fileID: 837117464}
   m_Layer: 0
   m_Name: Base Attack
   m_TagString: Untagged
@@ -1155,7 +1156,7 @@ Transform:
   m_Father: {fileID: 1305453205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &837117462
+--- !u!114 &837117463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1164,7 +1165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 837117460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ab916f8d39bc044b4b1e73559c7eec, type: 3}
+  m_Script: {fileID: 11500000, guid: 08873574c8846a6428da689e6e830d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile:
@@ -1187,8 +1188,21 @@ MonoBehaviour:
   CanCancelList:
   - {fileID: 1131014790}
   - {fileID: 182411865}
-  maxComboTime: 1
   numCombo: 3
+  comboController: {fileID: 837117464}
+--- !u!114 &837117464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837117460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42afe9c006ba2ce47805c2bd7a073947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxComboTime: 1
 --- !u!1 &1035758828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,10 +1753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98df24a785d9ac3489c55bd4040e756b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttack: {fileID: 837117462}
+  baseAttack: {fileID: 837117463}
   aSkill: {fileID: 1131014790}
   sSkill: {fileID: 182411865}
-  dSkill: {fileID: 1431178267}
+  dSkill: {fileID: 1431178266}
   fSkill: {fileID: 0}
 --- !u!1 &1366175960
 GameObject:
@@ -2001,7 +2015,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1431178264}
-  - component: {fileID: 1431178267}
+  - component: {fileID: 1431178266}
+  - component: {fileID: 1431178265}
   m_Layer: 0
   m_Name: Skill D
   m_TagString: Untagged
@@ -2023,7 +2038,7 @@ Transform:
   m_Father: {fileID: 1305453205}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1431178267
+--- !u!114 &1431178265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2032,7 +2047,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431178263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee1ff5d78c6b80499f3f6ec88f457c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b44b13c534c69e498af19b73c1545ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxChargingValue: 1.8
+  maxChargingTime: 1
+  chargingSpeed: 0.01
+--- !u!114 &1431178266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431178263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b461fcb601cdb2f4c8c515bd199c421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile:
@@ -2045,8 +2075,7 @@ MonoBehaviour:
   - 0.05
   coolTime: 0
   CanCancelList: []
-  maxChargingValue: 1.8
-  maxChargingTime: 1
+  chargingController: {fileID: 1431178265}
 --- !u!1 &1545136969
 GameObject:
   m_ObjectHideFlags: 0
