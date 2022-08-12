@@ -19,7 +19,7 @@ public class ComboSkill : Skill
         while (t_cnt < numCombo)
         {
             yield return PreDelay(p_anim, t_cnt);
-            ActivateSkill(p_anim, p_isLeft, t_cnt);
+            ActivateSkill(p_anim, p_isLeft, p_button, t_cnt);
             yield return PostDelay(p_anim, t_cnt);
 
             if (numOfClick <= ++t_cnt) break;

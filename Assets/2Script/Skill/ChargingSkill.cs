@@ -14,7 +14,7 @@ public class ChargingSkill : Skill
         ApplyCoolTime();
         yield return PreDelay(p_anim, 0);
         yield return CheckCharging(p_anim, p_button);
-        ActivateSkill(p_anim, p_isLeft, 0, chargingValue);
+        ActivateSkill(p_anim, p_isLeft, p_button, 0, chargingValue);
         yield return PostDelay(p_anim, 0);
     }
 

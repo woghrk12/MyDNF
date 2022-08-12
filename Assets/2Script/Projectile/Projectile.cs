@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
     [SerializeField] private HitBox hitBox = null;
     [SerializeField] private Transform scaleObject = null;
     [SerializeField] private float duration = 0f;
 
-    private Vector3 direction = Vector3.zero;
+    [SerializeField] private Vector3 direction = Vector3.zero;
+    public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
 
     [SerializeField] private float startSpeed = 0f;
     [SerializeField] private bool boostFlag = false;
@@ -26,40 +27,34 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
+
+        enemies = roomManager.enemiesHitBox.ToList();
     }
 
-    public void Shot(Vector3 p_position, Vector3 p_dir, bool p_isLeft = false, float p_sizeEff = 1f) 
-        => StartCoroutine(ShotCo(p_position, p_dir, p_isLeft, p_sizeEff));
+    public void Shot(Vector3 p_position, string p_button = null, bool p_isLeft = false, float p_sizeEff = 1f)
+        => StartCoroutine(ShotCo(p_position, p_button, p_isLeft, p_sizeEff));
 
-    private IEnumerator ShotCo(Vector3 p_position, Vector3 p_dir, bool p_isLeft, float p_sizeEff = 1f)
+    private IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
-        SetProjectile(p_position, p_dir, p_isLeft, p_sizeEff);
-        ShotProjectile();
-
-        StartCoroutine(CheckOnHitCo(duration));
-
-        yield return new WaitForSeconds(duration);
-
+        SetProjectile(p_position, p_isLeft, p_sizeEff);
+        yield return ActivateProjectile(p_button);
         EndProjectile();
     }
 
-    protected virtual void SetProjectile(Vector3 p_position, Vector3 p_dir, bool p_isLeft, float p_sizeEff = 1f)
+    private void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
     {
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
         hitBox.SetDirection(p_isLeft);
 
-        direction = new Vector3(p_isLeft ? -p_dir.x : p_dir.x, p_dir.y, p_dir.z).normalized;
+        var t_dir = Direction;
+        Direction = new Vector3(p_isLeft ? -t_dir.x : t_dir.x, t_dir.y, t_dir.z).normalized;
     }
 
-    protected virtual void ShotProjectile()
-    {
-        anim.SetTrigger("Shot");
-        StartCoroutine(MoveProjectile(direction, duration));
-    }
+    protected abstract IEnumerator ActivateProjectile(string p_button);
 
-    private IEnumerator MoveProjectile(Vector3 p_dir, float p_duration)
+    protected IEnumerator MoveProjectile(float p_duration)
     {
         var t_timer = 0f;
         var t_speed = boostFlag ? startSpeed : 0f;
@@ -69,40 +64,15 @@ public class Projectile : MonoBehaviour
             t_speed = boostFlag
                 ? Mathf.Lerp(startSpeed, 0f, t_timer / p_duration)
                 : Mathf.Lerp(0f, startSpeed, t_timer / p_duration);
-            transform.position += p_dir * t_speed * Time.deltaTime;
+            transform.position += Direction * t_speed * Time.deltaTime;
             t_timer += Time.deltaTime;
             yield return null;
         }
     }
 
-    private IEnumerator CheckOnHitCo(float p_duration)
-    {
-        enemies = roomManager.enemiesHitBox.ToList();
+    protected abstract IEnumerator CheckOnHit(float duration);
 
-        var t_timer = 0f;
-
-        while (t_timer <= p_duration)
-        {
-            hitBox.CalculateHitBox();
-            CheckOnHit(enemies);
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    private void CheckOnHit(List<HitBox> p_enemies)
-    {
-        var t_enemies = p_enemies.ToList();
-
-        for (int i = 0; i < t_enemies.Count; i++)
-        {
-            if (hitBox.CalculateOnHit(t_enemies[i]))
-            {
-                p_enemies.Remove(t_enemies[i]);
-                Debug.Log("Hit");
-            }
-        }
-    }
+    protected abstract IEnumerator AdditionalControl(string p_button);
 
     protected virtual void EndProjectile()
     {

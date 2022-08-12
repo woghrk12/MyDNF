@@ -8,7 +8,6 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected string[] skillMotion = null;
     [SerializeField] protected float[] duration = null;
     [SerializeField] protected float[] delay = null;
-    [SerializeField] protected float[] coefficientValue = null;
     [SerializeField] protected float coolTime = 0f;
     protected float waitingTime = 0f;
 
@@ -32,10 +31,10 @@ public abstract class Skill : MonoBehaviour
         yield return new WaitForSeconds(delay[p_cnt]);
     }
 
-    protected void ActivateSkill(Animator p_anim, bool p_isLeft, int p_cnt, float p_chargingValue = 1f)
+    protected void ActivateSkill(Animator p_anim, bool p_isLeft, string p_button, int p_cnt, float p_chargingValue = 1f)
     {
         var t_projectile = ObjectPoolingManager.SpawnObject(projectile[p_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
-        t_projectile.Shot(p_anim.transform.position, Vector3.right, p_isLeft, p_chargingValue);
+        t_projectile.Shot(p_anim.transform.position, p_button, p_isLeft, p_chargingValue);
     }
 
     protected IEnumerator PostDelay(Animator p_anim, int p_cnt)

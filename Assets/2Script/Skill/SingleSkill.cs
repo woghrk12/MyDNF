@@ -8,7 +8,7 @@ public class SingleSkill : Skill
     {
         ApplyCoolTime();
         yield return PreDelay(p_anim, 0);
-        ActivateSkill(p_anim, p_isLeft, 0);
+        ActivateSkill(p_anim, p_isLeft, p_button, 0);
         yield return PostDelay(p_anim, 0);
     }
 
