@@ -18,7 +18,7 @@ public class CharacterJump : MonoBehaviour
 
     private void Awake()
     {
-        originY = spriteObject.position.y;
+        originY = spriteObject.localPosition.y;
     }
 
     private float CalculateMaxHeight(float p_gravity, float p_power)
