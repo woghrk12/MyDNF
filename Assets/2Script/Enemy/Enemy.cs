@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private HitBox hitBox = null;
+    [SerializeField] private Damagable healthController = null;
 
     private void OnEnable()
     {
@@ -23,6 +24,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDamage(int p_damage)
     {
-        Debug.Log(p_damage);
+        healthController.OnDamage(p_damage);
     }
 }
