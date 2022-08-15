@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class HitBox : MonoBehaviour
     [HideInInspector] public float maxHitBoxY = 0f;
     [HideInInspector] public float minHitBoxZ = 0f;
     [HideInInspector] public float maxHitBoxZ = 0f;
+
+    private UnityAction<int> onDamageEvent = null;
+    public UnityAction<int> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
     private void OnEnable()
     {
@@ -69,4 +73,5 @@ public class HitBox : MonoBehaviour
 
         return true;
     }
+
 }

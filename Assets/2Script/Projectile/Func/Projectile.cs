@@ -9,6 +9,7 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected HitBox hitBox = null;
     [SerializeField] protected Transform scaleObject = null;
     [SerializeField] protected float duration = 0f;
+    [SerializeField] protected int coefficient = 0;
 
     [SerializeField] private Vector3 direction = Vector3.zero;
     public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
@@ -52,7 +53,7 @@ public abstract class Projectile : MonoBehaviour
         anim.SetTrigger("Shot");
     }
 
-    protected abstract IEnumerator ActivateProjectile(float p_duration);
+    protected abstract IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f);
 
     protected IEnumerator MoveProjectile(float p_duration)
     {

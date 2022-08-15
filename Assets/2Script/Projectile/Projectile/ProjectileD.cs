@@ -14,14 +14,14 @@ public class ProjectileD : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
-        yield return ActivateProjectile(duration);
+        yield return ActivateProjectile(duration, p_sizeEff);
         explosionFlag = CheckExplosion(p_sizeEff);
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_duration)
+    protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        StartCoroutine(hitController.CheckOnHit(duration, hitBox, enemies));
+        StartCoroutine(hitController.CheckOnHit((int)(coefficient * p_timesValue), duration, hitBox, enemies));
         StartCoroutine(MoveProjectile(duration));
 
         yield return new WaitForSeconds(p_duration);

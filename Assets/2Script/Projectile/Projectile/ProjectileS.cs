@@ -18,9 +18,9 @@ public class ProjectileS : Projectile
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_duration)
+    protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        runningCo = StartCoroutine(hitController.CheckOnHit(duration, hitBox, enemies));
+        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, hitBox, enemies));
 
         yield return new WaitForSeconds(p_duration);
     }

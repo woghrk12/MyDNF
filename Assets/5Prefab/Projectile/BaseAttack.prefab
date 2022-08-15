@@ -140,6 +140,7 @@ MonoBehaviour:
   hitBox: {fileID: 7088931286106190659}
   scaleObject: {fileID: 1627902723101909785}
   duration: 1
+  coefficient: 100
   direction: {x: 1, y: 0, z: 0}
   startSpeed: 20
   boostFlag: 0
