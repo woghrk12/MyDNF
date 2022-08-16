@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
+    [SerializeField] private Animator anim = null;
+
     [SerializeField] private int maxHealth = 0;
     private int curHealth = 0;
 
-    private Coroutine runningCo = null;
+    private Coroutine onDamageCo = null;
 
     private void Awake()
     {
         curHealth = maxHealth;
     }
 
-    public void OnDamage(int p_damage)
+    public void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         curHealth -= p_damage;
 
-        if (runningCo != null) StopCoroutine(runningCo);
-
-        runningCo = StartCoroutine(OnDamageCo());
+        if (onDamageCo != null) StopCoroutine(onDamageCo);
+        onDamageCo = StartCoroutine(KnockBackEffect(p_dir, p_hitStunTime, p_knockBackPower));
     }
 
-    private IEnumerator OnDamageCo()
+    private IEnumerator KnockBackEffect(Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
-        yield return null;
+        var t_timer = 0f;
+        var t_dir = new Vector3(p_dir.x, 0f, 0f);
+        var t_knockBackPower = p_knockBackPower;
+        anim.SetTrigger("OnHit");
+        anim.SetBool("isEndHit", false);
+
+        while (t_timer < p_hitStunTime)
+        {
+            t_knockBackPower = Mathf.Lerp(p_knockBackPower, 0f, t_timer / p_hitStunTime);
+            transform.position += p_dir * t_knockBackPower * Time.deltaTime;
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+
+        anim.SetBool("isEndHit", true);
     }
 }

@@ -3426,6 +3426,7 @@ GameObject:
   - component: {fileID: 2001988230}
   - component: {fileID: 2001988231}
   - component: {fileID: 2001988229}
+  - component: {fileID: 2001988232}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3485,6 +3486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBox: {fileID: 2001988228}
+  healthController: {fileID: 2001988232}
 --- !u!114 &2001988230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3518,6 +3520,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2001988232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001988226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efbdafa04de11345962b3dff4980f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2001988231}
+  maxHealth: 50000
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0

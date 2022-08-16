@@ -26,8 +26,8 @@ public class HitBox : MonoBehaviour
     [HideInInspector] public float minHitBoxZ = 0f;
     [HideInInspector] public float maxHitBoxZ = 0f;
 
-    private UnityAction<int> onDamageEvent = null;
-    public UnityAction<int> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
+    private UnityAction<int, Vector3, float, float> onDamageEvent = null;
+    public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
     private void OnEnable()
     {
@@ -73,5 +73,4 @@ public class HitBox : MonoBehaviour
 
         return true;
     }
-
 }

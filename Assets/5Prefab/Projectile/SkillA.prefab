@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageInterval: 0.2
+  isKnockBack: 1
+  knockBackPower: 0.5
+  hitStunTime: 0.2
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

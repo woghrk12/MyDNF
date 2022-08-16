@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b4508ed77d10244a627afb264ab80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isKnockBack: 1
+  knockBackPower: 3
+  hitStunTime: 1
 --- !u!1 &1639214155236620868
 GameObject:
   m_ObjectHideFlags: 0

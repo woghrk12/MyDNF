@@ -9,21 +9,16 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        hitBox.OnDamageEvent += OnDamage;
+        hitBox.OnDamageEvent += healthController.OnDamage;
     }
 
     private void OnDisable()
     {
-        hitBox.OnDamageEvent -= OnDamage;
+        hitBox.OnDamageEvent -= healthController.OnDamage;
     }
 
     private void Update()
     {
         hitBox.CalculateHitBox();
-    }
-
-    private void OnDamage(int p_damage)
-    {
-        healthController.OnDamage(p_damage);
     }
 }

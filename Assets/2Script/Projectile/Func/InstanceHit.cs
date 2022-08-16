@@ -5,6 +5,10 @@ using System.Linq;
 
 public class InstanceHit : MonoBehaviour
 {
+    [SerializeField] private bool isKnockBack = true;
+    [SerializeField] private float knockBackPower = 0f;
+    [SerializeField] private float hitStunTime = 0f;
+
     public IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
     {
         var t_timer = 0f;
@@ -27,10 +31,22 @@ public class InstanceHit : MonoBehaviour
             if (p_hitBox.CalculateOnHit(t_targets[i]))
             {
                 p_targets.Remove(t_targets[i]);
-                
-                if(t_targets[i].OnDamageEvent != null)
-                    t_targets[i].OnDamageEvent.Invoke(p_coEff);
+
+                if (t_targets[i].OnDamageEvent != null)
+                    t_targets[i].OnDamageEvent.Invoke(
+                        p_coEff,
+                        isKnockBack
+                        ? (t_targets[i].transform.position - transform.position).normalized
+                        : (transform.position - t_targets[i].transform.position).normalized,
+                        hitStunTime,
+                        knockBackPower
+                        );
             }
         }
+    }
+
+    private void CalculateOnHit()
+    { 
+    
     }
 }

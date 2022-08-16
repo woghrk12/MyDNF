@@ -5,6 +5,9 @@ using UnityEngine;
 public class ContinuousHit : MonoBehaviour
 {
     [SerializeField] private float damageInterval = 0f;
+    [SerializeField] private bool isKnockBack = true;
+    [SerializeField] private float knockBackPower = 0f;
+    [SerializeField] private float hitStunTime = 0f;
 
     public IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
     {
@@ -26,7 +29,14 @@ public class ContinuousHit : MonoBehaviour
             if (p_hitBox.CalculateOnHit(p_targets[i]))
             {
                 if (p_targets[i].OnDamageEvent != null)
-                    p_targets[i].OnDamageEvent.Invoke(p_coEff);
+                    p_targets[i].OnDamageEvent.Invoke(
+                        p_coEff,
+                        isKnockBack
+                        ? (p_targets[i].transform.position - transform.position).normalized
+                        : (transform.position - p_targets[i].transform.position).normalized,
+                        hitStunTime,
+                        knockBackPower
+                        );
             }
         }
     }

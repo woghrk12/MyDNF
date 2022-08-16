@@ -8,12 +8,12 @@ public class TestEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        hitBox.OnDamageEvent += OnDamage;
+        
     }
 
     private void OnDisable()
     {
-        hitBox.OnDamageEvent -= OnDamage;
+        
     }
 
     private void Update()
