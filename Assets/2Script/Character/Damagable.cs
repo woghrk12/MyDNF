@@ -26,10 +26,12 @@ public class Damagable : MonoBehaviour
 
     private IEnumerator KnockBackEffect(Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
-        var t_timer = 0f;
-        var t_knockBackPower = p_knockBackPower;
         anim.SetTrigger("OnHit");
         anim.SetBool("isEndHit", false);
+
+        var t_timer = 0f;
+        var t_knockBackPower = p_knockBackPower;
+        transform.localScale = new Vector3(p_dir.x < 0 ? -1f : 1f, 1f, 1f);
 
         while (t_timer < p_hitStunTime)
         {
