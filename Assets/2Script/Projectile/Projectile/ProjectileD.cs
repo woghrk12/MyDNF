@@ -22,7 +22,7 @@ public class ProjectileD : Projectile
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
         StartCoroutine(hitController.CheckOnHit((int)(coefficient * p_timesValue), duration, hitBox, enemies));
-        StartCoroutine(MoveProjectile(duration));
+        StartCoroutine(MoveProjectile(direction, duration));
 
         yield return new WaitForSeconds(p_duration);
     }

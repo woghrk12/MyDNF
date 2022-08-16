@@ -44,9 +44,4 @@ public class InstanceHit : MonoBehaviour
             }
         }
     }
-
-    private void CalculateOnHit()
-    { 
-    
-    }
 }

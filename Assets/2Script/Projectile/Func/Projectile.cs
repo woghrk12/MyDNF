@@ -11,8 +11,8 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected float duration = 0f;
     [SerializeField] protected int coefficient = 0;
 
-    [SerializeField] private Vector3 direction = Vector3.zero;
-    public Vector3 Direction { set { direction = value.normalized; } get { return direction; } }
+    [SerializeField] private Vector3 rawDirection = Vector3.zero;
+    protected Vector3 direction = Vector3.zero;
 
     [SerializeField] private float startSpeed = 0f;
     [SerializeField] private bool boostFlag = false;
@@ -44,8 +44,8 @@ public abstract class Projectile : MonoBehaviour
         hitBox.ScaleHitBox(p_sizeEff);
         hitBox.SetDirection(p_isLeft);
 
-        var t_dir = Direction;
-        Direction = new Vector3(p_isLeft ? -t_dir.x : t_dir.x, t_dir.y, t_dir.z).normalized;
+        var t_dir = rawDirection;
+        direction = new Vector3(p_isLeft ? -t_dir.x : t_dir.x, t_dir.y, t_dir.z).normalized;
     }
 
     protected virtual void StartProjectile()
@@ -55,7 +55,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected abstract IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f);
 
-    protected IEnumerator MoveProjectile(float p_duration)
+    protected IEnumerator MoveProjectile(Vector3 p_dir, float p_duration)
     {
         var t_timer = 0f;
         var t_speed = boostFlag ? startSpeed : 0f;
@@ -65,7 +65,7 @@ public abstract class Projectile : MonoBehaviour
             t_speed = boostFlag
                 ? Mathf.Lerp(startSpeed, 0f, t_timer / p_duration)
                 : Mathf.Lerp(0f, startSpeed, t_timer / p_duration);
-            transform.position += Direction * t_speed * Time.deltaTime;
+            transform.position += p_dir * t_speed * Time.deltaTime;
             t_timer += Time.deltaTime;
             yield return null;
         }

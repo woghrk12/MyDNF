@@ -3500,7 +3500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRender: {fileID: 567347159}
-  sortingType: 0
+  sortingType: 1
 --- !u!95 &2001988231
 Animator:
   serializedVersion: 3
