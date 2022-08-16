@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private HitBox hitBox = null;
     [SerializeField] private Damagable healthController = null;
+    [SerializeField] private EnemyAttack attackController = null;
 
     private void OnEnable()
     {
@@ -21,4 +22,5 @@ public class Enemy : MonoBehaviour
     {
         hitBox.CalculateHitBox();
     }
+
 }
