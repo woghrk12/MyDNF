@@ -29,16 +29,52 @@ public class EnemyAttack : MonoBehaviour
     {
         p_anim.SetBool("isAttack", true);
 
-        p_anim.SetFloat("motionSpeed", 0f);
-
-        yield return new WaitForSeconds(basePreDelay);
-
-        p_anim.SetFloat("motionSpeed", originMotionSpeed);
-        ObjectPoolingManager.SpawnObject("EnemyBaseAttack", Vector3.zero, Quaternion.identity);
-
-        yield return new WaitForSeconds(baseDuration);
+        var t_cnt = Random.Range(0, 10);
+        switch (t_cnt)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                yield return SkillAttack(p_anim);
+                break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                yield return BaseAttack(p_anim);
+                break;
+        }
 
         p_anim.SetBool("isAttack", false);
+    }
+
+    private IEnumerator BaseAttack(Animator p_anim)
+    {
+        p_anim.SetTrigger("BaseAttack");
+
+        yield return SpawnProjectile(p_anim, "EnemyBaseAttack", basePreDelay, baseDuration);
+    }
+
+    private IEnumerator SkillAttack(Animator p_anim)
+    {
+        p_anim.SetTrigger("SkillAttack");
+
+        yield return SpawnProjectile(p_anim, "EnemyBaseAttack", skillPreDelay, skillDuration);
+    }
+
+    private IEnumerator SpawnProjectile(Animator p_anim, string p_projectile, float p_preDelay, float p_duration)
+    {
+        p_anim.SetFloat("motionSpeed", 0f);
+     
+        yield return new WaitForSeconds(p_preDelay);
+
+        p_anim.SetFloat("motionSpeed", originMotionSpeed);
+        ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity);
+
+        yield return new WaitForSeconds(p_duration);
     }
 
     public void CancelAttack(Animator p_anim)
