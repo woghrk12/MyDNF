@@ -6,12 +6,16 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
+    [SerializeField] private string baseAttackMotion = null;
     [SerializeField] private float basePreDelay = 0f;
     [SerializeField] private float baseDuration = 0f;
+    [SerializeField] private string skillAttackMotion = null;
     [SerializeField] private float skillPreDelay = 0f;
     [SerializeField] private float skillDuration = 0f;
 
     [SerializeField] private float[] attackProbs = null;
+    [SerializeField] private string baseAttackProjectile = null;
+    [SerializeField] private string skillProjectile = null;
 
     private float originMotionSpeed = 0f;
     private Coroutine runningCo = null;
@@ -35,10 +39,10 @@ public class EnemyAttack : MonoBehaviour
         switch (t_attackMotion)
         {
             case 0:
-                yield return BaseAttack(p_anim);
+                yield return AttackCo(p_anim, baseAttackMotion, baseAttackProjectile, basePreDelay, baseDuration);
                 break;
             case 1:
-                yield return SkillAttack(p_anim);
+                yield return AttackCo(p_anim, skillAttackMotion, skillProjectile, skillPreDelay, skillDuration);
                 break;
         }
 
@@ -65,30 +69,23 @@ public class EnemyAttack : MonoBehaviour
         return p_probs.Length - 1;
     }
 
-    private IEnumerator BaseAttack(Animator p_anim)
+    private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, float p_preDelay, float p_duration)
     {
-        p_anim.SetTrigger("BaseAttack");
-
-        yield return SpawnProjectile(p_anim, "EnemyBaseAttack", basePreDelay, baseDuration);
-    }
-
-    private IEnumerator SkillAttack(Animator p_anim)
-    {
-        p_anim.SetTrigger("SkillAttack");
-
-        yield return SpawnProjectile(p_anim, "EnemyBaseAttack", skillPreDelay, skillDuration);
-    }
-
-    private IEnumerator SpawnProjectile(Animator p_anim, string p_projectile, float p_preDelay, float p_duration)
-    {
+        p_anim.SetTrigger(p_attackMotion);
         p_anim.SetFloat("motionSpeed", 0f);
-     
+
+        SpawnProjectile(p_projectile);
+
         yield return new WaitForSeconds(p_preDelay);
 
         p_anim.SetFloat("motionSpeed", originMotionSpeed);
-        ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity);
 
         yield return new WaitForSeconds(p_duration);
+    }
+
+    private void SpawnProjectile(string p_projectile)
+    {
+        ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity);
     }
 
     public void CancelAttack(Animator p_anim)

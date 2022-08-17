@@ -3553,13 +3553,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2001988231}
+  baseAttackMotion: BaseAttack
   basePreDelay: 0.5
   baseDuration: 0.6
+  skillAttackMotion: SkillAttack
   skillPreDelay: 0.2
   skillDuration: 0.6
   attackProbs:
   - 0.5
   - 0.3
+  baseAttackProjectile: EnemyBaseAttack
+  skillProjectile: EnemyBaseAttack
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0
