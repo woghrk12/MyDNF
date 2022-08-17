@@ -20,6 +20,7 @@ public class Damagable : MonoBehaviour
     {
         curHealth -= p_damage;
 
+        Debug.Log(anim.GetFloat("motionSpeed"));
         if (onDamageCo != null) StopCoroutine(onDamageCo);
         onDamageCo = StartCoroutine(KnockBackEffect(p_dir, p_hitStunTime, p_knockBackPower));
     }

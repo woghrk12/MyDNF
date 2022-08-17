@@ -28,7 +28,7 @@ public class EnemyAttack : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
-            StartCoroutine(Attack(anim));
+            runningCo = StartCoroutine(Attack(anim));
     }
 
     public IEnumerator Attack(Animator p_anim)
@@ -47,6 +47,7 @@ public class EnemyAttack : MonoBehaviour
         }
 
         p_anim.SetBool("isAttack", false);
+        runningCo = null;
     }
 
     private int ChooseAttackMotion(float[] p_probs)
@@ -90,6 +91,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void CancelAttack(Animator p_anim)
     {
+        Debug.Log(runningCo);
         if (runningCo == null) return;
 
         StopCoroutine(runningCo);
