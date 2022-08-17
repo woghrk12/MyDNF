@@ -93,7 +93,9 @@ public class EnemyAttack : MonoBehaviour
 
     public void CancelAttack(Animator p_anim)
     {
-        if (runningCo != null) StopCoroutine(runningCo);
+        if (runningCo == null) return;
+
+        StopCoroutine(runningCo);
         p_anim.SetBool("isAttack", false);
         p_anim.SetFloat("motionSpeed", originMotionSpeed);
     }

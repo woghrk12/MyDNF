@@ -3489,6 +3489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f35d077b0ab1dd40af62a7246c871ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 2001988231}
   hitBox: {fileID: 2001988228}
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
