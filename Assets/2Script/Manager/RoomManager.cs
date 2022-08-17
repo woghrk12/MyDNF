@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    [SerializeField] private GamePlayer player = null;
+    public GamePlayer Player { get { return player; } }
+
     [SerializeField] private GameObject enemies = null;
     public List<HitBox> enemiesHitBox = null;
 

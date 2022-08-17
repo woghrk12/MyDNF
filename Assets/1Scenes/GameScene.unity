@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9513aec3f7859074393e1fa47a32b2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1545136976}
   enemies: {fileID: 1864677841}
   enemiesHitBox: []
 --- !u!1 &376192193
@@ -3431,6 +3432,7 @@ GameObject:
   - component: {fileID: 2001988229}
   - component: {fileID: 2001988232}
   - component: {fileID: 2001988233}
+  - component: {fileID: 2001988234}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3493,6 +3495,7 @@ MonoBehaviour:
   hitBox: {fileID: 2001988228}
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
+  moveController: {fileID: 0}
 --- !u!114 &2001988230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,6 +3567,25 @@ MonoBehaviour:
   - 0.3
   baseAttackProjectile: EnemyBaseAttack
   skillProjectile: EnemyBaseAttack
+--- !u!114 &2001988234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001988226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8cda6447a197145819a2f6a6da2966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2001988231}
+  xMoveSpeed: 1
+  yMoveSpeed: 1
+  minX: -11.5
+  maxX: 11.5
+  minY: -3.5
+  maxY: 1.5
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0

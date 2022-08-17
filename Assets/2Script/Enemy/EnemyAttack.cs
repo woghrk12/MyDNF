@@ -91,7 +91,6 @@ public class EnemyAttack : MonoBehaviour
 
     public void CancelAttack(Animator p_anim)
     {
-        Debug.Log(runningCo);
         if (runningCo == null) return;
 
         StopCoroutine(runningCo);
