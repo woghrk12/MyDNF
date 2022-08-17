@@ -3446,7 +3446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001988226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.52, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1621232688}
@@ -3556,6 +3556,9 @@ MonoBehaviour:
   baseDuration: 0.6
   skillPreDelay: 0.2
   skillDuration: 0.6
+  attackProbs:
+  - 0.5
+  - 0.3
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0

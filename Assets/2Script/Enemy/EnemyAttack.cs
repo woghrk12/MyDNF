@@ -11,6 +11,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float skillPreDelay = 0f;
     [SerializeField] private float skillDuration = 0f;
 
+    [SerializeField] private float[] attackProbs = null;
+
     private float originMotionSpeed = 0f;
     private Coroutine runningCo = null;
 
@@ -29,26 +31,38 @@ public class EnemyAttack : MonoBehaviour
     {
         p_anim.SetBool("isAttack", true);
 
-        var t_cnt = Random.Range(0, 10);
-        switch (t_cnt)
+        var t_attackMotion = ChooseAttackMotion(attackProbs);
+        switch (t_attackMotion)
         {
             case 0:
-            case 1:
-            case 2:
-            case 3:
-                yield return SkillAttack(p_anim);
-                break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
                 yield return BaseAttack(p_anim);
+                break;
+            case 1:
+                yield return SkillAttack(p_anim);
                 break;
         }
 
         p_anim.SetBool("isAttack", false);
+    }
+
+    private int ChooseAttackMotion(float[] p_probs)
+    {
+        var t_total = 0f;
+
+        foreach (var t_elem in p_probs)
+        {
+            t_total += t_elem;
+        }
+
+        var t_random = Random.value * t_total;
+
+        for (int i = 0; i < p_probs.Length; i++)
+        {
+            if (t_random < p_probs[i]) return i;
+            else t_random -= p_probs[i];
+        }
+
+        return p_probs.Length - 1;
     }
 
     private IEnumerator BaseAttack(Animator p_anim)
