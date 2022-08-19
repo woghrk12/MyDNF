@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour
     {
         if (runningCo != null) StopCoroutine(runningCo);
 
+        moveController.ResetValue(anim);
         attackController.ResetValue(anim);
         healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
     }

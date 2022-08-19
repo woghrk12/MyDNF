@@ -2375,6 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f827f64cfc03498c0a1680b650e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 1545136973}
   inputController: {fileID: 272158640}
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
