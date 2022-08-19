@@ -38,9 +38,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         hitBox.CalculateHitBox(transform.position, yPosObject.localPosition);
-
-        if (Input.GetKeyDown(KeyCode.F1))
-            StartCoroutine(Chase(2f));
     }
 
     private IEnumerator StartPattern()
@@ -59,11 +56,10 @@ public class Enemy : MonoBehaviour
                 break;
             case EEnemyPatternType.BASEATTACK:
             case EEnemyPatternType.SKILL:
-                yield return Attack(t_pattern.patternType, t_pattern.duration);
+                yield return attackController.AttackPattern(anim, t_pattern.patternType);
                 break;
         }
-        
-        yield return null;
+
         runningCo = StartCoroutine(StartPattern());
     }
 
@@ -100,12 +96,6 @@ public class Enemy : MonoBehaviour
         return t_pattern[t_pattern.Count- 1];
     }
 
-    private IEnumerator Attack(EEnemyPatternType p_patternType, float p_duration)
-    {
-        attackController.StartPattern(anim, p_patternType);
-        yield return new WaitForSeconds(p_duration);
-    }
-
     private IEnumerator Chase(float p_duration)
     {
         var t_timer = 0f;
@@ -121,7 +111,8 @@ public class Enemy : MonoBehaviour
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         if (runningCo != null) StopCoroutine(runningCo);
-        attackController.CancelAttack(anim);
+
+        attackController.ResetValue(anim);
         healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
     }
 }

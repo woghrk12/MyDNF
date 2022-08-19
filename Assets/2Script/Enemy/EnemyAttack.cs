@@ -17,16 +17,15 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private string skillProjectile = null;
 
     private float originMotionSpeed = 0f;
-    private Coroutine runningCo = null;
 
     private void Awake()
     {
         originMotionSpeed = anim.GetFloat("motionSpeed");
     }
 
-    public void StartPattern(Animator p_anim, EEnemyPatternType p_attackMotion) => runningCo = StartCoroutine(Attack(p_anim, p_attackMotion)); 
+    public IEnumerator AttackPattern(Animator p_anim, EEnemyPatternType p_attackMotion) => SelectAttack(p_anim, p_attackMotion); 
 
-    private IEnumerator Attack(Animator p_anim, EEnemyPatternType p_attackMotion)
+    private IEnumerator SelectAttack(Animator p_anim, EEnemyPatternType p_attackMotion)
     {
         p_anim.SetBool("isAttack", true);
 
@@ -41,7 +40,6 @@ public class EnemyAttack : MonoBehaviour
         }
 
         p_anim.SetBool("isAttack", false);
-        runningCo = null;
     }
 
     private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, float p_preDelay, float p_duration)
@@ -63,11 +61,8 @@ public class EnemyAttack : MonoBehaviour
         ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity);
     }
 
-    public void CancelAttack(Animator p_anim)
+    public void ResetValue(Animator p_anim)
     {
-        if (runningCo == null) return;
-
-        StopCoroutine(runningCo);
         p_anim.SetBool("isAttack", false);
         p_anim.SetFloat("motionSpeed", originMotionSpeed);
     }
