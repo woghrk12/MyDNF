@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
-    [SerializeField] private Transform spriteObject = null;
-
     [SerializeField] private float sizeRightX = 0f;
     [SerializeField] private float sizeLeftX = 0f;
     [SerializeField] private float sizeUpY = 0f;
@@ -38,14 +36,17 @@ public class HitBox : MonoBehaviour
         radiusZ = sizeZ * 0.5f;
     }
 
-    public void CalculateHitBox()
+    public void CalculateHitBox(Vector3 p_pos, Transform p_yPosObj = null)
     {
-        minHitBoxX = transform.position.x - rangeLeftX;
-        maxHitBoxX = transform.position.x + rangeRightX;
-        minHitBoxZ = transform.position.y - radiusZ;
-        maxHitBoxZ = transform.position.y + radiusZ;
-        minHitBoxY = spriteObject.localPosition.y - rangeDownY;
-        maxHitBoxY = spriteObject.localPosition.y + rangeUpY;
+        minHitBoxX = p_pos.x - rangeLeftX;
+        maxHitBoxX = p_pos.x + rangeRightX;
+        minHitBoxZ = p_pos.y - radiusZ;
+        maxHitBoxZ = p_pos.y + radiusZ;
+
+        if (p_yPosObj == null) return;
+
+        minHitBoxY = p_yPosObj.localPosition.y - rangeDownY;
+        maxHitBoxY = p_yPosObj.localPosition.y + rangeUpY;
     }
 
     public void SetDirection(bool p_isLeft)

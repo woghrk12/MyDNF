@@ -17,7 +17,7 @@ public class ProjectileBaseAttack : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        StartCoroutine(hitController.CheckOnHit(coefficient, duration, hitBox, enemies));
+        StartCoroutine(hitController.CheckOnHit(coefficient, duration, yPosObject, hitBox, enemies));
         StartCoroutine(MoveProjectile(direction, duration));
 
         yield return new WaitForSeconds(p_duration);

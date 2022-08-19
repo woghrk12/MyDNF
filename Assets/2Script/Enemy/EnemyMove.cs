@@ -18,6 +18,8 @@ public class EnemyMove : MonoBehaviour
         LimitArea();
     }
 
+    public void MoveCharacter(Vector3 p_moveDir) => Move(p_moveDir);
+
     private void LimitArea()
     {
         var t_pos = transform.position;
@@ -32,7 +34,7 @@ public class EnemyMove : MonoBehaviour
 
     private Vector3 HandleInput(Vector3 p_vector)
     {
-        var t_vector = p_vector;
+        var t_vector = p_vector.normalized;
         t_vector.x *= xMoveSpeed;
         t_vector.y *= yMoveSpeed;
         return t_vector;

@@ -108,6 +108,7 @@ MonoBehaviour:
   anim: {fileID: 5949269624555040748}
   hitBox: {fileID: 9160086298614008777}
   scaleObject: {fileID: 8316264840173721227}
+  yPosObject: {fileID: 6576526484482182068}
   duration: 2
   coefficient: 500
   rawDirection: {x: 1, y: 0, z: 0}

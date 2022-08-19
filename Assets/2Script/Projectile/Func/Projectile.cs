@@ -8,6 +8,7 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected Animator anim = null;
     [SerializeField] protected HitBox hitBox = null;
     [SerializeField] protected Transform scaleObject = null;
+    [SerializeField] protected Transform yPosObject = null;
     [SerializeField] protected float duration = 0f;
     [SerializeField] protected int coefficient = 0;
 

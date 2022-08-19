@@ -9,13 +9,13 @@ public class InstanceHit : MonoBehaviour
     [SerializeField] private float knockBackPower = 0f;
     [SerializeField] private float hitStunTime = 0f;
 
-    public IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
+    public IEnumerator CheckOnHit(int p_coEff, float p_duration, Transform p_yPosObj, HitBox p_hitBox, List<HitBox> p_targets)
     {
         var t_timer = 0f;
 
         while (t_timer <= p_duration)
         {
-            p_hitBox.CalculateHitBox();
+            p_hitBox.CalculateHitBox(transform.position, p_yPosObj);
             CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff);
             t_timer += Time.deltaTime;
             yield return null;
