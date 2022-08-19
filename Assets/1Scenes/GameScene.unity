@@ -1201,11 +1201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 5
-  sizeLeftX: 5
+  sizeRightX: 7
+  sizeLeftX: 7
   sizeUpY: 0
   sizeDownY: 0
-  sizeZ: 5
+  sizeZ: 3
 --- !u!1 &837117460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,10 +1832,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeRightX: 5
-  sizeLeftX: 0
+  sizeLeftX: 5
   sizeUpY: 0
   sizeDownY: 0
-  sizeZ: 1
+  sizeZ: 1.5
 --- !u!1 &1295564473
 GameObject:
   m_ObjectHideFlags: 0

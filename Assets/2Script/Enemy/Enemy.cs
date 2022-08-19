@@ -75,7 +75,6 @@ public class Enemy : MonoBehaviour
                 continue;
             }
 
-            p_patterns[i].range.SetDirection(IsLeft);
             p_patterns[i].range.CalculateHitBox(transform.position);
             if (p_patterns[i].range.CalculateOnHit(player.gameObject.GetComponent<HitBox>())) t_pattern.Add(p_patterns[i]);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GamePlayer : MonoBehaviour
 {
+    [SerializeField] private HitBox hitBox = null;
     [SerializeField] private InputManager inputController = null;
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
@@ -20,6 +21,8 @@ public class GamePlayer : MonoBehaviour
 
     private void Update()
     {
+        hitBox.CalculateHitBox(transform.position);
+
         if (inputController.GetButtonDown(inputController.XButton) && canAttack)
             StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, inputController.XButton));
         if (inputController.GetButtonDown(inputController.AButton) && canAttack)
