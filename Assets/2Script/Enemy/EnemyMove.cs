@@ -18,7 +18,22 @@ public class EnemyMove : MonoBehaviour
         LimitArea();
     }
 
-    public void MoveCharacter(Vector3 p_moveDir) => Move(p_moveDir);
+    public IEnumerator MovePattern(Vector3 p_dir, float p_duration) => Chase(p_dir, p_duration);
+
+    private IEnumerator Chase(Vector3 p_dir, float p_duration)
+    {
+        anim.SetBool("isWalk", true);
+
+        var t_timer = 0f;
+        while (t_timer < p_duration)
+        {
+            Move(p_dir);
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+
+        anim.SetBool("isWalk", false);
+    }
 
     private void LimitArea()
     {
@@ -44,7 +59,11 @@ public class EnemyMove : MonoBehaviour
     {
         moveDir = HandleInput(p_moveDir);
         transform.position += moveDir * Time.deltaTime;
+    }
 
-        anim.SetBool("isWalk", moveDir != Vector3.zero);
+    public void ResetValue(Animator p_anim)
+    {
+        moveDir = Vector3.zero;
+        anim.SetBool("isWalk", false);
     }
 }

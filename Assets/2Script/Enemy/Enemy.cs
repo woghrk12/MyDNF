@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case EEnemyPatternType.WALK:
-                yield return Chase(t_pattern.duration);
+                yield return moveController.MovePattern(player.transform.position - transform.position, t_pattern.duration);
 
                 break;
             case EEnemyPatternType.BASEATTACK:
@@ -94,18 +94,6 @@ public class Enemy : MonoBehaviour
         }
 
         return t_pattern[t_pattern.Count- 1];
-    }
-
-    private IEnumerator Chase(float p_duration)
-    {
-        var t_timer = 0f;
-        var t_moveDir = player.transform.position - transform.position;
-        while (t_timer < p_duration)
-        {
-            moveController.MoveCharacter(t_moveDir);
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
     }
 
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
