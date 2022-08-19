@@ -18,16 +18,20 @@ public class EnemyMove : MonoBehaviour
         LimitArea();
     }
 
-    public IEnumerator MovePattern(Vector3 p_dir, float p_duration) => Chase(p_dir, p_duration);
+    public IEnumerator MovePattern(Transform p_target, float p_duration) => Chase(p_target, p_duration);
 
-    private IEnumerator Chase(Vector3 p_dir, float p_duration)
+    private IEnumerator Chase(Transform p_target, float p_duration)
     {
         anim.SetBool("isWalk", true);
 
         var t_timer = 0f;
+        var t_moveDir = p_target.position - transform.position;
+        var t_localScale = transform.localScale;
         while (t_timer < p_duration)
         {
-            Move(p_dir);
+            t_localScale.x = p_target.position.x > transform.position.x ? -1f : 1f;
+            transform.localScale = t_localScale;
+            Move(t_moveDir);
             t_timer += Time.deltaTime;
             yield return null;
         }

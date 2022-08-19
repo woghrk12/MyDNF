@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case EEnemyPatternType.WALK:
-                yield return moveController.MovePattern(player.transform.position - transform.position, t_pattern.duration);
+                yield return moveController.MovePattern(player.transform, t_pattern.duration);
 
                 break;
             case EEnemyPatternType.BASEATTACK:
