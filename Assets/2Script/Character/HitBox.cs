@@ -36,17 +36,17 @@ public class HitBox : MonoBehaviour
         radiusZ = sizeZ * 0.5f;
     }
 
-    public void CalculateHitBox(Transform p_posObj, Transform p_yPosObj = null)
+    public void CalculateHitBox(Vector3 p_posObj, Vector3? p_yPosObj = null)
     {
-        minHitBoxX = p_posObj.position.x - rangeLeftX;
-        maxHitBoxX = p_posObj.position.x + rangeRightX;
-        minHitBoxZ = p_posObj.position.y - radiusZ;
-        maxHitBoxZ = p_posObj.position.y + radiusZ;
+        minHitBoxX = p_posObj.x - rangeLeftX;
+        maxHitBoxX = p_posObj.x + rangeRightX;
+        minHitBoxZ = p_posObj.y - radiusZ;
+        maxHitBoxZ = p_posObj.y + radiusZ;
 
         if (p_yPosObj == null) return;
 
-        minHitBoxY = p_yPosObj.localPosition.y - rangeDownY;
-        maxHitBoxY = p_yPosObj.localPosition.y + rangeUpY;
+        minHitBoxY = p_yPosObj.Value.y - rangeDownY;
+        maxHitBoxY = p_yPosObj.Value.y + rangeUpY;
     }
 
     public void SetDirection(bool p_isLeft)

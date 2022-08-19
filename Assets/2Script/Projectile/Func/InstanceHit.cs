@@ -15,7 +15,7 @@ public class InstanceHit : MonoBehaviour
 
         while (t_timer <= p_duration)
         {
-            p_hitBox.CalculateHitBox(p_posObj, p_yPosObj);
+            p_hitBox.CalculateHitBox(p_posObj.position, p_yPosObj.localPosition);
             CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff);
             t_timer += Time.deltaTime;
             yield return null;

@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        hitBox.CalculateHitBox(transform, yPosObject);
+        hitBox.CalculateHitBox(transform.position, yPosObject.localPosition);
 
         if (Input.GetKeyDown(KeyCode.F1))
             StartCoroutine(Chase(2f));
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
             }
 
             p_patterns[i].range.SetDirection(IsLeft);
-            p_patterns[i].range.CalculateHitBox(transform);
+            p_patterns[i].range.CalculateHitBox(transform.position);
             if (p_patterns[i].range.CalculateOnHit(player.gameObject.GetComponent<HitBox>())) t_pattern.Add(p_patterns[i]);
         }
 
