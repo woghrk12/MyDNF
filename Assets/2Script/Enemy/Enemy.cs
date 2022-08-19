@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
 
     public bool IsLeft { get { return player.transform.position.x < transform.position.x; } }
 
+    private Coroutine runningCo = null;
+
     private void Awake()
     {
         roomManager = GameObject.FindObjectOfType<RoomManager>();
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartPattern());
+        runningCo = StartCoroutine(StartPattern());
     }
 
     private void Update()
@@ -44,7 +46,6 @@ public class Enemy : MonoBehaviour
     private IEnumerator StartPattern()
     {
         var t_pattern = ChoosePattern(patterns);
-        Debug.Log(t_pattern.patternType);
         yield return new WaitForSeconds(t_pattern.coolTime + Random.Range(0f, 2f));
 
         switch (t_pattern.patternType)
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour
         }
         
         yield return null;
-        StartCoroutine(StartPattern());
+        runningCo = StartCoroutine(StartPattern());
     }
 
     private EnemyPattern ChoosePattern(EnemyPattern[] p_patterns)
@@ -119,6 +120,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
+        if (runningCo != null) StopCoroutine(runningCo);
         attackController.CancelAttack(anim);
         healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
     }
