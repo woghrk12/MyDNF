@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator Chase(float p_duration)
     {
         var t_timer = 0f;
-        var t_moveDir = transform.position - player.transform.position;
+        var t_moveDir = player.transform.position - transform.position;
         while (t_timer < p_duration)
         {
             moveController.MoveCharacter(t_moveDir);

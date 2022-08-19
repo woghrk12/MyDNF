@@ -3448,12 +3448,12 @@ MonoBehaviour:
   - patternType: 0
     coolTime: 0
     duration: 2
-    probability: 0.1
+    probability: 0.3
     range: {fileID: 0}
   - patternType: 1
     coolTime: 0
     duration: 2
-    probability: 0.9
+    probability: 0.7
     range: {fileID: 0}
   - patternType: 2
     coolTime: 5

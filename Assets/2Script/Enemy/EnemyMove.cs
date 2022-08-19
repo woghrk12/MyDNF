@@ -43,7 +43,7 @@ public class EnemyMove : MonoBehaviour
     private void Move(Vector3 p_moveDir)
     {
         moveDir = HandleInput(p_moveDir);
-        var t_pos = transform.position + moveDir * Time.deltaTime;
+        transform.position += moveDir * Time.deltaTime;
 
         anim.SetBool("isWalk", moveDir != Vector3.zero);
     }
