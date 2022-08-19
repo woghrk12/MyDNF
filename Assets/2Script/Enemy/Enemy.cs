@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
                 break;
             case EEnemyPatternType.BASEATTACK:
             case EEnemyPatternType.SKILL:
-                yield return attackController.AttackPattern(anim, t_pattern.patternType);
+                yield return attackController.AttackPattern(anim, player.transform, t_pattern.patternType);
                 break;
         }
 

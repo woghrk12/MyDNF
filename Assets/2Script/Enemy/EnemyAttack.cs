@@ -23,11 +23,16 @@ public class EnemyAttack : MonoBehaviour
         originMotionSpeed = anim.GetFloat("motionSpeed");
     }
 
-    public IEnumerator AttackPattern(Animator p_anim, EEnemyPatternType p_attackMotion) => SelectAttack(p_anim, p_attackMotion); 
+    public IEnumerator AttackPattern(Animator p_anim, Transform p_target, EEnemyPatternType p_attackMotion) => SelectAttack(p_anim, p_target, p_attackMotion); 
 
-    private IEnumerator SelectAttack(Animator p_anim, EEnemyPatternType p_attackMotion)
+    private IEnumerator SelectAttack(Animator p_anim, Transform p_target, EEnemyPatternType p_attackMotion)
     {
         p_anim.SetBool("isAttack", true);
+
+        
+        var t_localScale = transform.localScale;
+        t_localScale.x = p_target.transform.position.x > transform.position.x ? -1f : 1f;
+        transform.localScale = t_localScale;
 
         switch (p_attackMotion)
         {
