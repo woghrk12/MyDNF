@@ -17,12 +17,12 @@ public class HitBox : MonoBehaviour
     private float rangeDownY = 0f;
     private float radiusZ = 0f;
     
-    [HideInInspector] public float minHitBoxX = 0f;
-    [HideInInspector] public float maxHitBoxX = 0f;
-    [HideInInspector] public float minHitBoxY = 0f;
-    [HideInInspector] public float maxHitBoxY = 0f;
-    [HideInInspector] public float minHitBoxZ = 0f;
-    [HideInInspector] public float maxHitBoxZ = 0f;
+    private float minHitBoxX = 0f;
+    private float maxHitBoxX = 0f;
+    private float minHitBoxY = 0f;
+    private float maxHitBoxY = 0f;
+    private float minHitBoxZ = 0f;
+    private float maxHitBoxZ = 0f;
 
     private UnityAction<int, Vector3, float, float> onDamageEvent = null;
     public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
@@ -36,12 +36,12 @@ public class HitBox : MonoBehaviour
         radiusZ = sizeZ * 0.5f;
     }
 
-    public void CalculateHitBox(Vector3 p_pos, Transform p_yPosObj = null)
+    public void CalculateHitBox(Transform p_posObj, Transform p_yPosObj = null)
     {
-        minHitBoxX = p_pos.x - rangeLeftX;
-        maxHitBoxX = p_pos.x + rangeRightX;
-        minHitBoxZ = p_pos.y - radiusZ;
-        maxHitBoxZ = p_pos.y + radiusZ;
+        minHitBoxX = p_posObj.position.x - rangeLeftX;
+        maxHitBoxX = p_posObj.position.x + rangeRightX;
+        minHitBoxZ = p_posObj.position.y - radiusZ;
+        maxHitBoxZ = p_posObj.position.y + radiusZ;
 
         if (p_yPosObj == null) return;
 

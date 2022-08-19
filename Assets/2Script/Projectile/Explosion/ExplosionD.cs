@@ -17,7 +17,7 @@ public class ExplosionD : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        StartCoroutine(hitController.CheckOnHit(coefficient, duration, yPosObject, hitBox, enemies));
+        StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, enemies));
 
         yield return new WaitForSeconds(p_duration);
     }

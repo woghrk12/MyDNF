@@ -1201,18 +1201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 0}
   sizeRightX: 5
   sizeLeftX: 5
   sizeUpY: 0
   sizeDownY: 0
   sizeZ: 5
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
 --- !u!1 &837117460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,18 +1831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 0}
   sizeRightX: 5
   sizeLeftX: 0
   sizeUpY: 0
   sizeDownY: 0
   sizeZ: 1
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
 --- !u!1 &1295564473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,18 +2328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 1413736348}
   sizeRightX: 0.5
   sizeLeftX: 0.5
   sizeUpY: 0.6
   sizeDownY: 1.1
   sizeZ: 0.4
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
 --- !u!114 &1545136974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,18 +3421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 567347160}
   sizeRightX: 1
   sizeLeftX: 1
   sizeUpY: 0.4
   sizeDownY: 2.3
-  sizeZ: 0.5
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
+  sizeZ: 1
 --- !u!114 &2001988229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3468,6 +3440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2001988231}
   hitBox: {fileID: 2001988228}
+  yPosObject: {fileID: 1621232688}
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
   moveController: {fileID: 2001988234}

@@ -98,12 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 2556034128602463861}
   sizeRightX: 1.1
   sizeLeftX: 1
   sizeUpY: 0.5
   sizeDownY: 0.5
-  sizeZ: 0.5
+  sizeZ: 1
   minHitBoxX: 0
   maxHitBoxX: 0
   minHitBoxY: 0

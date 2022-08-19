@@ -20,7 +20,7 @@ public class ProjectileS : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, yPosObject, hitBox, enemies));
+        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, enemies));
 
         yield return new WaitForSeconds(p_duration);
     }
