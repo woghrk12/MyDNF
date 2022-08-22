@@ -63,6 +63,22 @@ public class Enemy : MonoBehaviour
         runningCo = StartCoroutine(StartPattern());
     }
 
+    private void CancelPattern()
+    {
+        if (runningCo != null) StopCoroutine(runningCo);
+
+        moveController.ResetValue(anim);
+        attackController.ResetValue(anim);
+        runningCo = StartCoroutine(RestartPattern(2f));
+    }
+
+    private IEnumerator RestartPattern(float p_delay)
+    {
+        yield return new WaitForSeconds(p_delay);
+
+        runningCo = StartCoroutine(StartPattern());
+    }
+
     private EnemyPattern ChoosePattern(EnemyPattern[] p_patterns)
     {
         var t_pattern = new List<EnemyPattern>();
@@ -97,10 +113,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
-        if (runningCo != null) StopCoroutine(runningCo);
-
-        moveController.ResetValue(anim);
-        attackController.ResetValue(anim);
+        CancelPattern();
         healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
     }
 }
