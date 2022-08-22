@@ -42,9 +42,10 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator StartPattern()
     {
-        var t_pattern = ChoosePattern(patterns);
-        yield return new WaitForSeconds(t_pattern.coolTime + Random.Range(0f, 2f));
+        yield return new WaitForSeconds(1f);
 
+        var t_pattern = ChoosePattern(patterns);
+        
         switch (t_pattern.patternType)
         {
             case EEnemyPatternType.IDLE:
@@ -59,6 +60,8 @@ public class Enemy : MonoBehaviour
                 yield return attackController.AttackPattern(anim, player.transform, t_pattern.patternType);
                 break;
         }
+
+        yield return new WaitForSeconds(t_pattern.coolTime + Random.Range(0f, 2f));
 
         runningCo = StartCoroutine(StartPattern());
     }
@@ -102,10 +105,10 @@ public class Enemy : MonoBehaviour
 
         var t_random = Random.value * t_total;
 
-        for (int i = 0; i < p_patterns.Length; i++)
+        for (int i = 0; i < t_pattern.Count; i++)
         {
-            if (t_random < p_patterns[i].probability) return t_pattern[i];
-            else t_random -= p_patterns[i].probability;
+            if (t_random < t_pattern[i].probability) return t_pattern[i];
+            else t_random -= t_pattern[i].probability;
         }
 
         return t_pattern[t_pattern.Count- 1];
