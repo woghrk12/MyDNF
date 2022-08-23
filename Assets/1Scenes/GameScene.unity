@@ -4507,11 +4507,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2001988231}
   baseAttackMotion: BaseAttack
-  basePreDelay: 0.5
+  baseWaiting: 0.5
+  basePreDelay: 0.2
   baseDuration: 0.6
   skillAttackMotion: SkillAttack
-  skillPreDelay: 0.2
-  skillDuration: 0.6
+  skillWaiting: 0.3
+  skillPreDelay: 0.8
+  skillDuration: 0
   baseAttackProjectile: EnemyBaseAttack
   skillProjectile: EnemyBaseAttack
 --- !u!114 &2001988234

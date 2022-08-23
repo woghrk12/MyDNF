@@ -7,9 +7,11 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private Animator anim = null;
 
     [SerializeField] private string baseAttackMotion = null;
+    [SerializeField] private float baseWaiting = 0f;
     [SerializeField] private float basePreDelay = 0f;
     [SerializeField] private float baseDuration = 0f;
     [SerializeField] private string skillAttackMotion = null;
+    [SerializeField] private float skillWaiting = 0f;
     [SerializeField] private float skillPreDelay = 0f;
     [SerializeField] private float skillDuration = 0f;
 
@@ -37,24 +39,26 @@ public class EnemyAttack : MonoBehaviour
         switch (p_attackMotion)
         {
             case EEnemyPatternType.BASEATTACK:
-                yield return AttackCo(p_anim, baseAttackMotion, baseAttackProjectile, t_isLeft, basePreDelay, baseDuration);
+                yield return AttackCo(p_anim, baseAttackMotion, baseAttackProjectile, t_isLeft, baseWaiting, basePreDelay, baseDuration);
                 break;
             case EEnemyPatternType.SKILL:
-                yield return AttackCo(p_anim, skillAttackMotion, skillProjectile, t_isLeft, skillPreDelay, skillDuration);
+                yield return AttackCo(p_anim, skillAttackMotion, skillProjectile, t_isLeft, skillWaiting, skillPreDelay, skillDuration);
                 break;
         }
 
         p_anim.SetBool("isAttack", false);
     }
 
-    private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, bool p_isLeft, float p_preDelay, float p_duration)
+    private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, bool p_isLeft, float p_waiting, float p_preDelay, float p_duration)
     {
         p_anim.SetTrigger(p_attackMotion);
         p_anim.SetFloat("motionSpeed", 0f);
        
-        yield return new WaitForSeconds(p_preDelay);
+        yield return new WaitForSeconds(p_waiting);
         
         p_anim.SetFloat("motionSpeed", originMotionSpeed);
+
+        yield return new WaitForSeconds(p_preDelay);
 
         SpawnProjectile(p_projectile, p_isLeft);
 
