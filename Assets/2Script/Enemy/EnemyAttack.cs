@@ -51,7 +51,7 @@ public class EnemyAttack : MonoBehaviour
 
     private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, bool p_isLeft, float p_waiting, float p_preDelay, float p_duration)
     {
-        var t_projectile = ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity).GetComponent<EnemyProjectile>();
+        var t_projectile = ObjectPoolingManager.SpawnObject(p_projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
 
         p_anim.SetTrigger(p_attackMotion);
         p_anim.SetFloat("motionSpeed", 0f);

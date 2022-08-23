@@ -130,7 +130,7 @@ MonoBehaviour:
   scaleObject: {fileID: 2847821391130427634}
   yPosObject: {fileID: 2847821392541550304}
   duration: 0.5
-  coefficient: 0
+  coefficient: 5
   hitController: {fileID: 5520306154273171710}
 --- !u!114 &5520306154273171710
 MonoBehaviour:

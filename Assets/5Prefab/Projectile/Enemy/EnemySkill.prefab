@@ -105,7 +105,7 @@ MonoBehaviour:
   scaleObject: {fileID: 3808520317684774179}
   yPosObject: {fileID: 3808520317179512699}
   duration: 0.9
-  coefficient: 0
+  coefficient: 1
   hitController: {fileID: 3808520315950804207}
 --- !u!114 &2139973402358282052
 MonoBehaviour:

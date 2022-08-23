@@ -35,9 +35,8 @@ public abstract class EnemyProjectile : MonoBehaviour
         yield return ActivateProjectile();
     }
 
-    public void SetProjectile(bool p_isLeft)
+    public virtual void SetProjectile(bool p_isLeft)
     {
-        transform.position = targets[0].transform.position;
         hitBox.IsLeft = p_isLeft;
     }
 

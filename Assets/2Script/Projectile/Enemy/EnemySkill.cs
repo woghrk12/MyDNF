@@ -11,4 +11,10 @@ public class EnemySkill : EnemyProjectile
         StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
         yield return new WaitForSeconds(duration);
     }
+
+    public override void SetProjectile(bool p_isLeft)
+    {
+        transform.position = targets[0].transform.position;
+        hitBox.IsLeft = p_isLeft;
+    }
 }
