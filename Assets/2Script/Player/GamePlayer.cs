@@ -9,6 +9,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;
+    [SerializeField] private Damagable healthController = null;
     [SerializeField] private SkillManager skillManager = null;
 
     private bool IsLeft { get { return moveController.IsLeft; } }
@@ -18,6 +19,16 @@ public class GamePlayer : MonoBehaviour
     private bool canAttack = true;
 
     private Coroutine runningCo = null;
+
+    private void OnEnable()
+    {
+        hitBox.OnDamageEvent += OnDamage;
+    }
+
+    private void OnDisable()
+    {
+        hitBox.OnDamageEvent -= OnDamage;
+    }
 
     private void Update()
     {
@@ -81,6 +92,30 @@ public class GamePlayer : MonoBehaviour
         CanMove = true;
         canJump = true;
 
+        runningCo = null;
+    }
+
+    private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
+    {
+        if (runningCo != null) StopCoroutine(runningCo);
+        if (attackController.runningSkill != null) attackController.CancelSkill(attackController.runningSkill);
+        Debug.Log("Hit");
+        CanMove = false;
+        canJump = false;
+        canAttack = false;
+
+        healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
+
+        runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
+    }
+
+    private IEnumerator OnDamageCo(float p_hitStunTime)
+    {
+        yield return new WaitForSeconds(p_hitStunTime);
+
+        CanMove = true;
+        canJump = true;
+        canAttack = true;
         runningCo = null;
     }
 }

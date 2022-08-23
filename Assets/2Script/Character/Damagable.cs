@@ -26,8 +26,8 @@ public class Damagable : MonoBehaviour
 
     private IEnumerator KnockBackEffect(Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
-        anim.SetTrigger("OnHit");
         anim.SetBool("isEndHit", false);
+        anim.SetTrigger("OnHit");
 
         var t_timer = 0f;
         var t_knockBackPower = p_knockBackPower;

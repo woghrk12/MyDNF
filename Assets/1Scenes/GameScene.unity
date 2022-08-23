@@ -3041,6 +3041,7 @@ GameObject:
   - component: {fileID: 1545136976}
   - component: {fileID: 1545136973}
   - component: {fileID: 1545136977}
+  - component: {fileID: 1545136978}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3167,6 +3168,7 @@ MonoBehaviour:
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
+  healthController: {fileID: 1545136978}
   skillManager: {fileID: 1305453206}
 --- !u!114 &1545136977
 MonoBehaviour:
@@ -3182,6 +3184,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRender: {fileID: 1413736349}
   sortingType: 1
+--- !u!114 &1545136978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545136969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efbdafa04de11345962b3dff4980f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1545136971}
+  maxHealth: 100
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
