@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public abstract class Projectile : MonoBehaviour
 {
@@ -12,19 +11,17 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected float duration = 0f;
     [SerializeField] protected int coefficient = 0;
 
-    private RoomManager roomManager = null;
-    protected List<HitBox> enemies = null;
+    protected RoomManager roomManager = null;
+    protected List<HitBox> targets = null;
 
     protected void Awake()
     {
         roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         scaleObject.localScale = new Vector3(1f, 1f, 1f);
-
-        enemies = roomManager.enemiesHitBox.ToList();
     }
 
     public void Shot(Vector3 p_position, string p_button = null, bool p_isLeft = false, float p_sizeEff = 1f)

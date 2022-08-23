@@ -9,6 +9,13 @@ public class ProjectileS : Projectile
     [SerializeField] private string explosion = null;
     private Coroutine runningCo = null;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        targets = roomManager.Enemies.ToList();
+    }
+
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
@@ -20,7 +27,7 @@ public class ProjectileS : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
-        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, enemies));
+        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
 
         yield return new WaitForSeconds(p_duration);
     }

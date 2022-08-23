@@ -7,19 +7,22 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GamePlayer player = null;
     public GamePlayer Player { get { return player; } }
 
-    [SerializeField] private GameObject enemies = null;
-    public List<HitBox> enemiesHitBox = null;
+    [SerializeField] private GameObject enemyList = null;
+
+    private List<HitBox> enemies = null;
+    public List<HitBox> Enemies { get { return enemies; } }
+    
 
     private void Awake()
     {
-        enemiesHitBox = new List<HitBox>();
+        enemies = new List<HitBox>();
     }
 
     private void Start()
     {
-        var t_hitBoxes = enemies.GetComponentsInChildren<HitBox>();
+        var t_hitBoxes = enemyList.GetComponentsInChildren<HitBox>();
 
         for (int i = 0; i < t_hitBoxes.Length; i++)
-            enemiesHitBox.Add(t_hitBoxes[i]);
+            enemies.Add(t_hitBoxes[i]);
     }
 }
