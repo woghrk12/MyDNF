@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1975402742339022350}
   - component: {fileID: 7535070852967613995}
   - component: {fileID: 839592038382837531}
+  - component: {fileID: 5587455999312892007}
   m_Layer: 0
   m_Name: BaseAttack
   m_TagString: Untagged
@@ -103,12 +104,6 @@ MonoBehaviour:
   sizeUpY: 0.5
   sizeDownY: 0.5
   sizeZ: 1
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
 --- !u!114 &1975402742339022350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +139,9 @@ MonoBehaviour:
   rawDirection: {x: 1, y: 0, z: 0}
   startSpeed: 20
   boostFlag: 0
+  targets: []
   hitController: {fileID: 839592038382837531}
+  moveController: {fileID: 5587455999312892007}
 --- !u!114 &839592038382837531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +157,21 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 1
   hitStunTime: 0.5
+--- !u!114 &5587455999312892007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2128774acbc0445b59d710a83cd959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawDirection: {x: 1, y: 0, z: 0}
+  boostFlag: 0
+  startSpeed: 20
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

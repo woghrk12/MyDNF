@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5388025554466246841}
   - component: {fileID: 6162502599373858611}
   - component: {fileID: -8605359126122342494}
+  - component: {fileID: 6331007527685281760}
   m_Layer: 0
   m_Name: SkillD
   m_TagString: Untagged
@@ -67,18 +68,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 2556034128602463861}
   sizeRightX: 1.5
   sizeLeftX: 1.5
   sizeUpY: 1
   sizeDownY: 1
   sizeZ: 0.5
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
 --- !u!114 &5388025554466246841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,10 +105,8 @@ MonoBehaviour:
   yPosObject: {fileID: 6531676709986405749}
   duration: 1.5
   coefficient: 1000
-  rawDirection: {x: 1, y: 0, z: 0}
-  startSpeed: 10
-  boostFlag: 1
   hitController: {fileID: -8605359126122342494}
+  moveController: {fileID: 6331007527685281760}
   canExplosion: 1.5
   explosion: ExplosionD
 --- !u!114 &-8605359126122342494
@@ -132,6 +124,21 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 2
   hitStunTime: 0.8
+--- !u!114 &6331007527685281760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2128774acbc0445b59d710a83cd959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawDirection: {x: 1, y: 0, z: 0}
+  boostFlag: 1
+  startSpeed: 10
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

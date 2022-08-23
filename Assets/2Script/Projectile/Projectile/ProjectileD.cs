@@ -6,6 +6,7 @@ using System.Linq;
 public class ProjectileD : Projectile
 {
     [SerializeField] private InstanceHit hitController = null;
+    [SerializeField] private MoveProjectile moveController = null;
     [SerializeField] private float canExplosion = 0f;
     [SerializeField] private string explosion = null;
     private bool explosionFlag = false;
@@ -13,6 +14,7 @@ public class ProjectileD : Projectile
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
+        moveController.SetDirection(p_isLeft);
         StartProjectile();
         yield return ActivateProjectile(duration, p_sizeEff);
         explosionFlag = CheckExplosion(p_sizeEff);
@@ -22,7 +24,7 @@ public class ProjectileD : Projectile
     protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
     {
         StartCoroutine(hitController.CheckOnHit((int)(coefficient * p_timesValue), duration, transform, yPosObject, hitBox, enemies));
-        StartCoroutine(MoveProjectile(direction, duration));
+        moveController.Move(p_duration);
 
         yield return new WaitForSeconds(p_duration);
     }
