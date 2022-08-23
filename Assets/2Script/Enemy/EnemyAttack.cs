@@ -51,12 +51,12 @@ public class EnemyAttack : MonoBehaviour
     {
         p_anim.SetTrigger(p_attackMotion);
         p_anim.SetFloat("motionSpeed", 0f);
+       
+        yield return new WaitForSeconds(p_preDelay);
+        
+        p_anim.SetFloat("motionSpeed", originMotionSpeed);
 
         SpawnProjectile(p_projectile, p_isLeft);
-
-        yield return new WaitForSeconds(p_preDelay);
-
-        p_anim.SetFloat("motionSpeed", originMotionSpeed);
 
         yield return new WaitForSeconds(p_duration);
     }
