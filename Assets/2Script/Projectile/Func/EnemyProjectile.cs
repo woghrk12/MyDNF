@@ -26,19 +26,18 @@ public abstract class EnemyProjectile : MonoBehaviour
         targets.Add(roomManager.Player.GetComponent<HitBox>());
     }
 
-    public void Shot(Vector3 p_position, bool p_isLeft)
-      => StartCoroutine(ShotCo(p_position, p_isLeft));
+    public void Shot()
+      => StartCoroutine(ShotCo());
 
-    private IEnumerator ShotCo(Vector3 p_position, bool p_isLeft)
+    private IEnumerator ShotCo()
     {
-        SetProjectile(targets[0].transform.position, p_isLeft);
         anim.SetTrigger("Shot");
         yield return ActivateProjectile();
     }
 
-    public void SetProjectile(Vector3 p_position, bool p_isLeft)
+    public void SetProjectile(bool p_isLeft)
     {
-        transform.position = p_position;
+        transform.position = targets[0].transform.position;
         hitBox.IsLeft = p_isLeft;
     }
 
