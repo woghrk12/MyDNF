@@ -67,18 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 1639214155236620871}
-  sizeRightX: 3.2
-  sizeLeftX: 3.2
-  sizeUpY: 3.2
-  sizeDownY: 3.2
+  sizeX: 6.4
+  sizeY: 6.4
   sizeZ: 3.2
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
+  isCenterX: 1
+  isCenterY: 1
 --- !u!114 &4702572481502261055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,9 +104,6 @@ MonoBehaviour:
   yPosObject: {fileID: 1639214155702345424}
   duration: 0.6
   coefficient: 3000
-  rawDirection: {x: 0, y: 0, z: 0}
-  startSpeed: 0
-  boostFlag: 0
   hitController: {fileID: 8986060314026081166}
 --- !u!114 &8986060314026081166
 MonoBehaviour:

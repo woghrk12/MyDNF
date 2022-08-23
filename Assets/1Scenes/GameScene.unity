@@ -1510,7 +1510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567347158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 0, z: 0}
+  m_LocalPosition: {x: 1.75, y: 2.3, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 330494000}
@@ -1815,10 +1815,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 0
+  sizeX: 10
   sizeY: 0
   sizeZ: 3
-  isCenterX: 0
+  isCenterX: 1
   isCenterY: 0
 --- !u!1 &837117460
 GameObject:
@@ -2197,7 +2197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091435868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 4, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1545136970}
@@ -2559,10 +2559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 0
+  sizeX: 10
   sizeY: 0
   sizeZ: 1.5
-  isCenterX: 0
+  isCenterX: 1
   isCenterY: 0
 --- !u!1 &1295564473
 GameObject:
@@ -3412,7 +3412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621232687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 330494000}
@@ -4261,7 +4261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873515749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0.35, y: 1.1, z: 0}
   m_LocalScale: {x: 5.5, y: 5.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1545136970}
@@ -4444,7 +4444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001988226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.96, y: -0.31, z: 0}
+  m_LocalPosition: {x: 4.96, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1621232688}
@@ -4464,10 +4464,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 0
-  sizeY: 0
+  sizeX: 2
+  sizeY: 2.7
   sizeZ: 1
-  isCenterX: 0
+  isCenterX: 1
   isCenterY: 0
 --- !u!114 &2001988229
 MonoBehaviour:

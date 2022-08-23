@@ -29,7 +29,7 @@ public class EnemyMove : MonoBehaviour
         var t_localScale = transform.localScale;
         while (t_timer < p_duration)
         {
-            t_localScale.x = p_target.position.x > transform.position.x ? 1f : -1f;
+            t_localScale.x = p_target.position.x < transform.position.x ? -1f : 1f;
             transform.localScale = t_localScale;
             Move(t_moveDir);
             t_timer += Time.deltaTime;

@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 1.1
-  sizeLeftX: 1
-  sizeUpY: 0.5
-  sizeDownY: 0.5
+  sizeX: 4
+  sizeY: 1
   sizeZ: 1
+  isCenterX: 1
+  isCenterY: 1
 --- !u!114 &1975402742339022350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +136,6 @@ MonoBehaviour:
   yPosObject: {fileID: 3885168756305592937}
   duration: 1
   coefficient: 100
-  rawDirection: {x: 1, y: 0, z: 0}
-  startSpeed: 20
-  boostFlag: 0
-  targets: []
   hitController: {fileID: 839592038382837531}
   moveController: {fileID: 5587455999312892007}
 --- !u!114 &839592038382837531
@@ -197,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2556034128602463860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0, z: 0}
   m_LocalScale: {x: -5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1627902723101909785}
