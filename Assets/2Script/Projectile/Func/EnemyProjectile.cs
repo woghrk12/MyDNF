@@ -31,7 +31,8 @@ public abstract class EnemyProjectile : MonoBehaviour
 
     private IEnumerator ShotCo(Vector3 p_position, bool p_isLeft)
     {
-        SetProjectile(p_position, p_isLeft);
+        SetProjectile(targets[0].transform.position, p_isLeft);
+        anim.SetTrigger("Shot");
         yield return ActivateProjectile();
     }
 

@@ -3860,6 +3860,9 @@ MonoBehaviour:
   - tag: EnemyBaseAttack
     prefab: {fileID: 2847821392262021952, guid: b0b6d8489619448479b79f58e6691a99, type: 3}
     size: 10
+  - tag: EnemySkill
+    prefab: {fileID: 3808520315950804194, guid: 35328850936b7f94a86b53953b9d66d0, type: 3}
+    size: 10
 --- !u!1 &1809788369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4577,7 +4580,7 @@ MonoBehaviour:
   skillPreDelay: 0.8
   skillDuration: 0
   baseAttackProjectile: EnemyBaseAttack
-  skillProjectile: EnemyBaseAttack
+  skillProjectile: EnemySkill
 --- !u!114 &2001988234
 MonoBehaviour:
   m_ObjectHideFlags: 0
