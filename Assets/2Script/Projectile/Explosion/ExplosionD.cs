@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class ExplosionD : Projectile
 {
     [SerializeField] private InstanceHit hitController = null;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-        targets = roomManager.Enemies.ToList();
-    }
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {

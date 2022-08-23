@@ -71,6 +71,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2847821392262021955}
   - component: {fileID: 2847821392262021954}
+  - component: {fileID: 921265823571335301}
+  - component: {fileID: 5520306154273171710}
+  - component: {fileID: 2104613106261851248}
   m_Layer: 0
   m_Name: EnemyBaseAttack
   m_TagString: Untagged
@@ -105,18 +108,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 2847821391772843277}
   sizeRightX: 1
   sizeLeftX: 5
   sizeUpY: 4
   sizeDownY: 0
   sizeZ: 1
-  minHitBoxX: 0
-  maxHitBoxX: 0
-  minHitBoxY: 0
-  maxHitBoxY: 0
-  minHitBoxZ: 0
-  maxHitBoxZ: 0
+--- !u!114 &921265823571335301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847821392262021952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c190abb6c63878d409f50cfee9781d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2104613106261851248}
+  hitBox: {fileID: 2847821392262021954}
+  scaleObject: {fileID: 2847821391130427634}
+  yPosObject: {fileID: 2847821392541550304}
+  duration: 0.5
+  coefficient: 0
+  hitController: {fileID: 5520306154273171710}
+--- !u!114 &5520306154273171710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847821392262021952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b4508ed77d10244a627afb264ab80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isKnockBack: 1
+  knockBackPower: 1
+  hitStunTime: 1
+--- !u!95 &2104613106261851248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847821392262021952}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58526237b5e5c724e87e9c29bdb17276, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2847821392541550305
 GameObject:
   m_ObjectHideFlags: 0

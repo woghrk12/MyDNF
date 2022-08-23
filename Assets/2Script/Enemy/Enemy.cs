@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private EnemyPattern[] patterns = null;
 
-    public bool IsLeft { get { return player.transform.position.x < transform.position.x; } }
-
     private Coroutine runningCo = null;
 
     private void Awake()

@@ -29,30 +29,30 @@ public class EnemyAttack : MonoBehaviour
     {
         p_anim.SetBool("isAttack", true);
 
-        
+        var t_isLeft = p_target.transform.position.x > transform.position.x;
         var t_localScale = transform.localScale;
-        t_localScale.x = p_target.transform.position.x > transform.position.x ? -1f : 1f;
+        t_localScale.x = t_isLeft ? -1f : 1f;
         transform.localScale = t_localScale;
 
         switch (p_attackMotion)
         {
             case EEnemyPatternType.BASEATTACK:
-                yield return AttackCo(p_anim, baseAttackMotion, baseAttackProjectile, basePreDelay, baseDuration);
+                yield return AttackCo(p_anim, baseAttackMotion, baseAttackProjectile, t_isLeft, basePreDelay, baseDuration);
                 break;
             case EEnemyPatternType.SKILL:
-                yield return AttackCo(p_anim, skillAttackMotion, skillProjectile, skillPreDelay, skillDuration);
+                yield return AttackCo(p_anim, skillAttackMotion, skillProjectile, t_isLeft, skillPreDelay, skillDuration);
                 break;
         }
 
         p_anim.SetBool("isAttack", false);
     }
 
-    private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, float p_preDelay, float p_duration)
+    private IEnumerator AttackCo(Animator p_anim, string p_attackMotion, string p_projectile, bool p_isLeft, float p_preDelay, float p_duration)
     {
         p_anim.SetTrigger(p_attackMotion);
         p_anim.SetFloat("motionSpeed", 0f);
 
-        SpawnProjectile(p_projectile);
+        SpawnProjectile(p_projectile, p_isLeft);
 
         yield return new WaitForSeconds(p_preDelay);
 
@@ -61,9 +61,10 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(p_duration);
     }
 
-    private void SpawnProjectile(string p_projectile)
+    private void SpawnProjectile(string p_projectile, bool p_isLeft)
     {
-        ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity);
+        var t_projectile = ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity).GetComponent<EnemyProjectile>();
+        t_projectile.Shot(transform.position, p_isLeft);
     }
 
     public void ResetValue(Animator p_anim)

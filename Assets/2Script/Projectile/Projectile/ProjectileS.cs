@@ -1,20 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class ProjectileS : Projectile
 {
     [SerializeField] private ContinuousHit hitController = null;
     [SerializeField] private string explosion = null;
     private Coroutine runningCo = null;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-        targets = roomManager.Enemies.ToList();
-    }
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
