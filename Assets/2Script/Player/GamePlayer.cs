@@ -99,7 +99,7 @@ public class GamePlayer : MonoBehaviour
     {
         if (runningCo != null) StopCoroutine(runningCo);
         if (attackController.runningSkill != null) attackController.CancelSkill(attackController.runningSkill);
-        Debug.Log("Hit");
+
         CanMove = false;
         canJump = false;
         canAttack = false;

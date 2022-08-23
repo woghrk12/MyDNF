@@ -31,7 +31,7 @@ public class Damagable : MonoBehaviour
 
         var t_timer = 0f;
         var t_knockBackPower = p_knockBackPower;
-        transform.localScale = new Vector3(p_dir.x < 0 ? -1f : 1f, 1f, 1f);
+        transform.localScale = new Vector3(p_dir.x < 0 ? 1f : -1f, 1f, 1f);
 
         while (t_timer < p_hitStunTime)
         {

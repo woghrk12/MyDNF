@@ -31,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
 
         var t_isLeft = p_target.transform.position.x > transform.position.x;
         var t_localScale = transform.localScale;
-        t_localScale.x = t_isLeft ? -1f : 1f;
+        t_localScale.x = t_isLeft ? 1f : -1f;
         transform.localScale = t_localScale;
 
         switch (p_attackMotion)
