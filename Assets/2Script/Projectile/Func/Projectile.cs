@@ -46,7 +46,7 @@ public abstract class Projectile : MonoBehaviour
         anim.SetTrigger("Shot");
     }
 
-    protected abstract IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f);
+    protected abstract IEnumerator ActivateProjectile(float p_timesValue = 1f);
 
     protected virtual void EndProjectile()
     {

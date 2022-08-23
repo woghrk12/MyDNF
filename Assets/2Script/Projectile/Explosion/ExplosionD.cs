@@ -14,10 +14,10 @@ public class ExplosionD : Projectile
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
+    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
         StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
 
-        yield return new WaitForSeconds(p_duration);
+        yield return new WaitForSeconds(duration);
     }
 }

@@ -12,15 +12,15 @@ public class ProjectileA : Projectile
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         moveController.SetDirection(p_isLeft);
         StartProjectile();
-        yield return ActivateProjectile(duration);
+        yield return ActivateProjectile();
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_duration, float p_timesValue = 1f)
+    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
         StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
-        moveController.Move(p_duration);
+        moveController.Move(duration);
 
-        yield return new WaitForSeconds(p_duration);
+        yield return new WaitForSeconds(duration);
     }
 }
