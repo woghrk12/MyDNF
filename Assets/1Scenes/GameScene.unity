@@ -683,6 +683,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376575994}
   m_CullTransparentMesh: 1
+--- !u!1 &482551516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482551517}
+  m_Layer: 0
+  m_Name: Y Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482551517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482551516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 596013828}
+  m_Father: {fileID: 1545136970}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497214894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1516,37 @@ Transform:
   m_Father: {fileID: 330494000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &596013827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 596013828}
+  m_Layer: 0
+  m_Name: Scale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &596013828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596013827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1413736348}
+  m_Father: {fileID: 482551517}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620988361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,11 +1815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 7
-  sizeLeftX: 7
-  sizeUpY: 0
-  sizeDownY: 0
+  sizeX: 0
+  sizeY: 0
   sizeZ: 3
+  isCenterX: 0
+  isCenterY: 0
 --- !u!1 &837117460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,11 +2559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 5
-  sizeLeftX: 5
-  sizeUpY: 0
-  sizeDownY: 0
+  sizeX: 0
+  sizeY: 0
   sizeZ: 1.5
+  isCenterX: 0
+  isCenterY: 0
 --- !u!1 &1295564473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,10 +2839,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413736347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0.35, y: 1.1, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
-  m_Father: {fileID: 1545136970}
+  m_Father: {fileID: 596013828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1413736349
@@ -3057,10 +3119,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545136969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.71, y: -0.48, z: 0}
+  m_LocalPosition: {x: -5.017, y: -0.453, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1413736348}
+  - {fileID: 482551517}
   - {fileID: 1873515750}
   - {fileID: 1091435869}
   m_Father: {fileID: 0}
@@ -3116,11 +3178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 0.5
-  sizeLeftX: 0.5
-  sizeUpY: 0.6
-  sizeDownY: 1.1
+  sizeX: 1
+  sizeY: 1.7
   sizeZ: 0.4
+  isCenterX: 1
+  isCenterY: 0
 --- !u!114 &1545136974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3134,7 +3196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
-  spriteObject: {fileID: 1413736348}
+  yPosObject: {fileID: 482551517}
 --- !u!114 &1545136975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4402,11 +4464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRightX: 1
-  sizeLeftX: 1
-  sizeUpY: 0.4
-  sizeDownY: 2.3
+  sizeX: 0
+  sizeY: 0
   sizeZ: 1
+  isCenterX: 0
+  isCenterY: 0
 --- !u!114 &2001988229
 MonoBehaviour:
   m_ObjectHideFlags: 0

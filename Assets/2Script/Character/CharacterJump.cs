@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterJump : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
-    [SerializeField] private Transform spriteObject = null;
+    [SerializeField] private Transform yPosObject = null;
 
     private float gravity = 9.8f;
     public float Gravity { set { gravity = value < 1f ? 1f : value; } get { return gravity; } }
@@ -18,7 +18,7 @@ public class CharacterJump : MonoBehaviour
 
     private void Awake()
     {
-        originY = spriteObject.localPosition.y;
+        originY = yPosObject.localPosition.y;
     }
 
     private float CalculateMaxHeight(float p_gravity, float p_power)
@@ -56,13 +56,13 @@ public class CharacterJump : MonoBehaviour
 
     private IEnumerator JumpUp(float p_criteria)
     {
-        var t_vector = spriteObject.localPosition;
+        var t_vector = yPosObject.localPosition;
 
-        while (spriteObject.localPosition.y <= p_criteria)
+        while (yPosObject.localPosition.y <= p_criteria)
         {
             t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
 
-            spriteObject.localPosition = t_vector;
+            yPosObject.localPosition = t_vector;
 
             jumpTime += Time.deltaTime;
             yield return null;
@@ -71,13 +71,13 @@ public class CharacterJump : MonoBehaviour
 
     private IEnumerator JumpStay(float p_criteria)
     {
-        var t_vector = spriteObject.localPosition;
+        var t_vector = yPosObject.localPosition;
 
-        while (spriteObject.localPosition.y >= p_criteria)
+        while (yPosObject.localPosition.y >= p_criteria)
         {
             t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
 
-            spriteObject.localPosition = t_vector;
+            yPosObject.localPosition = t_vector;
 
             jumpTime += Time.deltaTime;
             yield return null;
@@ -86,19 +86,19 @@ public class CharacterJump : MonoBehaviour
 
     private IEnumerator JumpDown(float p_criteria)
     {
-        var t_vector = spriteObject.localPosition;
+        var t_vector = yPosObject.localPosition;
 
-        while (spriteObject.localPosition.y >= p_criteria)
+        while (yPosObject.localPosition.y >= p_criteria)
         {
             t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
 
-            spriteObject.localPosition = t_vector;
+            yPosObject.localPosition = t_vector;
 
             jumpTime += Time.deltaTime;
             yield return null;
         }
 
         t_vector.y = originY;
-        spriteObject.localPosition = t_vector;
+        yPosObject.localPosition = t_vector;
     }
 }
