@@ -5,18 +5,17 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
-    [SerializeField] private float sizeRightX = 0f;
-    [SerializeField] private float sizeLeftX = 0f;
-    [SerializeField] private float sizeUpY = 0f;
-    [SerializeField] private float sizeDownY = 0f;
+    [SerializeField] private float sizeX = 0f;
+    [SerializeField] private float sizeY = 0f;
     [SerializeField] private float sizeZ = 0f;
 
-    private float rangeRightX = 0f;
-    private float rangeLeftX = 0f;
-    private float rangeUpY = 0f;
-    private float rangeDownY = 0f;
-    private float radiusZ = 0f;
-    
+    [SerializeField] private bool isCenterX = false;
+    [SerializeField] private bool isCenterY = false;
+
+    private float halfX = 0f;
+    private float halfY = 0f;
+    private float halfZ = 0f;
+
     private float minHitBoxX = 0f;
     private float maxHitBoxX = 0f;
     private float minHitBoxY = 0f;
@@ -24,46 +23,42 @@ public class HitBox : MonoBehaviour
     private float minHitBoxZ = 0f;
     private float maxHitBoxZ = 0f;
 
+    private bool isLeft = false;
+    public bool IsLeft { set { isLeft = value; } get { return isLeft; } }
+
     private UnityAction<int, Vector3, float, float> onDamageEvent = null;
     public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
     private void OnEnable()
     {
-        rangeLeftX = sizeLeftX;
-        rangeRightX = sizeRightX;
-        rangeUpY = sizeUpY;
-        rangeDownY = sizeDownY;
-        radiusZ = sizeZ * 0.5f;
+        halfX = sizeX * 0.5f;
+        halfY = sizeY * 0.5f;
+        halfZ = sizeZ * 0.5f;
     }
 
     public void CalculateHitBox(Vector3 p_posObj, Vector3? p_yPosObj = null)
     {
-        minHitBoxX = p_posObj.x - rangeLeftX;
-        maxHitBoxX = p_posObj.x + rangeRightX;
-        minHitBoxZ = p_posObj.y - radiusZ;
-        maxHitBoxZ = p_posObj.y + radiusZ;
+        if (isCenterX) { minHitBoxX = p_posObj.x - halfX; maxHitBoxX = p_posObj.x + halfX; }
+        else
+        {
+            if (isLeft) { minHitBoxX = p_posObj.x - sizeX; maxHitBoxX = p_posObj.x; }
+            else { minHitBoxX = p_posObj.x; maxHitBoxX = p_posObj.x + sizeX; }
+        }
+    
+        minHitBoxZ = p_posObj.y - halfZ;
+        maxHitBoxZ = p_posObj.y + halfZ;
 
         if (p_yPosObj == null) return;
 
-        minHitBoxY = p_yPosObj.Value.y - rangeDownY;
-        maxHitBoxY = p_yPosObj.Value.y + rangeUpY;
-    }
-
-    public void SetDirection(bool p_isLeft)
-    {
-        var t_left = rangeLeftX; var t_right = rangeRightX;
-
-        rangeLeftX = p_isLeft ? t_right : t_left;
-        rangeRightX = p_isLeft ? t_left : t_right;
+        if (isCenterY) { minHitBoxY = p_yPosObj.Value.y - halfY; maxHitBoxY = p_yPosObj.Value.y + halfY; }
+        else { minHitBoxY = p_yPosObj.Value.y; maxHitBoxY = p_yPosObj.Value.y + sizeY; }
     }
 
     public void ScaleHitBox(float p_value)
     {
-        rangeLeftX *= p_value;
-        rangeRightX *= p_value;
-        rangeDownY *= p_value;
-        rangeUpY *= p_value;
-        radiusZ *= p_value;
+        sizeX *= p_value;
+        sizeY *= p_value;
+        sizeZ *= p_value;
     }
 
     public bool CalculateOnHit(HitBox p_target)

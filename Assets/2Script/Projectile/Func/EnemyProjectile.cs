@@ -38,7 +38,7 @@ public abstract class EnemyProjectile : MonoBehaviour
     public void SetProjectile(Vector3 p_position, bool p_isLeft)
     {
         transform.position = p_position;
-        hitBox.SetDirection(p_isLeft);
+        hitBox.IsLeft = p_isLeft;
     }
 
     protected abstract IEnumerator ActivateProjectile();

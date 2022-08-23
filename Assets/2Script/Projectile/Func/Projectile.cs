@@ -38,7 +38,7 @@ public abstract class Projectile : MonoBehaviour
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
-        hitBox.SetDirection(p_isLeft);
+        hitBox.IsLeft = p_isLeft;
     }
 
     protected virtual void StartProjectile()
