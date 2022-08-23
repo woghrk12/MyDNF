@@ -569,8 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1545136976}
-  enemies: {fileID: 1864677841}
-  enemiesHitBox: []
+  enemyList: {fileID: 1864677841}
 --- !u!1 &376192193
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +605,6 @@ Transform:
   - {fileID: 2143839193}
   - {fileID: 1871150506}
   - {fileID: 1810099770}
-  - {fileID: 1295564474}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2527,14 +2525,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295564473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1239858884}
   - {fileID: 764034145}
-  m_Father: {fileID: 376192194}
-  m_RootOrder: 8
+  m_Father: {fileID: 2001988227}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305453204
 GameObject:
@@ -4372,6 +4370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1621232688}
+  - {fileID: 1295564474}
   m_Father: {fileID: 1864677842}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
