@@ -11,6 +11,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private CharacterAttack attackController = null;
     [SerializeField] private Damagable healthController = null;
     [SerializeField] private SkillManager skillManager = null;
+    [SerializeField] private Status statusManager = null;
 
     private bool IsLeft { get { return moveController.IsLeft; } }
 
