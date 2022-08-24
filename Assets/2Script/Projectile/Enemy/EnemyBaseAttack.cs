@@ -10,5 +10,6 @@ public class EnemyBaseAttack : EnemyProjectile
     {
         StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
         yield return new WaitForSeconds(duration);
+        ObjectPoolingManager.ReturnObject(gameObject);
     }
 }
