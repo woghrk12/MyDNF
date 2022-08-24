@@ -1562,7 +1562,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.4, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3396,7 +3396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
-  maxHealth: 100
 --- !u!114 &1545136979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3411,8 +3410,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxMana: 100
-  healthSlider: {fileID: 0}
-  manaSlider: {fileID: 0}
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4717,6 +4714,7 @@ GameObject:
   - component: {fileID: 2001988232}
   - component: {fileID: 2001988233}
   - component: {fileID: 2001988234}
+  - component: {fileID: 2001988235}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -4775,7 +4773,7 @@ MonoBehaviour:
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
   moveController: {fileID: 2001988234}
-  statusManager: {fileID: 0}
+  statusManager: {fileID: 2001988235}
   patterns:
   - patternType: 0
     coolTime: 0
@@ -4843,7 +4841,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2001988231}
-  maxHealth: 50000
 --- !u!114 &2001988233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4886,6 +4883,20 @@ MonoBehaviour:
   maxX: 11.5
   minY: -3.5
   maxY: 1.5
+--- !u!114 &2001988235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001988226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e1a26bb6d33f248925a6e479ce3cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4000
+  maxMana: 0
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0

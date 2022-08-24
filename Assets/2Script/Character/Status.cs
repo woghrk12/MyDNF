@@ -17,7 +17,8 @@ public class Status : MonoBehaviour
         set 
         { 
             curHealth = value < 0 ? 0 : value;
-            healthSlider.SetValue((int)((curHealth / (float)maxHealth) * 100));
+            if(healthSlider != null)
+                healthSlider.SetValue((int)((curHealth / (float)maxHealth) * 100));
         }
         get { return curHealth; } 
     }
@@ -26,7 +27,8 @@ public class Status : MonoBehaviour
         set 
         { 
             curMana = value < 0 ? 0 : value;
-            manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
+            if (manaSlider != null)
+                manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
         } 
         get { return curMana; } 
     }

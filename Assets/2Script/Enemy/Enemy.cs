@@ -26,7 +26,17 @@ public class Enemy : MonoBehaviour
         roomManager = GameObject.FindObjectOfType<RoomManager>();
         player = roomManager.Player;
 
+        statusManager.InitializeValue();
+    }
+
+    private void OnEnable()
+    {
         hitBox.OnDamageEvent += OnDamage;
+    }
+
+    private void OnDisable()
+    {
+        hitBox.OnDamageEvent -= OnDamage;
     }
 
     private void Start()
@@ -116,6 +126,14 @@ public class Enemy : MonoBehaviour
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         CancelPattern();
-        healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower);
+        if (!healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+            StartCoroutine(OnDie());
+    }
+
+    private IEnumerator OnDie()
+    {
+        hitBox.enabled = false;
+        yield return new WaitForSeconds(0.6f);
+        gameObject.SetActive(false);
     }
 }
