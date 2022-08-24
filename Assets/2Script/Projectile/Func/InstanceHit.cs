@@ -28,6 +28,7 @@ public class InstanceHit : MonoBehaviour
 
         for (int i = 0; i < t_targets.Count; i++)
         {
+            if (!t_targets[i].enabled) continue;
             if (p_hitBox.CalculateOnHit(t_targets[i]))
             {
                 p_targets.Remove(t_targets[i]);

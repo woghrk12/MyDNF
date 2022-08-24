@@ -7,13 +7,21 @@ public class Damagable : MonoBehaviour
     [SerializeField] private Animator anim = null;
 
     private Coroutine onDamageCo = null;
-
-    public void OnDamage(Status p_hitTarget, int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
+    
+    public bool OnDamage(Status p_hitTarget, int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         p_hitTarget.CurHealth -= p_damage;
 
         if (onDamageCo != null) StopCoroutine(onDamageCo);
+
+        if (p_hitTarget.CurHealth <= 0) 
+        {
+            OnDie();
+            return false;
+        }
+
         onDamageCo = StartCoroutine(KnockBackEffect(p_dir, p_hitStunTime, p_knockBackPower));
+        return true;
     }
 
     private IEnumerator KnockBackEffect(Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
@@ -34,5 +42,10 @@ public class Damagable : MonoBehaviour
         }
 
         anim.SetBool("isEndHit", true);
+    }
+
+    private void OnDie()
+    {
+        anim.SetTrigger("Die");
     }
 }

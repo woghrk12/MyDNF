@@ -14,6 +14,20 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private Status statusManager = null;
 
     private bool IsLeft { get { return moveController.IsLeft; } }
+    private bool isDie = false;
+    public bool IsDie 
+    { 
+        private set
+        {
+            isDie = value;
+            hitBox.enabled = !isDie;
+            CanMove = !isDie;
+            canJump = !isDie;
+            canAttack = !isDie;
+        }
+        get { return isDie; } 
+    }
+
 
     private bool CanMove { set { moveController.CanMove = value; } get { return moveController.CanMove; } }
     private bool canJump = true;
@@ -110,9 +124,9 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         canAttack = false;
 
-        healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower);
-
-        runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
+        if (healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+            runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
+        else IsDie = true;
     }
 
     private IEnumerator OnDamageCo(float p_hitStunTime)

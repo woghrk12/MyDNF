@@ -26,6 +26,7 @@ public class ContinuousHit : MonoBehaviour
     {
         for (int i = 0; i < p_targets.Count; i++)
         {
+            if (!p_targets[i].enabled) continue;
             if (p_hitBox.CalculateOnHit(p_targets[i]))
             {
                 if (p_targets[i].OnDamageEvent != null)
