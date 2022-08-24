@@ -6,19 +6,11 @@ public class Damagable : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
 
-    [SerializeField] private int maxHealth = 0;
-    private int curHealth = 0;
-
     private Coroutine onDamageCo = null;
 
-    private void Awake()
+    public void OnDamage(Status p_hitTarget, int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
-        curHealth = maxHealth;
-    }
-
-    public void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
-    {
-        curHealth -= p_damage;
+        p_hitTarget.CurHealth -= p_damage;
 
         if (onDamageCo != null) StopCoroutine(onDamageCo);
         onDamageCo = StartCoroutine(KnockBackEffect(p_dir, p_hitStunTime, p_knockBackPower));

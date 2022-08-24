@@ -6,9 +6,30 @@ public class Status : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 0;
     [SerializeField] private int maxMana = 0;
+    private ControlSlider healthSlider = null;
+    private ControlSlider manaSlider = null;
 
     private int curHealth = 0;
     private int curMana = 0;
+
+    public int CurHealth 
+    {
+        set 
+        { 
+            curHealth = value < 0 ? 0 : value;
+            healthSlider.SetValue((int)((curHealth / (float)maxHealth) * 100));
+        }
+        get { return curHealth; } 
+    }
+    public int CurMana 
+    { 
+        set 
+        { 
+            curMana = value < 0 ? 0 : value;
+            manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
+        } 
+        get { return curMana; } 
+    }
 
     public void InitializeValue()
     {
@@ -16,23 +37,12 @@ public class Status : MonoBehaviour
         curMana = maxMana;
     }
 
-    public bool UseMana(int p_value)
+    public void SetControlSlider(ControlSlider p_healthSlider, ControlSlider p_manaSlider)
     {
-        if (p_value > curMana) return false;
+        healthSlider = p_healthSlider;
+        manaSlider = p_manaSlider;
 
-        curMana -= p_value;
-        return true;
-    }
-
-    public bool OnDamage(int p_value)
-    {
-        if (p_value > curHealth) 
-        {
-            curHealth = 0;
-            return false;
-        }
-
-        curHealth -= p_value;
-        return true;
+        healthSlider.SetValue((int)((curHealth / (float)maxHealth) * 100));
+        manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
     }
 }

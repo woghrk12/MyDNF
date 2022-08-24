@@ -21,6 +21,11 @@ public class GamePlayer : MonoBehaviour
 
     private Coroutine runningCo = null;
 
+    private void Awake()
+    {
+        statusManager.InitializeValue();
+    }
+
     private void OnEnable()
     {
         hitBox.OnDamageEvent += OnDamage;
@@ -105,7 +110,7 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         canAttack = false;
 
-        healthController.OnDamage(p_damage, p_dir, p_hitStunTime, p_knockBackPower);
+        healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower);
 
         runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
     }

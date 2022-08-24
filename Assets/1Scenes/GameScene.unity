@@ -2026,6 +2026,9 @@ MonoBehaviour:
   - {fileID: 498007651}
   - {fileID: 1037472627}
   - {fileID: 2017830412}
+  healthSlider: {fileID: 1428806160}
+  manaSlider: {fileID: 1954683567}
+  playerStatus: {fileID: 1545136979}
 --- !u!1 &1037472625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,10 +3235,11 @@ GameObject:
   - component: {fileID: 1545136972}
   - component: {fileID: 1545136974}
   - component: {fileID: 1545136975}
-  - component: {fileID: 1545136976}
   - component: {fileID: 1545136973}
-  - component: {fileID: 1545136977}
   - component: {fileID: 1545136978}
+  - component: {fileID: 1545136977}
+  - component: {fileID: 1545136976}
+  - component: {fileID: 1545136979}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3364,7 +3368,7 @@ MonoBehaviour:
   attackController: {fileID: 1545136975}
   healthController: {fileID: 1545136978}
   skillManager: {fileID: 1305453206}
-  statusManager: {fileID: 0}
+  statusManager: {fileID: 1545136979}
 --- !u!114 &1545136977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3393,6 +3397,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
   maxHealth: 100
+--- !u!114 &1545136979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545136969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e1a26bb6d33f248925a6e479ce3cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxMana: 100
+  healthSlider: {fileID: 0}
+  manaSlider: {fileID: 0}
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4755,6 +4775,7 @@ MonoBehaviour:
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
   moveController: {fileID: 2001988234}
+  statusManager: {fileID: 0}
   patterns:
   - patternType: 0
     coolTime: 0
@@ -5017,6 +5038,9 @@ MonoBehaviour:
   - {fileID: 545979546}
   - {fileID: 1809788374}
   - {fileID: 1184169918}
+  healthSlider: {fileID: 151025867}
+  manaSlider: {fileID: 1618151361}
+  playerStatus: {fileID: 1545136979}
 --- !u!1 &2094288329
 GameObject:
   m_ObjectHideFlags: 0

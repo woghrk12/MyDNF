@@ -11,6 +11,16 @@ public class Keyboard : MonoBehaviour
     private float hAxis = 0f;
     private float vAxis = 0f;
 
+    [SerializeField] private ControlSlider healthSlider = null;
+    [SerializeField] private ControlSlider manaSlider = null;
+
+    [SerializeField] private Status playerStatus = null;
+
+    private void OnEnable()
+    {
+        playerStatus.SetControlSlider(healthSlider, manaSlider);
+    }
+
     private void Update()
     {
         GetInput();
