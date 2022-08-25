@@ -47,4 +47,11 @@ public class Status : MonoBehaviour
         healthSlider.SetValue((int)((curHealth / (float)maxHealth) * 100));
         manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
     }
+
+    public bool UseMana(int p_value)
+    {
+        if (curMana < p_value) return false;
+        CurMana -= p_value;
+        return true;
+    }
 }

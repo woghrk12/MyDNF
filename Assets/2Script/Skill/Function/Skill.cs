@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
+    [SerializeField] private int needMana = 0;
     [SerializeField] protected string[] projectile = null;
     [SerializeField] protected string[] skillMotion = null;
     [SerializeField] protected float[] duration = null;
@@ -14,6 +15,7 @@ public abstract class Skill : MonoBehaviour
 
     public List<Skill> CanCancelList = new List<Skill>();
     public bool CanUse { set { canUse = value; } get { return waitingTime <= 0f && canUse; } }
+    public int NeedMana { get { return needMana; } }
 
     protected void Update()
     {
