@@ -13,7 +13,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private SkillManager skillManager = null;
     [SerializeField] private Status statusManager = null;
 
-    private bool IsLeft { get { return moveController.IsLeft; } }
+    private bool IsLeft { set { moveController.IsLeft = value; } get { return moveController.IsLeft; } }
     private bool isDie = false;
     public bool IsDie 
     { 
@@ -103,6 +103,7 @@ public class GamePlayer : MonoBehaviour
     {
         if (attackController.RunningSkill == null) return true;
         if (!skillManager.CheckCanCancel(attackController.RunningSkill, p_skill)) return false;
+        
         if (p_skill.CanUseWithoutCancel)
         {
             attackController.UseSkillWithoutCancel(p_skill, IsLeft);
@@ -137,6 +138,8 @@ public class GamePlayer : MonoBehaviour
         CanMove = false;
         canJump = false;
         canAttack = false;
+
+        IsLeft = p_dir.x > 0f;
 
         if (healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
             runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
