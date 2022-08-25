@@ -445,8 +445,9 @@ MonoBehaviour:
   delay:
   - 0.1
   coolTime: 0
+  canUseWithoutCancel: 0
   CanCancelList:
-  - {fileID: 1131014790}
+  - {fileID: 0}
   reEnterTime: 1.5
 --- !u!1 &203455904
 GameObject:
@@ -725,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.118086055, b: 0, a: 0.8}
+  m_Color: {r: 1, g: 0.118086055, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1949,8 +1950,9 @@ MonoBehaviour:
   - 0.05
   - 0.1
   coolTime: 0
+  canUseWithoutCancel: 0
   CanCancelList:
-  - {fileID: 1131014790}
+  - {fileID: 0}
   - {fileID: 182411866}
   numCombo: 3
   comboController: {fileID: 837117464}
@@ -2334,7 +2336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131014789}
-  - component: {fileID: 1131014790}
+  - component: {fileID: 1131014791}
   m_Layer: 0
   m_Name: Skill A
   m_TagString: Untagged
@@ -2356,7 +2358,7 @@ Transform:
   m_Father: {fileID: 1305453205}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131014790
+--- !u!114 &1131014791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2365,7 +2367,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131014788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22052b1129aecb4b86dbf5552f2f1c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7615003213e341b49ae93a205dbf3819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   needMana: 5
@@ -2378,6 +2380,7 @@ MonoBehaviour:
   delay:
   - 0.1
   coolTime: 0
+  canUseWithoutCancel: 0
   CanCancelList: []
 --- !u!1 &1184169913
 GameObject:
@@ -2700,6 +2703,7 @@ Transform:
   - {fileID: 1131014789}
   - {fileID: 182411864}
   - {fileID: 1431178264}
+  - {fileID: 1901147925}
   m_Father: {fileID: 376192194}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2716,7 +2720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseAttack: {fileID: 837117463}
-  aSkill: {fileID: 1131014790}
+  aSkill: {fileID: 1131014791}
   sSkill: {fileID: 182411866}
   dSkill: {fileID: 1431178266}
   fSkill: {fileID: 0}
@@ -3149,6 +3153,7 @@ MonoBehaviour:
   delay:
   - 0.05
   coolTime: 0
+  canUseWithoutCancel: 0
   CanCancelList: []
   chargingController: {fileID: 1431178265}
 --- !u!1 &1533313077
@@ -4541,6 +4546,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1901147924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901147925}
+  - component: {fileID: 1901147926}
+  m_Layer: 0
+  m_Name: Skill F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901147925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901147924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305453205}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901147926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901147924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d8928bf2820fb41953b3eb4fcbe9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needMana: 0
+  projectile: []
+  skillMotion: []
+  duration: []
+  delay: []
+  coolTime: 0
+  canUseWithoutCancel: 0
+  CanCancelList: []
 --- !u!1 &1912395932
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,7 +5162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01935625, g: 0, b: 1, a: 0.8}
+  m_Color: {r: 0.01935625, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
