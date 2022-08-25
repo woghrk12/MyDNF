@@ -19,8 +19,12 @@ public class SkillS : Skill
     {
         CanUse = false;
 
+        yield return new WaitForSeconds(0.5f);
+
         var t_timer = 0f;
-        while (t_timer < p_reEnterTime)
+        var t_reEnterTime = p_reEnterTime - 0.5f;
+
+        while (t_timer < t_reEnterTime)
         {
             if (InputManager.Buttons[p_button] == EButtonState.DOWN) break;
 

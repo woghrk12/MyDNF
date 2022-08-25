@@ -26,8 +26,11 @@ public class ProjectileS : Projectile
 
     private IEnumerator AdditionalControl(string p_button, float p_duration)
     {
+        yield return new WaitForSeconds(0.5f);
+
         var t_timer = 0f;
-        while (t_timer < duration)
+        var t_duration = duration - 0.5f;
+        while (t_timer < t_duration)
         {
             if (InputManager.Buttons[p_button] == EButtonState.DOWN)
             {
