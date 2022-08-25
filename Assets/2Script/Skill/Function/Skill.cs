@@ -46,7 +46,7 @@ public abstract class Skill : MonoBehaviour
     {
         yield return new WaitForSeconds(p_duration - p_delay);
 
-        p_anim.SetBool(p_skillMotion, false);
+        if (p_skillMotion != null) p_anim.SetBool(p_skillMotion, false);
     }
 
     public virtual void ResetSkill(Animator p_anim)

@@ -9,6 +9,6 @@ public class SkillF : Skill
         ApplyCoolTime();
         yield return PreDelay(p_anim, delay[0]);
         ActivateSkill(p_anim, p_isLeft, p_button, projectile[0]);
-        yield return PostDelay(p_anim, duration[0], delay[0], skillMotion[0]);
+        yield return PostDelay(p_anim, duration[0], delay[0]);
     }
 }

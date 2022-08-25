@@ -447,7 +447,7 @@ MonoBehaviour:
   coolTime: 0
   canUseWithoutCancel: 0
   CanCancelList:
-  - {fileID: 0}
+  - {fileID: 1901147926}
   reEnterTime: 1.5
 --- !u!1 &203455904
 GameObject:
@@ -1952,8 +1952,10 @@ MonoBehaviour:
   coolTime: 0
   canUseWithoutCancel: 0
   CanCancelList:
-  - {fileID: 0}
+  - {fileID: 1131014791}
   - {fileID: 182411866}
+  - {fileID: 1431178266}
+  - {fileID: 1901147926}
   numCombo: 3
   comboController: {fileID: 837117464}
 --- !u!114 &837117464
@@ -2381,7 +2383,8 @@ MonoBehaviour:
   - 0.1
   coolTime: 0
   canUseWithoutCancel: 0
-  CanCancelList: []
+  CanCancelList:
+  - {fileID: 1901147926}
 --- !u!1 &1184169913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,7 +2726,7 @@ MonoBehaviour:
   aSkill: {fileID: 1131014791}
   sSkill: {fileID: 182411866}
   dSkill: {fileID: 1431178266}
-  fSkill: {fileID: 0}
+  fSkill: {fileID: 1901147926}
 --- !u!1 &1366175960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +3157,8 @@ MonoBehaviour:
   - 0.05
   coolTime: 0
   canUseWithoutCancel: 0
-  CanCancelList: []
+  CanCancelList:
+  - {fileID: 1901147926}
   chargingController: {fileID: 1431178265}
 --- !u!1 &1533313077
 GameObject:
@@ -4079,6 +4083,9 @@ MonoBehaviour:
   - tag: SkillD
     prefab: {fileID: 2556034128053169438, guid: 03a38e24355b33e4fa909d453efd0640, type: 3}
     size: 10
+  - tag: SkillF
+    prefab: {fileID: 5526493263264608773, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
+    size: 10
   - tag: ExplosionD
     prefab: {fileID: 1639214155191870941, guid: 5438f49b85c34e3498e87701a11611ad, type: 3}
     size: 10
@@ -4590,12 +4597,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needMana: 0
-  projectile: []
+  projectile:
+  - SkillF
   skillMotion: []
-  duration: []
-  delay: []
+  duration:
+  - 0
+  delay:
+  - 0
   coolTime: 0
-  canUseWithoutCancel: 0
+  canUseWithoutCancel: 1
   CanCancelList: []
 --- !u!1 &1912395932
 GameObject:
