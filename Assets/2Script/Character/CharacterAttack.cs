@@ -13,9 +13,9 @@ public class CharacterAttack : MonoBehaviour
     public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, string p_button)
     {
         runningSkill = p_skill;
-        
+
         yield return p_skill.UseSkill(anim, p_isLeft, p_button);
-        
+
         runningSkill = null;
     }
 

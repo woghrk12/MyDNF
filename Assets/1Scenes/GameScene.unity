@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea852ee15bffb37408a943910430929e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needMana: 10
   projectile:
   - SkillS
   skillMotion:
@@ -1930,6 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08873574c8846a6428da689e6e830d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needMana: 0
   projectile:
   - BaseAttack
   - BaseAttack
@@ -2366,6 +2368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22052b1129aecb4b86dbf5552f2f1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needMana: 5
   projectile:
   - SkillA
   skillMotion:
@@ -3136,6 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b461fcb601cdb2f4c8c515bd199c421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needMana: 15
   projectile:
   - SkillD
   skillMotion:

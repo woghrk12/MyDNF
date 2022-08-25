@@ -48,10 +48,7 @@ public class Status : MonoBehaviour
         manaSlider.SetValue((int)((curMana / (float)maxMana) * 100));
     }
 
-    public bool UseMana(int p_value)
-    {
-        if (curMana < p_value) return false;
-        CurMana -= p_value;
-        return true;
-    }
+    public bool CheckMana(int p_value) { return p_value <= curMana; }
+
+    public void UseMana(int p_value) { CurMana -= p_value; }
 }

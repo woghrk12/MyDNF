@@ -89,9 +89,7 @@ public class GamePlayer : MonoBehaviour
     private IEnumerator CheckCanUseSkill(Skill p_skill, string p_button)
     {
         if (!p_skill.CanUse) yield break;
-
-        canJump = false;
-        CanMove = false;
+        if (!statusManager.CheckMana(p_skill.NeedMana)) yield break;
 
         if (runningCo != null)
         {
@@ -107,6 +105,11 @@ public class GamePlayer : MonoBehaviour
 
     private IEnumerator UseSkill(Skill p_skill, string p_button)
     {
+        statusManager.UseMana(p_skill.NeedMana);
+
+        canJump = false;
+        CanMove = false;
+
         yield return attackController.UseSkill(p_skill, IsLeft, p_button);
 
         CanMove = true;
