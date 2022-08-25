@@ -9,10 +9,10 @@ public class SkillS : Skill
     public override IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button)
     {
         ApplyCoolTime();
-        yield return PreDelay(p_anim, 0);
-        ActivateSkill(p_anim, p_isLeft, p_button, 0, p_anim.transform.position + new Vector3(p_isLeft? -5f : 5f, 0f, 0f));
+        yield return PreDelay(p_anim, delay[0], skillMotion[0]);
+        ActivateSkill(p_anim, p_isLeft, p_button, projectile[0], p_anim.transform.position + new Vector3(p_isLeft ? -5f : 5f, 0f, 0f));
         StartCoroutine(AdditionalControl(p_button, reEnterTime));
-        yield return PostDelay(p_anim, 0);
+        yield return PostDelay(p_anim, duration[0], delay[0], skillMotion[0]);
     }
 
     private IEnumerator AdditionalControl(string p_button, float p_reEnterTime)

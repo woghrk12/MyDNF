@@ -14,9 +14,9 @@ public class BaseAttack : Skill
         var t_cnt = 0;
         while (t_cnt < numCombo)
         {
-            yield return PreDelay(p_anim, t_cnt);
-            ActivateSkill(p_anim, p_isLeft, p_button, t_cnt);
-            yield return PostDelay(p_anim, t_cnt);
+            yield return PreDelay(p_anim, delay[t_cnt], skillMotion[t_cnt]);
+            ActivateSkill(p_anim, p_isLeft, p_button, projectile[t_cnt]);
+            yield return PostDelay(p_anim, duration[t_cnt], delay[t_cnt], skillMotion[t_cnt]);
 
             if (comboController.NumOfClick <= ++t_cnt) break;
         }

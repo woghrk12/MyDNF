@@ -29,24 +29,24 @@ public abstract class Skill : MonoBehaviour
 
     protected void ApplyCoolTime() { waitingTime = coolTime; }
 
-    protected IEnumerator PreDelay(Animator p_anim, int p_cnt)
+    protected IEnumerator PreDelay(Animator p_anim, float p_delay, string p_skillMotion = null)
     {
-        p_anim.SetBool(skillMotion[p_cnt], true);
+        if (p_skillMotion != null) p_anim.SetBool(p_skillMotion, true);
 
-        yield return new WaitForSeconds(delay[p_cnt]);
+        yield return new WaitForSeconds(p_delay);
     }
 
-    protected void ActivateSkill(Animator p_anim, bool p_isLeft, string p_button, int p_cnt, Vector3? p_pos = null, float p_chargingValue = 1f)
+    protected void ActivateSkill(Animator p_anim, bool p_isLeft, string p_button, string p_projectile, Vector3? p_pos = null, float p_chargingValue = 1f)
     {
-        var t_projectile = ObjectPoolingManager.SpawnObject(projectile[p_cnt], Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
+        var t_projectile = ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
         t_projectile.Shot(p_pos.HasValue ? p_pos.Value : p_anim.transform.position, p_button, p_isLeft, p_chargingValue);
     }
 
-    protected IEnumerator PostDelay(Animator p_anim, int p_cnt)
+    protected IEnumerator PostDelay(Animator p_anim, float p_duration, float p_delay, string p_skillMotion = null)
     {
-        yield return new WaitForSeconds(duration[p_cnt] - delay[p_cnt]);
+        yield return new WaitForSeconds(p_duration - p_delay);
 
-        p_anim.SetBool(skillMotion[p_cnt], false);
+        p_anim.SetBool(p_skillMotion, false);
     }
 
     public virtual void ResetSkill(Animator p_anim)
