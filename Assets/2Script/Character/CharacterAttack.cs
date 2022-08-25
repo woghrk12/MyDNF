@@ -8,16 +8,20 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] private SpriteRenderer originSprite = null;
     [SerializeField] private SpriteRenderer cancelEffect = null;
 
-    public Skill runningSkill = null;
+    private Skill runningSkill = null;
+    public Skill RunningSkill { get { return runningSkill; } }
 
-    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, string p_button)
+    public IEnumerator UseSkill(Skill p_skill, bool p_isLeft, string p_button, bool p_notCancel)
     {
-        runningSkill = p_skill;
+        if (!p_notCancel) runningSkill = p_skill;
 
         yield return p_skill.UseSkill(anim, p_isLeft, p_button);
 
-        runningSkill = null;
+        if(!p_notCancel) runningSkill = null;
     }
+
+    public void UseSkillWithoutCancel(Skill p_skill, bool p_isLeft)
+        => StartCoroutine(p_skill.UseSkill(anim, p_isLeft));
 
     public void CancelSkill(Skill p_skill)
     {

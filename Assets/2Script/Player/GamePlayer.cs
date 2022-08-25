@@ -92,17 +92,26 @@ public class GamePlayer : MonoBehaviour
     {
         if (!p_skill.CanUse) yield break;
         if (!statusManager.CheckMana(p_skill.NeedMana)) yield break;
+        if (!CheckCancelSkill(p_skill)) yield break;
 
-        if (runningCo != null)
-        {
-            if (!skillManager.CheckCanCancel(attackController.runningSkill, p_skill)) yield break;
-
-            StopCoroutine(runningCo);
-            attackController.CancelSkill(attackController.runningSkill);
-            yield return null;
-        }
+        yield return null;
 
         runningCo = StartCoroutine(UseSkill(p_skill, p_button));
+    }
+
+    private bool CheckCancelSkill(Skill p_skill)
+    {
+        if (attackController.RunningSkill == null) return true;
+        if (!skillManager.CheckCanCancel(attackController.RunningSkill, p_skill)) return false;
+        if (p_skill.CanUseWithoutCancel)
+        {
+            attackController.UseSkillWithoutCancel(p_skill, IsLeft);
+            return false;
+        }
+
+        StopCoroutine(runningCo);
+        attackController.CancelSkill(attackController.RunningSkill);
+        return true;
     }
 
     private IEnumerator UseSkill(Skill p_skill, string p_button)
@@ -112,7 +121,7 @@ public class GamePlayer : MonoBehaviour
         canJump = false;
         CanMove = false;
 
-        yield return attackController.UseSkill(p_skill, IsLeft, p_button);
+        yield return attackController.UseSkill(p_skill, IsLeft, p_button, p_skill.CanUseWithoutCancel);
 
         CanMove = true;
         canJump = true;
@@ -123,7 +132,7 @@ public class GamePlayer : MonoBehaviour
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         if (runningCo != null) StopCoroutine(runningCo);
-        if (attackController.runningSkill != null) attackController.CancelSkill(attackController.runningSkill);
+        if (attackController.RunningSkill != null) attackController.CancelSkill(attackController.RunningSkill);
 
         CanMove = false;
         canJump = false;

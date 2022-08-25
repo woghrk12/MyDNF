@@ -25,7 +25,7 @@ public abstract class Skill : MonoBehaviour
             waitingTime -= Time.deltaTime;
     }
 
-    public abstract IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button);
+    public abstract IEnumerator UseSkill(Animator p_anim, bool p_isLeft, string p_button = null);
 
     protected void ApplyCoolTime() { waitingTime = coolTime; }
 
