@@ -39,10 +39,10 @@ public class ProjectileF : Projectile
     private IEnumerator MoveProjectile(bool p_isLeft)
     {
         var t_timer = 0f;
-        
-        while (t_timer < 2f)
+        var t_waitingTime = 1f + Random.Range(0.5f, 1f);
+        while (t_timer < t_waitingTime)
         {
-            hitBox.ObjectPos += ((p_isLeft ? Vector3.right : Vector3.left) + Vector3.up) * Time.deltaTime;
+            hitBox.ObjectPos += ((p_isLeft ? Vector3.right : Vector3.left) + Vector3.up + Random.insideUnitSphere * 3f) * Random.Range(0.8f, 1f) * Time.deltaTime;
             t_timer += Time.deltaTime;
             yield return null;
         }

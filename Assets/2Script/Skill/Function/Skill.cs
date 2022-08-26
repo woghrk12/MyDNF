@@ -36,7 +36,7 @@ public abstract class Skill : MonoBehaviour
         yield return new WaitForSeconds(p_delay);
     }
 
-    protected void ActivateSkill(Animator p_anim, bool p_isLeft, string p_button, string p_projectile, Vector3? p_pos = null, float p_chargingValue = 1f)
+    protected virtual void ActivateSkill(Animator p_anim, bool p_isLeft, string p_button, string p_projectile, Vector3? p_pos = null, float p_chargingValue = 1f)
     {
         var t_projectile = ObjectPoolingManager.SpawnObject(p_projectile, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
         t_projectile.Shot(p_pos.HasValue ? p_pos.Value : p_anim.transform.position, p_button, p_isLeft, p_chargingValue);
