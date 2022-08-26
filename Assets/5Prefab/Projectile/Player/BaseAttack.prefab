@@ -156,6 +156,7 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 1
   hitStunTime: 0.5
+  isPiercing: 0
 --- !u!114 &5587455999312892007
 MonoBehaviour:
   m_ObjectHideFlags: 0

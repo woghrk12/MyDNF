@@ -8,6 +8,7 @@ public class InstanceHit : MonoBehaviour
     [SerializeField] private bool isKnockBack = true;
     [SerializeField] private float knockBackPower = 0f;
     [SerializeField] private float hitStunTime = 0f;
+    [SerializeField] private bool isPiercing = true;
 
     public IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
     {
@@ -16,13 +17,13 @@ public class InstanceHit : MonoBehaviour
         while (t_timer <= p_duration)
         {
             p_hitBox.CalculateHitBox();
-            CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff);
+            if (CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff)) break;
             t_timer += Time.deltaTime;
             yield return null;
         }
     }
 
-    private void CalculateOnHitEnemy(HitBox p_hitBox, List<HitBox> p_targets, int p_coEff)
+    private bool CalculateOnHitEnemy(HitBox p_hitBox, List<HitBox> p_targets, int p_coEff)
     {
         var t_targets = p_targets.ToList();
 
@@ -42,7 +43,10 @@ public class InstanceHit : MonoBehaviour
                         hitStunTime,
                         knockBackPower
                         );
+                if (!isPiercing) return true;
             }
         }
+
+        return false;
     }
 }

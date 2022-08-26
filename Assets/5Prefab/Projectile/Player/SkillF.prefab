@@ -96,7 +96,6 @@ MonoBehaviour:
   startSpeed: 2
   hitController: {fileID: 5270767885845766595}
   moveController: {fileID: 2746425457397733616}
-  originYPos: {x: 0, y: 1, z: 0}
 --- !u!114 &7964064498676971977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +139,7 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 0.5
   hitStunTime: 0.5
+  isPiercing: 0
 --- !u!1 &5526493263644522609
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,9 +33,7 @@ public class ProjectileF : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_timesValue = 1)
     {
-        StartCoroutine(hitController.CheckOnHit(coefficient, duration, hitBox, targets));
-
-        yield return new WaitForSeconds(duration);
+        yield return hitController.CheckOnHit(coefficient, duration, hitBox, targets);
     }
 
     private IEnumerator MoveProjectile(bool p_isLeft)
