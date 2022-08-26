@@ -136,6 +136,7 @@ MonoBehaviour:
   yPosObject: {fileID: 3885168756305592937}
   duration: 1
   coefficient: 100
+  startSpeed: 20
   hitController: {fileID: 839592038382837531}
   moveController: {fileID: 5587455999312892007}
 --- !u!114 &839592038382837531

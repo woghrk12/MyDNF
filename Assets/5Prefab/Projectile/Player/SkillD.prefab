@@ -105,6 +105,7 @@ MonoBehaviour:
   yPosObject: {fileID: 6531676709986405749}
   duration: 1.5
   coefficient: 1000
+  startSpeed: 10
   hitController: {fileID: -8605359126122342494}
   moveController: {fileID: 6331007527685281760}
   canExplosion: 1.5

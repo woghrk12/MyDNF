@@ -11,6 +11,7 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected Transform yPosObject = null;
     [SerializeField] protected float duration = 0f;
     [SerializeField] protected int coefficient = 0;
+    [SerializeField] protected float startSpeed = 0f;
 
     protected RoomManager roomManager = null;
     protected List<HitBox> targets = null;
