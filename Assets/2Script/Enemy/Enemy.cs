@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        hitBox.CalculateHitBox(transform.position, yPosObject.localPosition);
+        hitBox.CalculateHitBox();
     }
 
     private IEnumerator StartPattern()
@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
                 continue;
             }
 
-            p_patterns[i].range.CalculateHitBox(transform.position);
+            p_patterns[i].range.CalculateHitBox();
             if (p_patterns[i].range.CalculateOnHit(player.gameObject.GetComponent<HitBox>())) t_pattern.Add(p_patterns[i]);
         }
 

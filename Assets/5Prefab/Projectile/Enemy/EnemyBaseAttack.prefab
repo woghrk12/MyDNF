@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 2847821392262021955}
+  yPosObject: {fileID: 2847821392541550304}
   sizeX: 5
   sizeY: 4
   sizeZ: 1

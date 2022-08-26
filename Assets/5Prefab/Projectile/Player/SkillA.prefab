@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 2556034128053169439}
+  yPosObject: {fileID: 6576526484482182068}
   sizeX: 4
   sizeY: 1
   sizeZ: 1
@@ -138,7 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawDirection: {x: 1, y: 0, z: 0}
   boostFlag: 0
-  startSpeed: 10
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

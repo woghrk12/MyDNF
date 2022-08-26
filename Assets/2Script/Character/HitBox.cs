@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
+    [SerializeField] private Transform posObject = null;
+    [SerializeField] private Transform yPosObject = null;
+
     [SerializeField] private float sizeX = 0f;
     [SerializeField] private float sizeY = 0f;
     [SerializeField] private float sizeZ = 0f;
@@ -29,6 +32,28 @@ public class HitBox : MonoBehaviour
     private UnityAction<int, Vector3, float, float> onDamageEvent = null;
     public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
+    public float XPos { get { return posObject.position.x; } }
+    public float YPos { get { return yPosObject.position.y; } }
+    public float ZPos { get { return posObject.position.y; } }
+    public Vector3 ObjectPos 
+    {
+        set 
+        {
+            var t_pos = posObject.position;
+            t_pos.x = value.x; t_pos.y = value.z;
+            posObject.position = t_pos;
+
+            if (yPosObject != null)
+            {
+                var t_yPos = yPosObject.position;
+                t_yPos.y = value.y;
+                yPosObject.position = t_yPos;
+            }
+            
+        } 
+        get { return new Vector3(XPos, yPosObject != null ? YPos : 0f, ZPos); } 
+    }
+
     private void OnEnable()
     {
         halfX = sizeX * 0.5f;
@@ -36,22 +61,22 @@ public class HitBox : MonoBehaviour
         halfZ = sizeZ * 0.5f;
     }
 
-    public void CalculateHitBox(Vector3 p_posObj, Vector3? p_yPosObj = null)
+    public void CalculateHitBox()
     {
-        if (isCenterX) { minHitBoxX = p_posObj.x - halfX; maxHitBoxX = p_posObj.x + halfX; }
+        if (isCenterX) { minHitBoxX = ObjectPos.x - halfX; maxHitBoxX = ObjectPos.x + halfX; }
         else
         {
-            if (isLeft) { minHitBoxX = p_posObj.x - sizeX; maxHitBoxX = p_posObj.x; }
-            else { minHitBoxX = p_posObj.x; maxHitBoxX = p_posObj.x + sizeX; }
+            if (isLeft) { minHitBoxX = ObjectPos.x - sizeX; maxHitBoxX = ObjectPos.x; }
+            else { minHitBoxX = ObjectPos.x; maxHitBoxX = ObjectPos.x + sizeX; }
         }
     
-        minHitBoxZ = p_posObj.y - halfZ;
-        maxHitBoxZ = p_posObj.y + halfZ;
+        minHitBoxZ = ObjectPos.z - halfZ;
+        maxHitBoxZ = ObjectPos.z + halfZ;
 
-        if (p_yPosObj == null) return;
+        if (yPosObject == null) return;
 
-        if (isCenterY) { minHitBoxY = p_yPosObj.Value.y - halfY; maxHitBoxY = p_yPosObj.Value.y + halfY; }
-        else { minHitBoxY = p_yPosObj.Value.y; maxHitBoxY = p_yPosObj.Value.y + sizeY; }
+        if (isCenterY) { minHitBoxY = ObjectPos.y - halfY; maxHitBoxY = ObjectPos.y + halfY; }
+        else { minHitBoxY = ObjectPos.y; maxHitBoxY = ObjectPos.y + sizeY; }
     }
 
     public void ScaleHitBox(float p_value)
@@ -65,8 +90,11 @@ public class HitBox : MonoBehaviour
     {
         if (maxHitBoxX < p_target.minHitBoxX || minHitBoxX > p_target.maxHitBoxX) return false;
         if (maxHitBoxZ < p_target.minHitBoxZ || minHitBoxZ > p_target.maxHitBoxZ) return false;
-        if (maxHitBoxY < p_target.minHitBoxY || minHitBoxY > p_target.maxHitBoxY) return false;
 
+        if (yPosObject == null) return true;
+        
+        if (maxHitBoxY < p_target.minHitBoxY || minHitBoxY > p_target.maxHitBoxY) return false;
+        
         return true;
     }
 }

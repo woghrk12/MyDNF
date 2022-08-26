@@ -52,7 +52,7 @@ public class GamePlayer : MonoBehaviour
 
     private void Update()
     {
-        hitBox.CalculateHitBox(transform.position);
+        hitBox.CalculateHitBox();
 
         if (inputController.GetButtonDown(inputController.XButton) && canAttack)
             StartCoroutine(CheckCanUseSkill(skillManager.BaseAttack, inputController.XButton));

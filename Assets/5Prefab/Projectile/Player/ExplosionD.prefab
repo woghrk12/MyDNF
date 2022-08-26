@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 1639214155191870940}
+  yPosObject: {fileID: 1639214155702345424}
   sizeX: 6.4
   sizeY: 6.4
   sizeZ: 3.2
@@ -104,6 +106,7 @@ MonoBehaviour:
   yPosObject: {fileID: 1639214155702345424}
   duration: 0.6
   coefficient: 3000
+  startSpeed: 0
   hitController: {fileID: 8986060314026081166}
 --- !u!114 &8986060314026081166
 MonoBehaviour:

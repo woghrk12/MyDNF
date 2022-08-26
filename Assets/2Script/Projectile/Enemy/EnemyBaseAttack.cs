@@ -8,7 +8,7 @@ public class EnemyBaseAttack : EnemyProjectile
 
     protected override IEnumerator ActivateProjectile()
     {
-        StartCoroutine(hitController.CheckOnHit(coefficient, duration, transform, yPosObject, hitBox, targets));
+        StartCoroutine(hitController.CheckOnHit(coefficient, duration, hitBox, targets));
         yield return new WaitForSeconds(duration);
         ObjectPoolingManager.ReturnObject(gameObject);
     }
