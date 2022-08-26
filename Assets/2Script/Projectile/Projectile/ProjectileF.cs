@@ -49,7 +49,7 @@ public class ProjectileF : Projectile
 
         t_timer = 0f;
         var t_target = targets[Random.Range(0, targets.Count - 1)];
-        var t_dir = (t_target.ObjectPos - hitBox.ObjectPos).normalized;
+        var t_dir = (t_target.ObjectPos - (hitBox.ObjectPos + Random.insideUnitSphere * 2f)).normalized;
 
         while (t_timer < duration)
         {
