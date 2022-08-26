@@ -6,7 +6,21 @@ public class ProjectileF : Projectile
 {
     [SerializeField] private InstanceHit hitController = null;
     [SerializeField] private MoveProjectile moveController = null;
-    [SerializeField] private Vector3 originYPos = Vector3.zero;
+    private float originYPos = 0f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        originYPos = hitBox.YPos;
+    }
+
+    protected override void InitializeValue()
+    {
+        base.InitializeValue();
+
+        hitBox.YPos = originYPos;
+    }
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
