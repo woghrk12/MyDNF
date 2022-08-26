@@ -1883,6 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 2001988227}
+  yPosObject: {fileID: 0}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -2637,6 +2639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 2001988227}
+  yPosObject: {fileID: 0}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -3268,7 +3272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545136969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.017, y: -0.453, z: 0}
+  m_LocalPosition: {x: -5.017, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482551517}
@@ -3327,6 +3331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 1545136970}
+  yPosObject: {fileID: 482551517}
   sizeX: 1
   sizeY: 1.7
   sizeZ: 0.4
@@ -3361,7 +3367,6 @@ MonoBehaviour:
   anim: {fileID: 1545136971}
   originSprite: {fileID: 1413736349}
   cancelEffect: {fileID: 1873515751}
-  runningSkill: {fileID: 0}
 --- !u!114 &1545136976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4596,7 +4601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d8928bf2820fb41953b3eb4fcbe9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needMana: 0
+  needMana: 1
   projectile:
   - SkillF
   skillMotion: []
@@ -4604,7 +4609,7 @@ MonoBehaviour:
   - 0
   delay:
   - 0
-  coolTime: 0
+  coolTime: 0.1
   canUseWithoutCancel: 1
   CanCancelList: []
 --- !u!1 &1912395932
@@ -4800,7 +4805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001988226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.96, y: 0, z: 0}
+  m_LocalPosition: {x: 4.96, y: 0.5, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1621232688}
@@ -4820,6 +4825,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posObject: {fileID: 2001988227}
+  yPosObject: {fileID: 1621232688}
   sizeX: 2
   sizeY: 2.7
   sizeZ: 1

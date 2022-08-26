@@ -33,7 +33,7 @@ public class HitBox : MonoBehaviour
     public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
     public float XPos { get { return posObject.position.x; } }
-    public float YPos { get { return yPosObject.position.y; } }
+    public float YPos { get { return yPosObject.localPosition.y; } }
     public float ZPos { get { return posObject.position.y; } }
     public Vector3 ObjectPos 
     {
@@ -45,9 +45,9 @@ public class HitBox : MonoBehaviour
 
             if (yPosObject != null)
             {
-                var t_yPos = yPosObject.position;
+                var t_yPos = yPosObject.localPosition;
                 t_yPos.y = value.y;
-                yPosObject.position = t_yPos;
+                yPosObject.localPosition = t_yPos;
             }
             
         } 
