@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target = null;
+    [SerializeField] private HitBox target = null;
     [SerializeField] private Vector3 offset = Vector3.zero;
     [SerializeField] private float minX = 0f, maxX = 0f;
     [SerializeField] private float minY = 0f, maxY = 0f;
@@ -26,9 +26,9 @@ public class CameraFollow : MonoBehaviour
         return t_pos;
     }
 
-    private void Follow(Transform p_target)
+    private void Follow(HitBox p_target)
     {
-        Vector3 t_pos = p_target.transform.position + offset;
+        Vector3 t_pos = p_target.ObjectPos + offset;
         transform.position = LimitArea(t_pos);
     }
 }
