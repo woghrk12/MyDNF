@@ -8,6 +8,8 @@ public class ProjectileF : Projectile
     [SerializeField] private MoveProjectile moveController = null;
     private float originYPos = 0f;
 
+    private Coroutine runningCo = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,8 +28,8 @@ public class ProjectileF : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
-        StartCoroutine(MoveProjectile(p_isLeft));
-        yield return ActivateProjectile();
+        runningCo = StartCoroutine(ActivateProjectile());
+        yield return MoveProjectile(p_isLeft);
         EndProjectile();
     }
 
@@ -55,6 +57,12 @@ public class ProjectileF : Projectile
         while (t_timer < duration)
         {
             hitBox.ObjectPos += t_dir * 20f * Time.deltaTime;
+            if (hitBox.YPos <= 0) 
+            {
+                hitController.StopCheckOnHit();
+                StopCoroutine(runningCo);
+                break;
+            }
             t_timer += Time.deltaTime;
             yield return null;
         }
