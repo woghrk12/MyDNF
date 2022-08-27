@@ -7,11 +7,11 @@ public class CharacterMove : MonoBehaviour
     [SerializeField] private Animator anim = null;
 
     [SerializeField] private float xMoveSpeed = 0f;
-    [SerializeField] private float yMoveSpeed = 0f;
+    [SerializeField] private float zMoveSpeed = 0f;
     private Vector3 moveDir = Vector3.zero;
 
     [SerializeField] private float minX = 0f, maxX = 0f;
-    [SerializeField] private float minY = 0f, maxY = 0f;
+    [SerializeField] private float minZ = 0f, maxZ = 0f;
 
     public bool isMove { get { return moveDir != Vector3.zero; } }
 
@@ -41,32 +41,33 @@ public class CharacterMove : MonoBehaviour
         get { return canMove; }
     }
 
-    public void Move(Vector3 p_moveDir) => MoveCharacter(p_moveDir);
+    public void Move(HitBox p_hitBox, Vector3 p_moveDir) => MoveCharacter(p_hitBox, p_moveDir);
 
     private Vector3 HandleInput(Vector3 p_vector)
     {
-        p_vector.x *= xMoveSpeed;
-        p_vector.y *= yMoveSpeed;
-        return p_vector;
+        var t_vector = p_vector;
+        t_vector.x *= xMoveSpeed;
+        t_vector.z *= zMoveSpeed;
+        return t_vector;
     }
 
-    private Vector3 LimitArea(Vector3 t_playerPos)
+    private Vector3 LimitArea(Vector3 p_pos)
     {
-        Vector3 t_pos = t_playerPos;
+        Vector3 t_pos = p_pos;
 
         if (t_pos.x < minX) t_pos.x = minX;
         if (t_pos.x > maxX) t_pos.x = maxX;
-        if (t_pos.y < minY) t_pos.y = minY;
-        if (t_pos.y > maxY) t_pos.y = maxY;
+        if (t_pos.z < minZ) t_pos.z = minZ;
+        if (t_pos.z > maxZ) t_pos.z = maxZ;
 
         return t_pos;
     }
 
-    private void MoveCharacter(Vector3 p_moveDir)
+    private void MoveCharacter(HitBox p_hitBox, Vector3 p_moveDir)
     {
         moveDir = HandleInput(p_moveDir);
-        var t_pos = transform.position + moveDir * Time.deltaTime;
-        transform.position = LimitArea(t_pos);
+        var t_pos = p_hitBox.ObjectPos + moveDir * Time.deltaTime;
+        p_hitBox.ObjectPos = LimitArea(t_pos);
 
         anim.SetBool("isWalk", isMove);
 

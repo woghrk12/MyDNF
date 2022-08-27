@@ -3314,11 +3314,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
   xMoveSpeed: 5
-  yMoveSpeed: 3
+  zMoveSpeed: 3
   minX: -11.5
   maxX: 11.5
-  minY: -3.5
-  maxY: 1.5
+  minZ: -3.5
+  maxZ: 1.5
 --- !u!114 &1545136973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4774,75 +4774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1954683566}
---- !u!1001 &1999180665
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608770, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493263264608773, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_Name
-      value: SkillF
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493264576544064, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_Size.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493264576544064, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_Size.y
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526493264576544064, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d2c3a3c546092a64890dd3c39757e4db, type: 3}
 --- !u!1 &2001988226
 GameObject:
   m_ObjectHideFlags: 0

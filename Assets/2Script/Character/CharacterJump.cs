@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharacterJump : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
-    [SerializeField] private Transform yPosObject = null;
 
     private float gravity = 9.8f;
     public float Gravity { set { gravity = value < 1f ? 1f : value; } get { return gravity; } }
@@ -16,9 +15,9 @@ public class CharacterJump : MonoBehaviour
     private float criteria = 0f;
     private float originY = 0f;
 
-    private void Awake()
+    public void InitializeValue(HitBox p_hitBox)
     {
-        originY = yPosObject.localPosition.y;
+        originY = p_hitBox.YPos;                            
     }
 
     private float CalculateMaxHeight(float p_gravity, float p_power)
@@ -31,74 +30,57 @@ public class CharacterJump : MonoBehaviour
         return (p_jumpTime * p_jumpTime * (-p_gravity) / 2) + (p_jumpTime * p_power);
     }
 
-    public IEnumerator Jump() => JumpCo();
+    public IEnumerator Jump(HitBox p_hitBox) => JumpCo(p_hitBox);
 
-    private IEnumerator JumpCo()
+    private IEnumerator JumpCo(HitBox p_hitBox)
     {
         jumpTime = 0f;
         anim.SetBool("isJump", true);
 
         criteria = 0.8f * CalculateMaxHeight(Gravity, JumpPower) + originY;
 
-        yield return JumpUp(criteria);
+        yield return JumpUp(p_hitBox, criteria);
 
         anim.SetTrigger("Up");
 
-        yield return JumpStay(criteria);
+        yield return JumpStay(p_hitBox, criteria);
 
         anim.SetTrigger("Down");
 
-        yield return JumpDown(originY);
+        yield return JumpDown(p_hitBox, originY);
 
         jumpTime = 0f;
         anim.SetBool("isJump", false);
     }
 
-    private IEnumerator JumpUp(float p_criteria)
+    private IEnumerator JumpUp(HitBox p_hitBox, float p_criteria)
     {
-        var t_vector = yPosObject.localPosition;
-
-        while (yPosObject.localPosition.y <= p_criteria)
+        while (p_hitBox.YPos <= p_criteria)
         {
-            t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
-
-            yPosObject.localPosition = t_vector;
-
+            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
     }
 
-    private IEnumerator JumpStay(float p_criteria)
+    private IEnumerator JumpStay(HitBox p_hitBox, float p_criteria)
     {
-        var t_vector = yPosObject.localPosition;
-
-        while (yPosObject.localPosition.y >= p_criteria)
+        while (p_hitBox.YPos >= p_criteria)
         {
-            t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
-
-            yPosObject.localPosition = t_vector;
-
+            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
     }
 
-    private IEnumerator JumpDown(float p_criteria)
+    private IEnumerator JumpDown(HitBox p_hitBox, float p_criteria)
     {
-        var t_vector = yPosObject.localPosition;
-
-        while (yPosObject.localPosition.y >= p_criteria)
+        while (p_hitBox.YPos >= p_criteria)
         {
-            t_vector.y = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
-
-            yPosObject.localPosition = t_vector;
-
+            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
-
-        t_vector.y = originY;
-        yPosObject.localPosition = t_vector;
+        p_hitBox.YPos = originY;
     }
 }

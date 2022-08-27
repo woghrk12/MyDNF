@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public Vector2 Direction { get { return new Vector2(inputDir.x, inputDir.y); } }
+    public Vector3 Direction { get { return new Vector3(inputDir.x, 0f, inputDir.y); } }
 
     [SerializeField] private RectTransform background = null;
     [SerializeField] private RectTransform handle = null;

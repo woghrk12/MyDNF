@@ -31,6 +31,6 @@ public class Keyboard : MonoBehaviour
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
         
-        inputManager.Direction = Vector3.ClampMagnitude(new Vector3(hAxis, vAxis, 0f), 1f);
+        inputManager.Direction = Vector3.ClampMagnitude(new Vector3(hAxis, 0f, vAxis), 1f);
     }
 }

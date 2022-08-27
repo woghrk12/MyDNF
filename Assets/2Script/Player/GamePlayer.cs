@@ -37,7 +37,8 @@ public class GamePlayer : MonoBehaviour
 
     private void Awake()
     {
-        statusManager.InitializeValue();
+        statusManager.InitializeValue();                    
+        jumpController.InitializeValue(hitBox);
     }
 
     private void OnEnable()
@@ -75,14 +76,14 @@ public class GamePlayer : MonoBehaviour
         Move();
     }
 
-    private void Move() => moveController.Move(inputController.Direction);
+    private void Move() => moveController.Move(hitBox, inputController.Direction);
     
     private IEnumerator Jump()
     {
         canJump = false;
         canAttack = false;
         
-        yield return jumpController.Jump();
+        yield return jumpController.Jump(hitBox);
         
         canAttack = true; 
         canJump = true;
