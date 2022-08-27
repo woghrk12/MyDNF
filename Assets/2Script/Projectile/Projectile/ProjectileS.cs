@@ -6,7 +6,6 @@ public class ProjectileS : Projectile
 {
     [SerializeField] private ContinuousHit hitController = null;
     [SerializeField] private string explosion = null;
-    private Coroutine runningCo = null;
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
@@ -19,8 +18,7 @@ public class ProjectileS : Projectile
 
     protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
-        runningCo = StartCoroutine(hitController.CheckOnHit(coefficient, duration, hitBox, targets));
-
+        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
         yield return new WaitForSeconds(duration);
     }
 
@@ -34,7 +32,7 @@ public class ProjectileS : Projectile
         {
             if (InputManager.Buttons[p_button] == EButtonState.DOWN)
             {
-                StopCoroutine(runningCo);
+                hitController.StopCheckOnHit();
 
                 var t_explosion = ObjectPoolingManager.SpawnObject(explosion, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
                 t_explosion.Shot(transform.position);

@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779ed14bcfcc30e4c93d8272d0ff412a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1545136970}
+  target: {fileID: 1545136973}
   offset: {x: 0, y: 1.2, z: -10}
   minX: -3.2
   maxX: 3.2
@@ -3351,7 +3351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1545136971}
-  yPosObject: {fileID: 482551517}
 --- !u!114 &1545136975
 MonoBehaviour:
   m_ObjectHideFlags: 0

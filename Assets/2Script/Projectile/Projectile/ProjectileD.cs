@@ -23,8 +23,8 @@ public class ProjectileD : Projectile
     protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
         moveController.Move(duration, startSpeed);
-
-        yield return hitController.CheckOnHit((int)(coefficient * p_timesValue), duration, hitBox, targets);
+        hitController.StartCheckOnHit((int)(coefficient * p_timesValue), duration, hitBox, targets);
+        yield return new WaitForSeconds(duration);
     }
 
     private bool CheckExplosion(float p_value) { return p_value >= canExplosion; }

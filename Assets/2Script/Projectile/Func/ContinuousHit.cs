@@ -9,7 +9,14 @@ public class ContinuousHit : MonoBehaviour
     [SerializeField] private float knockBackPower = 0f;
     [SerializeField] private float hitStunTime = 0f;
 
-    public IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
+    private Coroutine runningCo = null;
+
+    public void StartCheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
+        => runningCo = StartCoroutine(CheckOnHit(p_coEff, p_duration, p_hitBox, p_targets));
+    public void StopCheckOnHit() 
+        => StopCoroutine(runningCo);
+
+    private IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
     {
         var t_timer = 0f;
 
