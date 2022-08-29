@@ -45,18 +45,18 @@ public class ProjectileF : Projectile
         var t_waitingTime = 1f + Random.Range(0.5f, 1f);
         while (t_timer < t_waitingTime)
         {
-            hitBox.ObjectPos += ((p_isLeft ? Vector3.right : Vector3.left) + Vector3.up + Random.insideUnitSphere * 3f) * Random.Range(0.8f, 1f) * Time.deltaTime;
+            hitBox.ObjectPos += ((p_isLeft ? Vector3.right : Vector3.left) + Vector3.up + Random.insideUnitSphere * 5f) * Random.Range(0.5f, 1.5f) * Time.deltaTime;
             t_timer += Time.deltaTime;
             yield return null;
         }
 
         t_timer = 0f;
         var t_target = targets[Random.Range(0, targets.Count - 1)];
-        var t_dir = (t_target.ObjectPos - (hitBox.ObjectPos + Random.insideUnitSphere * 2f)).normalized;
+        var t_dir = (t_target.ObjectPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)).normalized;
 
         while (t_timer < duration)
         {
-            hitBox.ObjectPos += t_dir * 20f * Time.deltaTime;
+            hitBox.ObjectPos += t_dir * 10f * Time.deltaTime;
             if (hitBox.YPos <= 0) 
             {
                 hitController.StopCheckOnHit();
