@@ -20,9 +20,9 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        var t_hitBoxes = enemyList.GetComponentsInChildren<HitBox>();
+        var t_numEnemy= enemyList.transform.childCount;
 
-        for (int i = 0; i < t_hitBoxes.Length; i++)
-            enemies.Add(t_hitBoxes[i]);
+        for (int i = 0; i < t_numEnemy; i++)
+            enemies.Add(enemyList.transform.GetChild(i).GetComponent<HitBox>());
     }
 }
