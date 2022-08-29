@@ -40,7 +40,7 @@ public abstract class Projectile : MonoBehaviour
             targets = roomManager.Enemies.ToList();
     }
 
-    protected void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
+    protected virtual void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
     {
         transform.position = p_position;
         scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
