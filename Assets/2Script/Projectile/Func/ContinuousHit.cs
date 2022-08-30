@@ -44,8 +44,8 @@ public class ContinuousHit : MonoBehaviour
                     p_targets[i].OnDamageEvent.Invoke(
                         p_coEff,
                         isKnockBack
-                        ? (p_targets[i].transform.position - transform.position).normalized
-                        : (transform.position - p_targets[i].transform.position).normalized,
+                        ? new Vector3(p_targets[i].XPos - p_hitBox.XPos, 0f, 0f).normalized
+                        : new Vector3(p_hitBox.XPos - p_targets[i].XPos, 0f, 0f).normalized,
                         hitStunTime,
                         knockBackPower
                         );

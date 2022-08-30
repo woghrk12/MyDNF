@@ -142,7 +142,7 @@ public class GamePlayer : MonoBehaviour
 
         IsLeft = p_dir.x > 0f;
 
-        if (healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+        if (healthController.OnDamage(statusManager, hitBox, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
             runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
         else IsDie = true;
     }

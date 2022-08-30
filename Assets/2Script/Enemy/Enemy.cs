@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         CancelPattern();
-        if (!healthController.OnDamage(statusManager, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+        if (!healthController.OnDamage(statusManager, hitBox, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
             StartCoroutine(OnDie());
     }
 

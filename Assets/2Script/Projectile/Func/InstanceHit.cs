@@ -48,8 +48,8 @@ public class InstanceHit : MonoBehaviour
                     t_targets[i].OnDamageEvent.Invoke(
                         p_coEff,
                         isKnockBack
-                        ? (t_targets[i].transform.position - transform.position).normalized
-                        : (transform.position - t_targets[i].transform.position).normalized,
+                        ? new Vector3(t_targets[i].XPos - p_hitBox.XPos, 0f, 0f).normalized
+                        : new Vector3(p_hitBox.XPos - t_targets[i].XPos, 0f, 0f).normalized,
                         hitStunTime,
                         knockBackPower
                         );
