@@ -12,14 +12,17 @@ public class MoveProjectile : MonoBehaviour
     private IEnumerator LerpMoveCo(HitBox p_hitBox, float p_duration, float p_startSpeed, Vector3 p_direction, bool p_boostFlag)
     {
         var t_timer = 0f;
-        var t_speed = p_boostFlag ? p_startSpeed : 0f;
+        var t_speed = 0f;
         var t_direction = p_direction.normalized;
         while (t_timer < p_duration)
         {
             t_speed = p_boostFlag
                 ? Mathf.Lerp(p_startSpeed, 0f, t_timer / p_duration)
                 : Mathf.Lerp(0f, p_startSpeed, t_timer / p_duration);
-            p_hitBox.ObjectPos += p_direction * t_speed * Time.deltaTime;
+            p_hitBox.ObjectPos += t_direction * t_speed * Time.deltaTime;
+
+            if (p_hitBox.YPos < 0f) break;
+
             t_timer += Time.deltaTime;
             yield return null;
         }
@@ -29,12 +32,14 @@ public class MoveProjectile : MonoBehaviour
     {
         var t_timer = 0f;
         var t_direction = p_direction.normalized;
-        Debug.Log(t_direction);
         while (t_timer < p_duration)
         {
-            p_hitBox.ObjectPos += p_direction * p_startSpeed * Time.deltaTime;
+            p_hitBox.ObjectPos += t_direction * p_startSpeed * Time.deltaTime;
+
+            if (p_hitBox.YPos < 0f) break;
+
             t_timer += Time.deltaTime;
             yield return null;
         }
-    } 
+    }
 }
