@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Linq;
 
 public class InstanceHit : MonoBehaviour
@@ -11,6 +12,8 @@ public class InstanceHit : MonoBehaviour
     [SerializeField] private bool isPiercing = true;
 
     private Coroutine runningCo = null;
+    private UnityAction hitEvent = null;
+    public UnityAction HitEvent { set { hitEvent = value; } }
 
     public void StartCheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
        => runningCo = StartCoroutine(CheckOnHit(p_coEff, p_duration, p_hitBox, p_targets));
@@ -24,13 +27,13 @@ public class InstanceHit : MonoBehaviour
         while (t_timer <= p_duration)
         {
             p_hitBox.CalculateHitBox();
-            if (CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff)) break;
+            CalculateOnHitEnemy(p_hitBox, p_targets, p_coEff)
             t_timer += Time.deltaTime;
             yield return null;
         }
     }
 
-    private bool CalculateOnHitEnemy(HitBox p_hitBox, List<HitBox> p_targets, int p_coEff)
+    private void CalculateOnHitEnemy(HitBox p_hitBox, List<HitBox> p_targets, int p_coEff)
     {
         var t_targets = p_targets.ToList();
 
@@ -40,7 +43,7 @@ public class InstanceHit : MonoBehaviour
             if (p_hitBox.CalculateOnHit(t_targets[i]))
             {
                 p_targets.Remove(t_targets[i]);
-
+                if (hitEvent != null) hitEvent.Invoke();
                 if (t_targets[i].OnDamageEvent != null)
                     t_targets[i].OnDamageEvent.Invoke(
                         p_coEff,
@@ -50,10 +53,8 @@ public class InstanceHit : MonoBehaviour
                         hitStunTime,
                         knockBackPower
                         );
-                if (!isPiercing) return true;
+                if (!isPiercing) gameObject.SetActive(false);
             }
         }
-
-        return false;
     }
 }

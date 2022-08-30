@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ContinuousHit : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ContinuousHit : MonoBehaviour
     [SerializeField] private float hitStunTime = 0f;
 
     private Coroutine runningCo = null;
+    private UnityAction hitEvent = null;
+    public UnityAction HitEvent { set { hitEvent = value; } }
 
     public void StartCheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
         => runningCo = StartCoroutine(CheckOnHit(p_coEff, p_duration, p_hitBox, p_targets));
@@ -36,6 +39,7 @@ public class ContinuousHit : MonoBehaviour
             if (!p_targets[i].enabled) continue;
             if (p_hitBox.CalculateOnHit(p_targets[i]))
             {
+                if (hitEvent != null) hitEvent.Invoke();
                 if (p_targets[i].OnDamageEvent != null)
                     p_targets[i].OnDamageEvent.Invoke(
                         p_coEff,
