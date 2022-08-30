@@ -10,8 +10,8 @@ public class ProjectileBaseAttack : Projectile
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
-        moveController.SetDirection(p_isLeft);
         StartProjectile();
+        StartCoroutine(moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, false));
         yield return ActivateProjectile(duration);
         EndProjectile();
     }
@@ -19,8 +19,6 @@ public class ProjectileBaseAttack : Projectile
     protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
         hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        moveController.LerpMove(duration, startSpeed);
-
         yield return new WaitForSeconds(duration);
     }
 }
