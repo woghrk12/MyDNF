@@ -15,9 +15,10 @@ public class MoveProjectile : MonoBehaviour
             : new Vector3(p_isLeft ? -rawDirection.x : rawDirection.x, rawDirection.y, rawDirection.z).normalized;
     }
 
-    public void Move(float p_duration, float p_startSpeed) => StartCoroutine(MoveCo(p_duration, p_startSpeed));
+    public void LerpMove(float p_duration, float p_startSpeed) => StartCoroutine(LerpMoveCo(p_duration, p_startSpeed));
+    public void ConstantMove(float p_duration, float p_startSpeed) => StartCoroutine(ConstantMoveCo(p_duration, p_startSpeed));
 
-    private IEnumerator MoveCo(float p_duration, float p_startSpeed)
+    private IEnumerator LerpMoveCo(float p_duration, float p_startSpeed)
     {
         var t_timer = 0f;
         var t_speed = boostFlag ? p_startSpeed : 0f;
@@ -30,6 +31,17 @@ public class MoveProjectile : MonoBehaviour
             t_timer += Time.deltaTime;
             yield return null;
         }
-        
     }
+
+    private IEnumerator ConstantMoveCo(float p_duration, float p_startSpeed)
+    {
+        var t_timer = 0f;
+        
+        while (t_timer < p_duration)
+        {
+            transform.position += direction * p_startSpeed * Time.deltaTime;
+            t_timer += Time.deltaTime;
+            yield return null;
+        }
+    } 
 }

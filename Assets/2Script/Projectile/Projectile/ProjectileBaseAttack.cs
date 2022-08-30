@@ -19,7 +19,7 @@ public class ProjectileBaseAttack : Projectile
     protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
     {
         hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        moveController.Move(duration, startSpeed);
+        moveController.LerpMove(duration, startSpeed);
 
         yield return new WaitForSeconds(duration);
     }
