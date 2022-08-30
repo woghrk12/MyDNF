@@ -69,7 +69,7 @@ public class ProjectileF : Projectile
 
         while (t_timer < duration)
         {
-            hitBox.ObjectPos += t_dir * 10f * Time.deltaTime;
+            hitBox.ObjectPos += t_dir * 20f * Time.deltaTime;
             if (hitBox.YPos <= 0) 
             {
                 hitController.StopCheckOnHit();

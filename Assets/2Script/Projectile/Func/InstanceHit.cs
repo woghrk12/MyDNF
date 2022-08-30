@@ -13,7 +13,7 @@ public class InstanceHit : MonoBehaviour
 
     private Coroutine runningCo = null;
     private UnityAction hitEvent = null;
-    public UnityAction HitEvent { set { hitEvent = value; } }
+    public UnityAction HitEvent { set { hitEvent = value; } get { return hitEvent; } }
 
     public void StartCheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
        => runningCo = StartCoroutine(CheckOnHit(p_coEff, p_duration, p_hitBox, p_targets));
