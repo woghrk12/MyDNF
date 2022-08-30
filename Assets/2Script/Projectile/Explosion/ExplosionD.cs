@@ -10,13 +10,9 @@ public class ExplosionD : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
-        yield return ActivateProjectile(duration);
-        EndProjectile();
-    }
-
-    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
-    {
         hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
         yield return new WaitForSeconds(duration);
+        hitController.StopCheckOnHit();
+        EndProjectile();
     }
 }

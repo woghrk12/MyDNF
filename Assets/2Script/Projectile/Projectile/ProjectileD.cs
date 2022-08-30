@@ -14,28 +14,22 @@ public class ProjectileD : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
-        StartCoroutine(moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, true));
-        yield return ActivateProjectile(p_sizeEff);
+        hitController.StartCheckOnHit((int)(coefficient * p_sizeEff), duration, hitBox, targets);
+        yield return moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, true);
         explosionFlag = CheckExplosion(p_sizeEff);
         EndProjectile();
-    }
-
-    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
-    {
-        hitController.StartCheckOnHit((int)(coefficient * p_timesValue), duration, hitBox, targets);
-        yield return new WaitForSeconds(duration);
     }
 
     private bool CheckExplosion(float p_value) { return p_value >= canExplosion; }
 
     protected override void EndProjectile()
     {
+        hitController.StopCheckOnHit();
         if (explosionFlag)
         {
             var t_explosion = ObjectPoolingManager.SpawnObject(explosion, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
             t_explosion.Shot(transform.position);
         }
-
         base.EndProjectile();
     }
 }

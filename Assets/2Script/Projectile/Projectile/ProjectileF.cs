@@ -46,21 +46,20 @@ public class ProjectileF : Projectile
             true
             );
 
-        runningCo = StartCoroutine(ActivateProjectile());
-
+        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
         yield return moveController.ConstantMove(
             hitBox,
             duration,
             startSpeed,
             target.ObjectPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)
             );
-
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_timesValue = 1)
+    protected override void EndProjectile()
     {
-        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        yield return new WaitForSeconds(duration);
+        hitController.StopCheckOnHit();
+        base.EndProjectile();
     }
+
 }

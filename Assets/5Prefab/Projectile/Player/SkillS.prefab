@@ -105,7 +105,7 @@ MonoBehaviour:
   scaleObject: {fileID: 8316264840173721227}
   yPosObject: {fileID: 6576526484482182068}
   duration: 1.5
-  coefficient: 600
+  coefficient: 100
   startSpeed: 0
   hitController: {fileID: 8866322360322512910}
   explosion: ExplosionD

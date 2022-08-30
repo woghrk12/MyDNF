@@ -106,7 +106,7 @@ MonoBehaviour:
   scaleObject: {fileID: 8316264840173721227}
   yPosObject: {fileID: 6576526484482182068}
   duration: 2
-  coefficient: 500
+  coefficient: 50
   startSpeed: 10
   hitController: {fileID: -9062064680699486590}
   moveController: {fileID: -3462751164176661630}
@@ -138,8 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2128774acbc0445b59d710a83cd959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawDirection: {x: 1, y: 0, z: 0}
-  boostFlag: 0
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0

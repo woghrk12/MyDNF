@@ -11,15 +11,15 @@ public class ProjectileBaseAttack : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
-        StartCoroutine(moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, false));
-        yield return ActivateProjectile(duration);
+        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
+        yield return moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, false);
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
+    protected override void EndProjectile()
     {
-        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        yield return new WaitForSeconds(duration);
+        hitController.StopCheckOnHit();
+        base.EndProjectile();
     }
 }
 

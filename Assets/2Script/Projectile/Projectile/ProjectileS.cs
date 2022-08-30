@@ -11,15 +11,16 @@ public class ProjectileS : Projectile
     {
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
+        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
         StartCoroutine(AdditionalControl(p_button, duration));
-        yield return ActivateProjectile();
+        yield return new WaitForSeconds(duration);
         EndProjectile();
     }
 
-    protected override IEnumerator ActivateProjectile(float p_timesValue = 1f)
+    protected override void EndProjectile()
     {
-        hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        yield return new WaitForSeconds(duration);
+        hitController.StopCheckOnHit();
+        base.EndProjectile();
     }
 
     private IEnumerator AdditionalControl(string p_button, float p_duration)

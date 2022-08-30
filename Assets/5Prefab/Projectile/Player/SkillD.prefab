@@ -106,7 +106,7 @@ MonoBehaviour:
   scaleObject: {fileID: 7341674000744309111}
   yPosObject: {fileID: 6531676709986405749}
   duration: 1.5
-  coefficient: 1000
+  coefficient: 300
   startSpeed: 10
   hitController: {fileID: -8605359126122342494}
   moveController: {fileID: 6331007527685281760}
@@ -127,6 +127,7 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 2
   hitStunTime: 0.8
+  isPiercing: 1
 --- !u!114 &6331007527685281760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2128774acbc0445b59d710a83cd959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawDirection: {x: 1, y: 0, z: 0}
-  boostFlag: 1
 --- !u!1 &2556034128602463860
 GameObject:
   m_ObjectHideFlags: 0
