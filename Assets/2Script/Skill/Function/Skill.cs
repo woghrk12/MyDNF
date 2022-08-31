@@ -11,6 +11,7 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected float[] delay = null;
     [SerializeField] protected float coolTime = 0f;
     protected float waitingTime = 0f;
+    public int WaitingTime { get { return Mathf.CeilToInt(waitingTime); } }
     private bool canUse = true;
     [SerializeField] private bool canUseWithoutCancel = false;
 
