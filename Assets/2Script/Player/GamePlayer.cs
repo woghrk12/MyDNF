@@ -120,8 +120,11 @@ public class GamePlayer : MonoBehaviour
     {
         statusManager.UseMana(p_skill.NeedMana);
 
-        canJump = false;
-        CanMove = false;
+        if (!p_skill.CanUseWithoutCancel)
+        {
+            canJump = false;
+            CanMove = false;
+        }
 
         yield return attackController.UseSkill(p_skill, IsLeft, p_button, p_skill.CanUseWithoutCancel);
 
