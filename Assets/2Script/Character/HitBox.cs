@@ -80,6 +80,10 @@ public class HitBox : MonoBehaviour
         } 
         get { return new Vector3(XPos, yPosObject != null ? YPos : 0f, ZPos); } 
     }
+    public Vector3 TargetPos
+    {
+        get { return new Vector3((minHitBoxX + maxHitBoxX) * 0.5f, (minHitBoxY + maxHitBoxY) * 0.5f, (minHitBoxZ + maxHitBoxZ) * 0.5f); }    
+    }
 
     private void OnEnable()
     {
