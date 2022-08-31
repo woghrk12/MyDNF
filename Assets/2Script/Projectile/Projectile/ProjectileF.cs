@@ -51,7 +51,7 @@ public class ProjectileF : Projectile
             hitBox,
             duration,
             startSpeed,
-            target.ObjectPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)
+            target.TargetPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)
             );
         EndProjectile();
     }
