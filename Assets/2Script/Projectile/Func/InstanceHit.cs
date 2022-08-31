@@ -42,6 +42,7 @@ public class InstanceHit : MonoBehaviour
             if (!t_targets[i].enabled) continue;
             if (p_hitBox.CalculateOnHit(t_targets[i]))
             {
+                ObjectPoolingManager.SpawnObject("HitEffect", (p_hitBox.TargetPos + t_targets[i].TargetPos) * 0.5f, Quaternion.identity).GetComponent<HitEffect>().StartHitEffect();
                 p_targets.Remove(t_targets[i]);
                 if (hitEvent != null) hitEvent.Invoke();
                 if (t_targets[i].OnDamageEvent != null)

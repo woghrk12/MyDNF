@@ -1822,8 +1822,8 @@ RectTransform:
   m_Father: {fileID: 1809788370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3151,8 +3151,8 @@ RectTransform:
   m_Father: {fileID: 545979542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4746,6 +4746,9 @@ MonoBehaviour:
   - tag: EnemySkill
     prefab: {fileID: 3808520315950804194, guid: 35328850936b7f94a86b53953b9d66d0, type: 3}
     size: 10
+  - tag: HitEffect
+    prefab: {fileID: 8751044814140384354, guid: d4783a45b0c76864dbb38195243b264e, type: 3}
+    size: 30
 --- !u!1 &1809788369
 GameObject:
   m_ObjectHideFlags: 0

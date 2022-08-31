@@ -39,6 +39,7 @@ public class ContinuousHit : MonoBehaviour
             if (!p_targets[i].enabled) continue;
             if (p_hitBox.CalculateOnHit(p_targets[i]))
             {
+                ObjectPoolingManager.SpawnObject("HitEffect", (p_hitBox.TargetPos + p_targets[i].TargetPos) * 0.5f, Quaternion.identity).GetComponent<HitEffect>().StartHitEffect();
                 if (hitEvent != null) hitEvent.Invoke();
                 if (p_targets[i].OnDamageEvent != null)
                     p_targets[i].OnDamageEvent.Invoke(
