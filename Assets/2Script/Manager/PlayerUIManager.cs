@@ -11,15 +11,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeControlType(EControlType.KEYBOARD);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-            ChangeControlType(EControlType.KEYBOARD);
-        if (Input.GetKeyDown(KeyCode.F2))
-            ChangeControlType(EControlType.SCREEN);
+        ChangeControlType(GameManager.Instance.ControlType);
     }
 
     private void ChangeControlType(EControlType p_type)

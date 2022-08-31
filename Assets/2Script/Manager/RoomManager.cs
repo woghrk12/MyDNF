@@ -33,6 +33,8 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 0; i < t_numEnemy; i++)
             enemies.Add(enemyList.transform.GetChild(i).GetComponent<HitBox>());
+
+        GameManager.FadeIn();
     }
 
     public void RemoveEnemy(HitBox p_target)
@@ -41,7 +43,7 @@ public class RoomManager : MonoBehaviour
         NumEnemies--;
     }
     private void ClearRoom()
-    { 
-        
+    {
+        GameManager.FadeOut();
     }
 }
