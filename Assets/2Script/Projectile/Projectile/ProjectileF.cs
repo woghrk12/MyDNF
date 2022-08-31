@@ -30,7 +30,7 @@ public class ProjectileF : Projectile
     {
         base.SetProjectile(p_position, p_isLeft, p_sizeEff);
 
-        target = targets[Random.Range(0, targets.Count - 1)];
+        target = targets.Count != 0 ? targets[Random.Range(0, targets.Count - 1)] : null;
     }
 
     protected override IEnumerator ShotCo(Vector3 p_position, string p_button, bool p_isLeft, float p_sizeEff)
@@ -47,12 +47,15 @@ public class ProjectileF : Projectile
             );
 
         hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        yield return moveController.ConstantMove(
-            hitBox,
-            duration,
-            startSpeed,
-            target.TargetPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)
-            );
+
+        if(target != null)
+            yield return moveController.ConstantMove(
+                hitBox,
+                duration,
+                startSpeed,
+                target.TargetPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)
+                );
+
         EndProjectile();
     }
 
