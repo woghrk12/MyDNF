@@ -133,6 +133,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator OnDie()
     {
         hitBox.enabled = false;
+        roomManager.RemoveEnemy(hitBox);
         yield return new WaitForSeconds(0.6f);
         gameObject.SetActive(false);
     }
