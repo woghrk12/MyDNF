@@ -60,14 +60,22 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator FadeIn()
 	{
-		if (!screen.gameObject.activeSelf) screen.gameObject.SetActive(true);
+		OnScreen();
 		yield return ChangeScreen(true);
-		screen.gameObject.SetActive(false);
+		OffScreen();
 	}
 	public IEnumerator FadeOut()
 	{
-		if (!screen.gameObject.activeSelf) screen.gameObject.SetActive(true);
+		OnScreen();
 		yield return ChangeScreen(false);
+	}
+	public void OnScreen()
+	{
+		if (!screen.gameObject.activeSelf) screen.gameObject.SetActive(true);
+	}
+	public void OffScreen()
+	{
+		if (screen.gameObject.activeSelf) screen.gameObject.SetActive(false);
 	}
 
 	private IEnumerator ChangeScreen(bool p_isFadeIn)
@@ -90,6 +98,6 @@ public class GameManager : MonoBehaviour
 	private IEnumerator GameStartCo()
 	{
 		yield return FadeOut();
-		SceneManager.LoadScene(1);
+		LoadingManager.LoadScene(EScene.INGAME);
 	} 
 }
