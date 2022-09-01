@@ -92,12 +92,4 @@ public class GameManager : MonoBehaviour
 			yield return null;
 		}
 	}
-
-	public void GameStart() => StartCoroutine(GameStartCo());
-
-	private IEnumerator GameStartCo()
-	{
-		yield return FadeOut();
-		LoadingManager.LoadScene(EScene.INGAME);
-	} 
 }

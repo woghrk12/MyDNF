@@ -43,6 +43,7 @@ public class RoomManager : MonoBehaviour
         enemies.Remove(p_target);
         NumEnemies--;
     }
+
     private void ClearRoom()
     {
         StartCoroutine(GameManager.Instance.FadeOut());
