@@ -34,6 +34,7 @@ public class RoomManager : MonoBehaviour
         for (int i = 0; i < t_numEnemy; i++)
             enemies.Add(enemyList.transform.GetChild(i).GetComponent<HitBox>());
 
+        numEnemies = enemies.Count;
         StartCoroutine(GameManager.Instance.FadeIn());
     }
 
