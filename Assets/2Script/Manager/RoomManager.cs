@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private GamePlayer player = null;
-    public GamePlayer Player { get { return player; } }
+    [SerializeField] private HitBox player = null;
+    public HitBox Player { get { return player; } }
 
     [SerializeField] private GameObject enemyList = null;
 
     private List<HitBox> enemies = null;
     public List<HitBox> Enemies { get { return enemies; } }
-    private int numEnemies = 0;
-    private int NumEnemies 
+
+    private bool isEndGame = false;
+    public bool IsEndGame 
     { 
-        set
-        { 
-            numEnemies = value;
-            if (numEnemies <= 0)
-                ClearRoom();
+        set 
+        {
+            if (isEndGame) return;
+            isEndGame = value;
+            StartCoroutine(EndGame(enemies.Count <= 0));
         }
-        get { return numEnemies; } }
+        get { return isEndGame; }
+    }
 
     private void Awake()
     {
@@ -34,18 +36,25 @@ public class RoomManager : MonoBehaviour
         for (int i = 0; i < t_numEnemy; i++)
             enemies.Add(enemyList.transform.GetChild(i).GetComponent<HitBox>());
 
-        numEnemies = enemies.Count;
         StartCoroutine(GameManager.Instance.FadeIn());
+    }
+
+    private void OnEnable()
+    {
+        isEndGame = false;
     }
 
     public void RemoveEnemy(HitBox p_target)
     {
         enemies.Remove(p_target);
-        NumEnemies--;
+
+        if (enemies.Count <= 0) IsEndGame = true;
     }
 
-    private void ClearRoom()
-    {
-        StartCoroutine(GameManager.Instance.FadeOut());
+    private IEnumerator EndGame(bool p_flag)
+    { 
+        yield return GameManager.Instance.FadeOut();
+        GameManager.Instance.IsClear = p_flag;
+        LoadingManager.LoadScene(EScene.ENDING);
     }
 }

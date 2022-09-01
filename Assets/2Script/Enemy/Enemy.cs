@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Status statusManager = null;
 
     private RoomManager roomManager = null;
-    private GamePlayer player = null;
+    private HitBox player = null;
 
     [SerializeField] private EnemyPattern[] patterns = null;
 

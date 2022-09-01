@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 	public EControlType ControlType { get { return controlType; } }
 	[SerializeField] private Image screen = null;
 
+	private bool isClear = false;
+	public bool IsClear { set { isClear = value; } get { return isClear; } }
+
 	private void Awake()
 	{
 		var objs = FindObjectsOfType<GameManager>();

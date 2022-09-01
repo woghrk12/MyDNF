@@ -13,6 +13,8 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private SkillManager skillManager = null;
     [SerializeField] private Status statusManager = null;
 
+    private RoomManager roomManager = null;
+
     private bool IsLeft { set { moveController.IsLeft = value; } get { return moveController.IsLeft; } }
     private bool isDie = false;
     public bool IsDie 
@@ -24,6 +26,7 @@ public class GamePlayer : MonoBehaviour
             CanMove = !isDie;
             canJump = !isDie;
             canAttack = !isDie;
+            roomManager.IsEndGame = true;
         }
         get { return isDie; } 
     }
@@ -39,6 +42,8 @@ public class GamePlayer : MonoBehaviour
     {
         statusManager.InitializeValue();                    
         jumpController.InitializeValue(hitBox);
+
+        roomManager = GameObject.FindObjectOfType<RoomManager>();
     }
 
     private void OnEnable()
