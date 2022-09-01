@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
 	private EControlType controlType = EControlType.KEYBOARD;
 	public EControlType ControlType { get { return controlType; } }
-    [SerializeField] private Image screen = null;
+	[SerializeField] private Image screen = null;
 
 	private void Awake()
 	{
@@ -53,31 +53,43 @@ public class GameManager : MonoBehaviour
 #endif
 	}
 
-    private void Start()
+    public void Start()
     {
-		Debug.Log(Instance);
+		StartCoroutine(FadeIn());
     }
 
-    public static void FadeIn() => Instance.StartCoroutine(Instance.ChangeScreen(true));
-	public static void FadeOut() => Instance.StartCoroutine(Instance.ChangeScreen(false));
+	public IEnumerator FadeIn()
+	{
+		if (!screen.gameObject.activeSelf) screen.gameObject.SetActive(true);
+		yield return ChangeScreen(true);
+		screen.gameObject.SetActive(false);
+	}
+	public IEnumerator FadeOut()
+	{
+		if (!screen.gameObject.activeSelf) screen.gameObject.SetActive(true);
+		yield return ChangeScreen(false);
+	}
 
 	private IEnumerator ChangeScreen(bool p_isFadeIn)
-    {
-        float t_timer = 0f;
-        float t_totalTime = 1f;
-        Color t_color = screen.color;
-
-        while (t_timer <= 1f)
-        {
-            t_color.a = Mathf.Lerp(p_isFadeIn ? 1f : 0f, p_isFadeIn ? 0f : 1f, t_timer / t_totalTime);
-            screen.color = t_color;
-            t_timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-	public void GameStart()
 	{
-		SceneManager.LoadScene(1);
+		float t_timer = 0f;
+		float t_totalTime = 1f;
+		Color t_color = screen.color;
+
+		while (t_timer <= 1f)
+		{
+			t_color.a = Mathf.Lerp(p_isFadeIn ? 1f : 0f, p_isFadeIn ? 0f : 1f, t_timer / t_totalTime);
+			screen.color = t_color;
+			t_timer += Time.deltaTime;
+			yield return null;
+		}
 	}
+
+	public void GameStart() => StartCoroutine(GameStartCo());
+
+	private IEnumerator GameStartCo()
+	{
+		yield return FadeOut();
+		SceneManager.LoadScene(1);
+	} 
 }
