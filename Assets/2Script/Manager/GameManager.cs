@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 		controlType = EControlType.KEYBOARD;
 #endif
 #if UNITY_ANDROID
-		controlType = EControlType.JOYSTICK;
+		controlType = EControlType.SCREEN;
 #endif
 	}
 
