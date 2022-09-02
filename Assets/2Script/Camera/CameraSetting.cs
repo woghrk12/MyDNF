@@ -6,8 +6,8 @@ using UnityScreen = UnityEngine.Screen;
 
 public class CameraSetting : MonoBehaviour
 {
-    [SerializeField] private float camWidth = 0;
-    [SerializeField] private float camHeight = 0;
+    [SerializeField] private float setWidth = 0;
+    [SerializeField] private float setHeight = 0;
     private Camera mainCam = null;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class CameraSetting : MonoBehaviour
     private void SetResolution()
     {
         var t_rect = mainCam.rect;
-        var t_targetRate = camWidth / camHeight;
+        var t_targetRate = setWidth / setHeight;
         var t_screenRate = (float)UnityScreen.width / UnityScreen.height;
 
         if (t_targetRate < t_screenRate) t_rect.width = t_targetRate / t_screenRate;
