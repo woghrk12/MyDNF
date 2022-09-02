@@ -25,6 +25,13 @@ public class HitBox : MonoBehaviour
     private float maxHitBoxY = 0f;
     private float minHitBoxZ = 0f;
     private float maxHitBoxZ = 0f;
+    public float MinHitBoxX { get { return minHitBoxX; } }
+    public float MaxHitBoxX { get { return maxHitBoxX; } }
+    public float MinHitBoxY { get { return minHitBoxX; } }
+    public float MaxHitBoxY { get { return maxHitBoxY; } }
+    public float MinHitBoxZ { get { return minHitBoxZ; } }
+    public float MaxHitBoxZ { get { return maxHitBoxZ; } }
+
 
     private bool isLeft = false;
     public bool IsLeft { set { isLeft = value; } get { return isLeft; } }
@@ -80,9 +87,12 @@ public class HitBox : MonoBehaviour
         } 
         get { return new Vector3(XPos, yPosObject != null ? YPos : 0f, ZPos); } 
     }
+    public float XTargetPos { get { return (minHitBoxX + maxHitBoxX) * 0.5f; } }
+    public float YTartgetPos { get { return (minHitBoxY + maxHitBoxY) * 0.5f; } }
+    public float ZTartgetPos { get { return (minHitBoxZ+ maxHitBoxZ) * 0.5f; } }
     public Vector3 TargetPos
     {
-        get { return new Vector3((minHitBoxX + maxHitBoxX) * 0.5f, (minHitBoxY + maxHitBoxY) * 0.5f, (minHitBoxZ + maxHitBoxZ) * 0.5f); }    
+        get { return new Vector3(XTargetPos, YTartgetPos, ZTartgetPos); }    
     }
 
     private void OnEnable()
