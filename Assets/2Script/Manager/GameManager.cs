@@ -56,12 +56,18 @@ public class GameManager : MonoBehaviour
 #endif
 	}
 
-    public void Start()
+    private void Start()
     {
 		StartCoroutine(FadeIn());
     }
 
-	public IEnumerator FadeIn()
+	private void Update()
+    {
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
+	}
+
+    public IEnumerator FadeIn()
 	{
 		OnScreen();
 		yield return ChangeScreen(true);
