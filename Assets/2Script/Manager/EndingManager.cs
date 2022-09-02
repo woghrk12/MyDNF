@@ -14,4 +14,14 @@ public class EndingManager : MonoBehaviour
         success.SetActive(t_flag);
         defeated.SetActive(!t_flag);
     }
+
+    public void RestartGame()
+    {
+        LoadingManager.LoadScene(EScene.INGAME);
+    }
+
+    public void EndGame()
+    {
+        LoadingManager.LoadScene(EScene.TITLE);
+    }
 }
