@@ -2,54 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct CharacterVector3
+public class CharacterTransform : MonoBehaviour
 {
     private static readonly int xRate = 16;
     private static readonly int yRate = 9;
-    private static readonly float conversionRate = yRate / xRate;
-    private Vector3 conversionVector3;
+    private static readonly float convRate = (float)yRate / xRate;
+    private static readonly float invConvRate = (float)xRate / yRate;
 
-    public float XPos { set { conversionVector3.x = value; } get { return conversionVector3.x; } }
-    public float YPos { set { conversionVector3.y = value; } get { return conversionVector3.y; } }
-    public float ZPos { set { conversionVector3.z = value * conversionRate; } get { return conversionVector3.z; } }
-    public Vector3 Position { set { XPos = value.x; YPos = value.y; ZPos = value.z; } get { return conversionVector3; } }
-}
-
-public class CharacterTransform : MonoBehaviour
-{
     [SerializeField] private Transform posObj = null;
     [SerializeField] private Transform yPosObj = null;
-    private CharacterVector3 objTransform;
 
-    public float XPos 
+    public float XPos
     {
         set
         {
             var t_pos = posObj.position;
-            t_pos.x = objTransform.XPos = value;
+            t_pos.x = value;
             posObj.position = t_pos;
         }
-        get { return objTransform.XPos; }
+        get { return posObj.position.x; }
     }
     public float YPos
     {
         set
         {
             var t_yPos = yPosObj.localPosition;
-            t_yPos.y = objTransform.YPos = value;
+            t_yPos.y = value;
             yPosObj.localPosition = t_yPos;
         }
-        get { return objTransform.YPos; }
+        get { return yPosObj.localPosition.y; }
     }
     public float ZPos
     {
         set
         {
             var t_pos = posObj.position;
-            t_pos.y = objTransform.ZPos = value;
+            t_pos.y = value * convRate;
             posObj.position = t_pos;
         }
-        get { return objTransform.ZPos; }
+        get { return posObj.position.y * invConvRate; }
     }
     public Vector3 Position
     {
@@ -63,6 +54,7 @@ public class CharacterTransform : MonoBehaviour
                 YPos = value.y;
             }
         }
-        get { return objTransform.Position; }
+        get { return new Vector3(XPos, HasYObj ? YPos : 0f, ZPos); }
     }
+    public bool HasYObj { get { return yPosObj != null; } }
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2556034128053169439}
+  - component: {fileID: 7876155098867069239}
   - component: {fileID: 2712754441599575562}
   - component: {fileID: 2326749456571133846}
   - component: {fileID: 5388025554466246841}
@@ -37,6 +38,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7876155098867069239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556034128053169438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15431d45b26fe4c4aaecc312abd982d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posObj: {fileID: 2556034128053169439}
+  yPosObj: {fileID: 6531676709986405749}
 --- !u!95 &2712754441599575562
 Animator:
   serializedVersion: 3
@@ -68,8 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posObject: {fileID: 2556034128053169439}
-  yPosObject: {fileID: 6531676709986405749}
+  charTr: {fileID: 7876155098867069239}
   sizeX: 2.4
   sizeY: 1
   sizeZ: 0.5

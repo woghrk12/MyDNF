@@ -5,8 +5,7 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
-    [SerializeField] private Transform posObject = null;
-    [SerializeField] private Transform yPosObject = null;
+    [SerializeField] private CharacterTransform charTr = null;
 
     [SerializeField] private float sizeX = 0f;
     [SerializeField] private float sizeY = 0f;
@@ -39,54 +38,11 @@ public class HitBox : MonoBehaviour
     private UnityAction<int, Vector3, float, float> onDamageEvent = null;
     public UnityAction<int, Vector3, float, float> OnDamageEvent { set { onDamageEvent = value; } get { return onDamageEvent; } }
 
-    public float XPos 
-    {
-        set 
-        {
-            var t_pos = posObject.position;
-            t_pos.x = value;
-            posObject.position = t_pos;
-        }
-        get { return posObject.position.x; } 
-    }
-    public float YPos 
-    {
-        set 
-        {
-            var t_yPos = yPosObject.localPosition;
-            t_yPos.y = value;
-            yPosObject.localPosition = t_yPos;
-        }
-        get { return yPosObject.localPosition.y; } 
-    }
-    public float ZPos 
-    {
-        set
-        {
-            var t_pos = posObject.position;
-            t_pos.y = value;
-            posObject.position = t_pos;
-        }
-        get { return posObject.position.y; }
-    }
-    public Vector3 ObjectPos 
-    {
-        set 
-        {
-            var t_pos = posObject.position;
-            t_pos.x = value.x; t_pos.y = value.z;
-            posObject.position = t_pos;
-
-            if (yPosObject != null)
-            {
-                var t_yPos = yPosObject.localPosition;
-                t_yPos.y = value.y;
-                yPosObject.localPosition = t_yPos;
-            }
-            
-        } 
-        get { return new Vector3(XPos, yPosObject != null ? YPos : 0f, ZPos); } 
-    }
+    public float XPos { set { charTr.XPos = value; } get { return charTr.XPos; } }
+    public float YPos { set { charTr.YPos = value; } get { return charTr.YPos; } }
+    public float ZPos { set { charTr.ZPos = value; } get { return charTr.ZPos; } }
+    public Vector3 ObjectPos { set { charTr.Position = value; } get { return charTr.Position; } }
+ 
     public float XTargetPos { get { return (minHitBoxX + maxHitBoxX) * 0.5f; } }
     public float YTargetPos { get { return (minHitBoxY + maxHitBoxY) * 0.5f; } }
     public float ZTargetPos { get { return (minHitBoxZ + maxHitBoxZ) * 0.5f; } }
@@ -114,7 +70,7 @@ public class HitBox : MonoBehaviour
         minHitBoxZ = ObjectPos.z - halfZ;
         maxHitBoxZ = ObjectPos.z + halfZ;
 
-        if (yPosObject == null) return;
+        if (!charTr.HasYObj) return;
 
         if (isCenterY) { minHitBoxY = ObjectPos.y - halfY; maxHitBoxY = ObjectPos.y + halfY; }
         else { minHitBoxY = ObjectPos.y; maxHitBoxY = ObjectPos.y + sizeY; }
@@ -132,7 +88,7 @@ public class HitBox : MonoBehaviour
         if (maxHitBoxX < p_target.minHitBoxX || minHitBoxX > p_target.maxHitBoxX) return false;
         if (maxHitBoxZ < p_target.minHitBoxZ || minHitBoxZ > p_target.maxHitBoxZ) return false;
 
-        if (yPosObject == null) return true;
+        if (!charTr.HasYObj) return true;
         
         if (maxHitBoxY < p_target.minHitBoxY || minHitBoxY > p_target.maxHitBoxY) return false;
         

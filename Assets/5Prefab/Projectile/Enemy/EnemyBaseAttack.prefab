@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2847821392262021955}
+  - component: {fileID: 7797381521067222743}
   - component: {fileID: 2847821392262021954}
   - component: {fileID: 921265823571335301}
   - component: {fileID: 5520306154273171710}
@@ -96,6 +97,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7797381521067222743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847821392262021952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15431d45b26fe4c4aaecc312abd982d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posObj: {fileID: 2847821392262021955}
+  yPosObj: {fileID: 2847821392541550304}
 --- !u!114 &2847821392262021954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posObject: {fileID: 2847821392262021955}
-  yPosObject: {fileID: 2847821392541550304}
+  charTr: {fileID: 7797381521067222743}
   sizeX: 5
   sizeY: 4
   sizeZ: 1
@@ -149,6 +163,7 @@ MonoBehaviour:
   isKnockBack: 1
   knockBackPower: 1
   hitStunTime: 1
+  isPiercing: 1
 --- !u!95 &2104613106261851248
 Animator:
   serializedVersion: 3
