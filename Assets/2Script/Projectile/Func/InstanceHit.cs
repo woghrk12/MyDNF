@@ -56,7 +56,7 @@ public class InstanceHit : MonoBehaviour
                         hitStunTime,
                         knockBackPower
                         );
-                if (!isPiercing) gameObject.SetActive(false);
+                if (!isPiercing) { StopCheckOnHit(); gameObject.SetActive(false); break; }
             }
         }
     }
