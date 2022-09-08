@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class CharacterTransform : MonoBehaviour
 {
-    private static readonly int xRate = 16;
-    private static readonly int yRate = 9;
-    private static readonly float convRate = (float)yRate / xRate;
-    private static readonly float invConvRate = (float)xRate / yRate;
-
     [SerializeField] private Transform posObj = null;
     [SerializeField] private Transform yPosObj = null;
 
@@ -37,10 +32,10 @@ public class CharacterTransform : MonoBehaviour
         set
         {
             var t_pos = posObj.position;
-            t_pos.y = value * convRate;
+            t_pos.y = value;
             posObj.position = t_pos;
         }
-        get { return posObj.position.y * invConvRate; }
+        get { return posObj.position.y; }
     }
     public Vector3 Position
     {

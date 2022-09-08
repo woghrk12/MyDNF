@@ -18,9 +18,9 @@ public class HitEffect : MonoBehaviour
 
     public void SetPosition(HitBox p_hitBox, HitBox p_target)
     {
-        var t_xPos = Mathf.Clamp(p_hitBox.XPos, p_target.MinHitBoxX, p_target.MaxHitBoxX);
-        var t_yPos = Mathf.Clamp(p_hitBox.YTargetPos, p_target.MinHitBoxY, p_target.MaxHitBoxY);
-        var t_zPos = Mathf.Clamp(p_hitBox.ZPos, p_target.MinHitBoxZ, p_target.MaxHitBoxZ);
+        var t_xPos = Mathf.Clamp(p_hitBox.XPos, p_target.MinHitBox.x, p_target.MaxHitBox.x);
+        var t_yPos = Mathf.Clamp(p_hitBox.YTargetPos, p_target.MinHitBox.y, p_target.MaxHitBox.y);
+        var t_zPos = Mathf.Clamp(p_hitBox.ZPos, p_target.MinHitBox.z, p_target.MaxHitBox.z);
         
         transform.position = new Vector3(t_xPos, t_zPos, 0f);
         yPosObject.localPosition = new Vector3(0f, t_yPos, 0f);

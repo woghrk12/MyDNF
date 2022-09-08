@@ -5,6 +5,11 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
+    private static readonly int xRate = 16;
+    private static readonly int yRate = 9;
+    private static readonly float convRate = (float)yRate / xRate;
+    private static readonly float invConvRate = (float)xRate / yRate;
+
     [SerializeField] private CharacterTransform charTr = null;
 
     [SerializeField] private float sizeX = 0f;
@@ -18,19 +23,10 @@ public class HitBox : MonoBehaviour
     private float halfY = 0f;
     private float halfZ = 0f;
 
-    private float minHitBoxX = 0f;
-    private float maxHitBoxX = 0f;
-    private float minHitBoxY = 0f;
-    private float maxHitBoxY = 0f;
-    private float minHitBoxZ = 0f;
-    private float maxHitBoxZ = 0f;
-    public float MinHitBoxX { get { return minHitBoxX; } }
-    public float MaxHitBoxX { get { return maxHitBoxX; } }
-    public float MinHitBoxY { get { return minHitBoxY; } }
-    public float MaxHitBoxY { get { return maxHitBoxY; } }
-    public float MinHitBoxZ { get { return minHitBoxZ; } }
-    public float MaxHitBoxZ { get { return maxHitBoxZ; } }
-
+    private Vector3 minHitBox = Vector3.zero;
+    private Vector3 maxHitBox = Vector3.zero;
+    public Vector3 MinHitBox { get { return minHitBox; } }
+    public Vector3 MaxHitBox { get { return maxHitBox; } }
 
     private bool isLeft = false;
     public bool IsLeft { set { isLeft = value; } get { return isLeft; } }
@@ -43,9 +39,9 @@ public class HitBox : MonoBehaviour
     public float ZPos { set { charTr.ZPos = value; } get { return charTr.ZPos; } }
     public Vector3 ObjectPos { set { charTr.Position = value; } get { return charTr.Position; } }
  
-    public float XTargetPos { get { return (minHitBoxX + maxHitBoxX) * 0.5f; } }
-    public float YTargetPos { get { return (minHitBoxY + maxHitBoxY) * 0.5f; } }
-    public float ZTargetPos { get { return (minHitBoxZ + maxHitBoxZ) * 0.5f; } }
+    public float XTargetPos { get { return (minHitBox.x + maxHitBox.x) * 0.5f; } }
+    public float YTargetPos { get { return (minHitBox.y + maxHitBox.y) * 0.5f; } }
+    public float ZTargetPos { get { return (minHitBox.z + maxHitBox.z) * 0.5f; } }
     public Vector3 TargetPos
     {
         get { return new Vector3(XTargetPos, YTargetPos, ZTargetPos); }    
@@ -60,20 +56,20 @@ public class HitBox : MonoBehaviour
 
     public void CalculateHitBox()
     {
-        if (isCenterX) { minHitBoxX = ObjectPos.x - halfX; maxHitBoxX = ObjectPos.x + halfX; }
+        if (isCenterX) { minHitBox.x = ObjectPos.x - halfX; maxHitBox.x = ObjectPos.x + halfX; }
         else
         {
-            if (isLeft) { minHitBoxX = ObjectPos.x - sizeX; maxHitBoxX = ObjectPos.x; }
-            else { minHitBoxX = ObjectPos.x; maxHitBoxX = ObjectPos.x + sizeX; }
+            if (isLeft) { minHitBox.x = ObjectPos.x - sizeX; maxHitBox.x = ObjectPos.x; }
+            else { minHitBox.x = ObjectPos.x; maxHitBox.x = ObjectPos.x + sizeX; }
         }
     
-        minHitBoxZ = ObjectPos.z - halfZ;
-        maxHitBoxZ = ObjectPos.z + halfZ;
+        minHitBox.z = ObjectPos.z - halfZ;
+        maxHitBox.z = ObjectPos.z + halfZ;
 
         if (!charTr.HasYObj) return;
 
-        if (isCenterY) { minHitBoxY = ObjectPos.y - halfY; maxHitBoxY = ObjectPos.y + halfY; }
-        else { minHitBoxY = ObjectPos.y; maxHitBoxY = ObjectPos.y + sizeY; }
+        if (isCenterY) { minHitBox.y = ObjectPos.y - halfY; maxHitBox.y = ObjectPos.y + halfY; }
+        else { minHitBox.y = ObjectPos.y; maxHitBox.y = ObjectPos.y + sizeY; }
     }
 
     public void ScaleHitBox(float p_value)
@@ -85,13 +81,23 @@ public class HitBox : MonoBehaviour
 
     public bool CalculateOnHit(HitBox p_target)
     {
-        if (maxHitBoxX < p_target.minHitBoxX || minHitBoxX > p_target.maxHitBoxX) return false;
-        if (maxHitBoxZ < p_target.minHitBoxZ || minHitBoxZ > p_target.maxHitBoxZ) return false;
+        var t_minHitBox = ConvertCoord(minHitBox); var t_maxHitBox = ConvertCoord(maxHitBox);
+        var t_targetMin = ConvertCoord(p_target.MinHitBox); var t_targetMax = ConvertCoord(p_target.MaxHitBox);
+
+        if (t_maxHitBox.x < t_targetMin.x || t_minHitBox.x > t_targetMax.x) return false;
+        if (t_maxHitBox.z < t_targetMin.z || t_minHitBox.z > t_targetMax.z) return false;
 
         if (!charTr.HasYObj) return true;
         
-        if (maxHitBoxY < p_target.minHitBoxY || minHitBoxY > p_target.maxHitBoxY) return false;
+        if (t_maxHitBox.y < t_targetMin.y || t_minHitBox.y > t_targetMax.y) return false;
         
         return true;
+    }
+
+    public Vector3 ConvertCoord(Vector3 p_vector)
+    {
+        var t_vector = p_vector;
+        t_vector.y *= convRate;  
+        return t_vector;
     }
 }
