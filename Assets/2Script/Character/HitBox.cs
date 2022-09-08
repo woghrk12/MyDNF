@@ -48,33 +48,13 @@ public class HitBox : MonoBehaviour
         get { return new Vector3(XTargetPos, YTargetPos, ZTargetPos); }    
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            if (hitBoxType == EHitBoxType.BOX)
-            {
-                halfX = sizeX * 0.5f;
-                halfY = sizeY * 0.5f;
-                halfZ = sizeZ * 0.5f;
-            }
-            else if (hitBoxType == EHitBoxType.CIRCLE)
-            {
-                halfX = sizeX * 0.5f;
-                halfY = sizeY * 0.5f;
-                halfZ = (sizeX * 0.5f) * convRate;
-            }
-            CalculateHitBox();
-        }
-    }
-
     private void OnEnable()
     {
         charTr = GetComponent<CharacterTransform>();
 
         halfX = sizeX * 0.5f;
         halfY = sizeY * 0.5f;
-        halfZ = (hitBoxType == EHitBoxType.BOX ? sizeZ : sizeX * 0.5f) * convRate;
+        halfZ = ((hitBoxType == EHitBoxType.BOX ? sizeZ : sizeX) * 0.5f) * convRate;
     }
 
     public void CalculateHitBox()
@@ -106,7 +86,7 @@ public class HitBox : MonoBehaviour
     {
         var t_minHitBox = ConvertCoord(minHitBox); var t_maxHitBox = ConvertCoord(maxHitBox);
         var t_targetMin = ConvertCoord(p_target.MinHitBox); var t_targetMax = ConvertCoord(p_target.MaxHitBox);
-
+        
         if (t_maxHitBox.x < t_targetMin.x || t_minHitBox.x > t_targetMax.x) return false;
         if (t_maxHitBox.z < t_targetMin.z || t_minHitBox.z > t_targetMax.z) return false;
 
@@ -120,7 +100,7 @@ public class HitBox : MonoBehaviour
     public Vector3 ConvertCoord(Vector3 p_vector)
     {
         var t_vector = p_vector;
-        t_vector.y *= invConvRate;  
+        t_vector.z *= invConvRate;  
         return t_vector;
     }
 }
