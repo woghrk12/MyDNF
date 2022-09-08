@@ -6,6 +6,7 @@ using System;
 // Enum
 public enum EScene { TITLE, INGAME, LOADING, ENDING, END }
 public enum ESortingType { STATIC, UPDATE }
+public enum EHitBoxType { BOX, CIRCLE }
 public enum EEnemyPatternType { IDLE, WALK, BASEATTACK, SKILL }
 
 // Structure

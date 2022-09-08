@@ -12,6 +12,7 @@ public class HitBox : MonoBehaviour
 
     private CharacterTransform charTr = null;
 
+    [SerializeField] private EHitBoxType hitBoxType = EHitBoxType.BOX;
     [SerializeField] private float sizeX = 0f;
     [SerializeField] private float sizeY = 0f;
     [SerializeField] private float sizeZ = 0f;
@@ -47,12 +48,33 @@ public class HitBox : MonoBehaviour
         get { return new Vector3(XTargetPos, YTargetPos, ZTargetPos); }    
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (hitBoxType == EHitBoxType.BOX)
+            {
+                halfX = sizeX * 0.5f;
+                halfY = sizeY * 0.5f;
+                halfZ = sizeZ * 0.5f;
+            }
+            else if (hitBoxType == EHitBoxType.CIRCLE)
+            {
+                halfX = sizeX * 0.5f;
+                halfY = sizeY * 0.5f;
+                halfZ = (sizeX * 0.5f) * convRate;
+            }
+            CalculateHitBox();
+        }
+    }
+
     private void OnEnable()
     {
         charTr = GetComponent<CharacterTransform>();
+
         halfX = sizeX * 0.5f;
         halfY = sizeY * 0.5f;
-        halfZ = sizeZ * 0.5f;
+        halfZ = (hitBoxType == EHitBoxType.BOX ? sizeZ : sizeX * 0.5f) * convRate;
     }
 
     public void CalculateHitBox()
@@ -98,7 +120,7 @@ public class HitBox : MonoBehaviour
     public Vector3 ConvertCoord(Vector3 p_vector)
     {
         var t_vector = p_vector;
-        t_vector.y *= convRate;  
+        t_vector.y *= invConvRate;  
         return t_vector;
     }
 }

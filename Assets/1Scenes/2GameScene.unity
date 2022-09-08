@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -457,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -1222,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -1286,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -2624,6 +2628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -3058,6 +3063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -3268,6 +3274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -4174,6 +4181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -4961,6 +4969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -5121,7 +5130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545136969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.621, y: -0.812, z: 0}
+  m_LocalPosition: {x: -4.621, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482551517}
@@ -5180,9 +5189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1
   sizeY: 1.7
-  sizeZ: 1
+  sizeZ: 0.6
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &1545136974
@@ -5485,6 +5495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -5907,6 +5918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -6249,6 +6261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -6757,6 +6770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -7080,6 +7094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -7599,9 +7614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxType: 0
   sizeX: 1.5
   sizeY: 2.5
-  sizeZ: 1
+  sizeZ: 0.6
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &2001988229
