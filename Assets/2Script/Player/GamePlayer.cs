@@ -113,6 +113,7 @@ public class GamePlayer : MonoBehaviour
         
         if (p_skill.CanUseWithoutCancel)
         {
+            statusManager.UseMana(p_skill.NeedMana);
             attackController.UseSkillWithoutCancel(p_skill, IsLeft);
             return false;
         }
