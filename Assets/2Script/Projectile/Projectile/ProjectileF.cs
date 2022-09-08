@@ -39,7 +39,7 @@ public class ProjectileF : Projectile
         StartProjectile();
 
         yield return moveController.LerpMove(
-            hitBox,
+            transformController,
             1f + Random.Range(0.5f, 1f),
             Random.Range(1.5f, 3f),
             (p_isLeft ? Vector3.right : Vector3.left) + Vector3.up + Random.insideUnitSphere,
@@ -50,7 +50,7 @@ public class ProjectileF : Projectile
 
         if(target != null)
             yield return moveController.ConstantMove(
-                hitBox,
+                transformController,
                 duration,
                 startSpeed,
                 target.TargetPos - (hitBox.ObjectPos + Random.insideUnitSphere * 0.5f)

@@ -10,7 +10,7 @@ public class HitBox : MonoBehaviour
     private static readonly float convRate = (float)yRate / xRate;
     private static readonly float invConvRate = (float)xRate / yRate;
 
-    [SerializeField] private CharacterTransform charTr = null;
+    private CharacterTransform charTr = null;
 
     [SerializeField] private float sizeX = 0f;
     [SerializeField] private float sizeY = 0f;
@@ -49,6 +49,7 @@ public class HitBox : MonoBehaviour
 
     private void OnEnable()
     {
+        charTr = GetComponent<CharacterTransform>();
         halfX = sizeX * 0.5f;
         halfY = sizeY * 0.5f;
         halfZ = sizeZ * 0.5f;

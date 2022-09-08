@@ -311,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 48053259}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -331,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 48053257}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &102155620
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 104378965}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -477,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 104378963}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &135369915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 301420037}
   hitBox: {fileID: 301420039}
-  yPosObject: {fileID: 1369825087}
+  transformController: {fileID: 301420040}
   healthController: {fileID: 301420035}
   attackController: {fileID: 301420034}
   moveController: {fileID: 301420033}
@@ -1222,7 +1222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 301420040}
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -1242,6 +1241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 301420031}
   yPosObj: {fileID: 1369825087}
+  scaleObj: {fileID: 44737965}
 --- !u!1 &306871813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 306871816}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -1306,6 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 306871814}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &330493999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779ed14bcfcc30e4c93d8272d0ff412a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1545136973}
+  target: {fileID: 1545136980}
   offset: {x: 0, y: 1.2, z: -10}
   minX: -3.2
   maxX: 3.2
@@ -2624,7 +2624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 581303584}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -2644,6 +2643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 581303582}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &596013827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,7 +3058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 764034147}
   sizeX: 10
   sizeY: 0
   sizeZ: 3
@@ -3078,6 +3077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 764034145}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &837117460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,7 +3268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 919361484}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -3288,6 +3287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 919361482}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &1028508594
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,7 +4174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1239858886}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -4194,6 +4193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1239858884}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &1253829902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1460475102}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -4981,6 +4980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1460475100}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &1478800512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5180,7 +5180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1545136980}
   sizeX: 1
   sizeY: 1.7
   sizeZ: 1
@@ -5231,6 +5230,7 @@ MonoBehaviour:
   moveController: {fileID: 1545136972}
   jumpController: {fileID: 1545136974}
   attackController: {fileID: 1545136975}
+  transformController: {fileID: 1545136980}
   healthController: {fileID: 1545136978}
   skillManager: {fileID: 1305453206}
   statusManager: {fileID: 1545136979}
@@ -5289,6 +5289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1545136970}
   yPosObj: {fileID: 482551517}
+  scaleObj: {fileID: 596013828}
 --- !u!1 &1547573005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,7 +5414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1547573012}
   hitBox: {fileID: 1547573014}
-  yPosObject: {fileID: 1151999342}
+  transformController: {fileID: 1547573015}
   healthController: {fileID: 1547573010}
   attackController: {fileID: 1547573009}
   moveController: {fileID: 1547573008}
@@ -5484,7 +5485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1547573015}
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -5504,6 +5504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1547573006}
   yPosObj: {fileID: 1151999342}
+  scaleObj: {fileID: 1478800513}
 --- !u!1 &1607389625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5906,7 +5907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1653198174}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -5926,6 +5926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1653198172}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &1681622358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,7 +6249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1778457897}
   sizeX: 10
   sizeY: 0
   sizeZ: 1.5
@@ -6268,6 +6268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1778457895}
   yPosObj: {fileID: 0}
+  scaleObj: {fileID: 0}
 --- !u!1 &1797689432
 GameObject:
   m_ObjectHideFlags: 0
@@ -6685,7 +6686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1824487025}
   hitBox: {fileID: 1824487027}
-  yPosObject: {fileID: 414236147}
+  transformController: {fileID: 1824487028}
   healthController: {fileID: 1824487023}
   attackController: {fileID: 1824487022}
   moveController: {fileID: 1824487021}
@@ -6756,7 +6757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1824487028}
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -6776,6 +6776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1824487019}
   yPosObj: {fileID: 414236147}
+  scaleObj: {fileID: 2134575345}
 --- !u!1 &1833172951
 GameObject:
   m_ObjectHideFlags: 0
@@ -7008,7 +7009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1851861985}
   hitBox: {fileID: 1851861987}
-  yPosObject: {fileID: 5377081}
+  transformController: {fileID: 1851861988}
   healthController: {fileID: 1851861983}
   attackController: {fileID: 1851861982}
   moveController: {fileID: 1851861981}
@@ -7079,7 +7080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 1851861988}
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -7099,6 +7099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1851861979}
   yPosObj: {fileID: 5377081}
+  scaleObj: {fileID: 881647607}
 --- !u!1 &1864677841
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 2001988236}
   sizeX: 1.5
   sizeY: 2.5
   sizeZ: 1
@@ -7618,7 +7618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2001988231}
   hitBox: {fileID: 2001988228}
-  yPosObject: {fileID: 1621232688}
+  transformController: {fileID: 2001988236}
   healthController: {fileID: 2001988232}
   attackController: {fileID: 2001988233}
   moveController: {fileID: 2001988234}
@@ -7760,6 +7760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 2001988227}
   yPosObj: {fileID: 1621232688}
+  scaleObj: {fileID: 330494000}
 --- !u!1 &2017830410
 GameObject:
   m_ObjectHideFlags: 0

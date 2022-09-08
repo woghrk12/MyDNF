@@ -7,8 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator anim = null;
 
     [SerializeField] private HitBox hitBox = null;
-    [SerializeField] private Transform yPosObject = null;
-
+    [SerializeField] private CharacterTransform transformController = null;
     [SerializeField] private Damagable healthController = null;
     [SerializeField] private EnemyAttack attackController = null;
     [SerializeField] private EnemyMove moveController = null;
@@ -126,7 +125,7 @@ public class Enemy : MonoBehaviour
     private void OnDamage(int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         CancelPattern();
-        if (!healthController.OnDamage(statusManager, hitBox, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+        if (!healthController.OnDamage(statusManager, transformController, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
             StartCoroutine(OnDie());
     }
 

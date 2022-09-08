@@ -12,7 +12,7 @@ public class ProjectileBaseAttack : Projectile
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
         hitController.StartCheckOnHit(coefficient, duration, hitBox, targets);
-        yield return moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, false);
+        yield return moveController.LerpMove(transformController, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, false);
         EndProjectile();
     }
 

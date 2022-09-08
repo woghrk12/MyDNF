@@ -6,6 +6,7 @@ public class CharacterTransform : MonoBehaviour
 {
     [SerializeField] private Transform posObj = null;
     [SerializeField] private Transform yPosObj = null;
+    [SerializeField] private Transform scaleObj = null;
 
     public float XPos
     {
@@ -52,4 +53,5 @@ public class CharacterTransform : MonoBehaviour
         get { return new Vector3(XPos, HasYObj ? YPos : 0f, ZPos); }
     }
     public bool HasYObj { get { return yPosObj != null; } }
+    public Vector3 LocalScale { set { scaleObj.localScale = value; } get { return scaleObj.localScale; } }
 }

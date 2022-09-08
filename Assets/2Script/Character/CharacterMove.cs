@@ -41,7 +41,7 @@ public class CharacterMove : MonoBehaviour
         get { return canMove; }
     }
 
-    public void Move(HitBox p_hitBox, Vector3 p_moveDir) => MoveCharacter(p_hitBox, p_moveDir);
+    public void Move(CharacterTransform p_transform, Vector3 p_moveDir) => MoveCharacter(p_transform, p_moveDir);
 
     private Vector3 HandleInput(Vector3 p_vector)
     {
@@ -63,11 +63,11 @@ public class CharacterMove : MonoBehaviour
         return t_pos;
     }
 
-    private void MoveCharacter(HitBox p_hitBox, Vector3 p_moveDir)
+    private void MoveCharacter(CharacterTransform p_transform, Vector3 p_moveDir)
     {
         moveDir = HandleInput(p_moveDir);
-        var t_pos = p_hitBox.ObjectPos + moveDir * Time.deltaTime;
-        p_hitBox.ObjectPos = LimitArea(t_pos);
+        var t_pos = p_transform.Position + moveDir * Time.deltaTime;
+        p_transform.Position = LimitArea(t_pos);
 
         anim.SetBool("isWalk", isMove);
 

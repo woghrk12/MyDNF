@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 3808520315950804195}
   yPosObj: {fileID: 3808520317179512699}
+  scaleObj: {fileID: 3808520317684774179}
 --- !u!95 &3808520315950804192
 Animator:
   serializedVersion: 3
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 3580499386970999863}
   sizeX: 2.4
   sizeY: 4
   sizeZ: 1

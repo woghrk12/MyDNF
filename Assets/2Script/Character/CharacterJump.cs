@@ -30,57 +30,57 @@ public class CharacterJump : MonoBehaviour
         return (p_jumpTime * p_jumpTime * (-p_gravity) / 2) + (p_jumpTime * p_power);
     }
 
-    public IEnumerator Jump(HitBox p_hitBox) => JumpCo(p_hitBox);
+    public IEnumerator Jump(CharacterTransform p_transform) => JumpCo(p_transform);
 
-    private IEnumerator JumpCo(HitBox p_hitBox)
+    private IEnumerator JumpCo(CharacterTransform p_transform)
     {
         jumpTime = 0f;
         anim.SetBool("isJump", true);
 
         criteria = 0.8f * CalculateMaxHeight(Gravity, JumpPower) + originY;
 
-        yield return JumpUp(p_hitBox, criteria);
+        yield return JumpUp(p_transform, criteria);
 
         anim.SetTrigger("Up");
 
-        yield return JumpStay(p_hitBox, criteria);
+        yield return JumpStay(p_transform, criteria);
 
         anim.SetTrigger("Down");
 
-        yield return JumpDown(p_hitBox, originY);
+        yield return JumpDown(p_transform, originY);
 
         jumpTime = 0f;
         anim.SetBool("isJump", false);
     }
 
-    private IEnumerator JumpUp(HitBox p_hitBox, float p_criteria)
+    private IEnumerator JumpUp(CharacterTransform p_transform, float p_criteria)
     {
-        while (p_hitBox.YPos <= p_criteria)
+        while (p_transform.YPos <= p_criteria)
         {
-            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
+            p_transform.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
     }
 
-    private IEnumerator JumpStay(HitBox p_hitBox, float p_criteria)
+    private IEnumerator JumpStay(CharacterTransform p_transform, float p_criteria)
     {
-        while (p_hitBox.YPos >= p_criteria)
+        while (p_transform.YPos >= p_criteria)
         {
-            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
+            p_transform.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
     }
 
-    private IEnumerator JumpDown(HitBox p_hitBox, float p_criteria)
+    private IEnumerator JumpDown(CharacterTransform p_transform, float p_criteria)
     {
-        while (p_hitBox.YPos >= p_criteria)
+        while (p_transform.YPos >= p_criteria)
         {
-            p_hitBox.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
+            p_transform.YPos = originY + CalculateHeight(jumpTime, Gravity, JumpPower);
             jumpTime += Time.deltaTime;
             yield return null;
         }
-        p_hitBox.YPos = originY;
+        p_transform.YPos = originY;
     }
 }

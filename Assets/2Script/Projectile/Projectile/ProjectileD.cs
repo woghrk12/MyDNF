@@ -15,7 +15,7 @@ public class ProjectileD : Projectile
         SetProjectile(p_position, p_isLeft, p_sizeEff);
         StartProjectile();
         hitController.StartCheckOnHit((int)(coefficient * p_sizeEff), duration, hitBox, targets);
-        yield return moveController.LerpMove(hitBox, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, true);
+        yield return moveController.LerpMove(transformController, duration, startSpeed, p_isLeft ? Vector3.left : Vector3.right, true);
         explosionFlag = CheckExplosion(p_sizeEff);
         EndProjectile();
     }

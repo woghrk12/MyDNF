@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posObj: {fileID: 1639214155191870940}
   yPosObj: {fileID: 1639214155702345424}
+  scaleObj: {fileID: 1639214155292327787}
 --- !u!95 &1639214155191870943
 Animator:
   serializedVersion: 3
@@ -82,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charTr: {fileID: 7217177453150260929}
   sizeX: 6.4
   sizeY: 6.4
   sizeZ: 3.2
@@ -116,8 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1639214155191870943}
   hitBox: {fileID: 1639214155191870942}
-  scaleObject: {fileID: 1639214155292327787}
-  yPosObject: {fileID: 1639214155702345424}
+  transformController: {fileID: 7217177453150260929}
   duration: 0.6
   coefficient: 1000
   startSpeed: 0

@@ -9,6 +9,7 @@ public class GamePlayer : MonoBehaviour
     [SerializeField] private CharacterMove moveController = null;
     [SerializeField] private CharacterJump jumpController = null;
     [SerializeField] private CharacterAttack attackController = null;
+    [SerializeField] private CharacterTransform transformController = null;
     [SerializeField] private Damagable healthController = null;
     [SerializeField] private SkillManager skillManager = null;
     [SerializeField] private Status statusManager = null;
@@ -81,14 +82,14 @@ public class GamePlayer : MonoBehaviour
         Move();
     }
 
-    private void Move() => moveController.Move(hitBox, inputController.Direction);
+    private void Move() => moveController.Move(transformController, inputController.Direction);
     
     private IEnumerator Jump()
     {
         canJump = false;
         canAttack = false;
         
-        yield return jumpController.Jump(hitBox);
+        yield return jumpController.Jump(transformController);
         
         canAttack = true; 
         canJump = true;
@@ -150,7 +151,7 @@ public class GamePlayer : MonoBehaviour
 
         IsLeft = p_dir.x > 0f;
 
-        if (healthController.OnDamage(statusManager, hitBox, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
+        if (healthController.OnDamage(statusManager, transformController, p_damage, p_dir, p_hitStunTime, p_knockBackPower))
             runningCo = StartCoroutine(OnDamageCo(p_hitStunTime));
         else IsDie = true;
     }

@@ -8,7 +8,7 @@ public class Damagable : MonoBehaviour
 
     private Coroutine onDamageCo = null;
     
-    public bool OnDamage(Status p_hitTarget, HitBox p_hitBox, int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
+    public bool OnDamage(Status p_hitTarget, CharacterTransform p_transform, int p_damage, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         p_hitTarget.CurHealth -= p_damage;
 
@@ -20,11 +20,11 @@ public class Damagable : MonoBehaviour
             return false;
         }
 
-        onDamageCo = StartCoroutine(KnockBackEffect(p_hitBox, p_dir, p_hitStunTime, p_knockBackPower));
+        onDamageCo = StartCoroutine(KnockBackEffect(p_transform, p_dir, p_hitStunTime, p_knockBackPower));
         return true;
     }
 
-    private IEnumerator KnockBackEffect(HitBox p_hitBox, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
+    private IEnumerator KnockBackEffect(CharacterTransform p_transform, Vector3 p_dir, float p_hitStunTime, float p_knockBackPower)
     {
         anim.SetBool("isEndHit", false);
         anim.SetTrigger("OnHit");
@@ -36,7 +36,7 @@ public class Damagable : MonoBehaviour
         while (t_timer < p_hitStunTime)
         {
             t_knockBackPower = Mathf.Lerp(p_knockBackPower, 0f, t_timer / p_hitStunTime);
-            p_hitBox.ObjectPos += t_dir * t_knockBackPower * Time.deltaTime;
+            p_transform.Position += t_dir * t_knockBackPower * Time.deltaTime;
             t_timer += Time.deltaTime;
             yield return null;
         }

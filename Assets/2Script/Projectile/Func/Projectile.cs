@@ -7,8 +7,7 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] protected Animator anim = null;
     [SerializeField] protected HitBox hitBox = null;
-    [SerializeField] protected Transform scaleObject = null;
-    [SerializeField] protected Transform yPosObject = null;
+    [SerializeField] protected CharacterTransform transformController = null;
     [SerializeField] protected float duration = 0f;
     [SerializeField] protected int coefficient = 0;
     [SerializeField] protected float startSpeed = 0f;
@@ -34,7 +33,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void InitializeValue()
     {
-        scaleObject.localScale = new Vector3(1f, 1f, 1f);
+        transformController.LocalScale = new Vector3(1f, 1f, 1f);
 
         if(roomManager.Enemies != null)
             targets = roomManager.Enemies.ToList();
@@ -43,7 +42,7 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void SetProjectile(Vector3 p_position, bool p_isLeft, float p_sizeEff)
     {
         transform.position = p_position;
-        scaleObject.localScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
+        transformController.LocalScale = new Vector3(p_isLeft ? -p_sizeEff : p_sizeEff, p_sizeEff, 1f);
         hitBox.ScaleHitBox(p_sizeEff);
         hitBox.IsLeft = p_isLeft;
     }
