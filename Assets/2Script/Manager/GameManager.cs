@@ -56,11 +56,6 @@ public class GameManager : MonoBehaviour
 #endif
 	}
 
-    private void Start()
-    {
-		StartCoroutine(FadeIn());
-    }
-
 	private void Update()
     {
 		if (Input.GetKeyDown(KeyCode.Escape))

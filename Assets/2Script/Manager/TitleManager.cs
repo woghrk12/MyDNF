@@ -6,7 +6,12 @@ public class TitleManager : MonoBehaviour
 {
 	public void GameStart() => StartCoroutine(GameStartCo());
 
-	private IEnumerator GameStartCo()
+    private void Start()
+    {
+        StartCoroutine(GameManager.Instance.FadeIn());
+    }
+
+    private IEnumerator GameStartCo()
 	{
 		yield return GameManager.Instance.FadeOut();
 		LoadingManager.LoadScene(EScene.INGAME);
