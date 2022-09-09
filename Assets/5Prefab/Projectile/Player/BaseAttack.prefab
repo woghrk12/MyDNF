@@ -118,7 +118,7 @@ MonoBehaviour:
   hitBoxType: 0
   sizeX: 1
   sizeY: 1
-  sizeZ: 0.4
+  sizeZ: 0.6
   isCenterX: 1
   isCenterY: 1
 --- !u!114 &1975402742339022350

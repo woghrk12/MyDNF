@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1633ce8aaa429e04088ceb458b2de0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBoxType: 0
+  hitBoxType: 1
   sizeX: 1
   sizeY: 1
   sizeZ: 0.5

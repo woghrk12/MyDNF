@@ -1225,9 +1225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1.5
+  sizeX: 1.2
   sizeY: 2.5
-  sizeZ: 1
+  sizeZ: 0.8
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &301420040
@@ -5130,7 +5130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545136969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.621, y: 0, z: 0}
+  m_LocalPosition: {x: -5.5, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482551517}
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1
+  sizeX: 0.6
   sizeY: 1.7
   sizeZ: 0.6
   isCenterX: 1
@@ -5496,9 +5496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1.5
+  sizeX: 1.2
   sizeY: 2.5
-  sizeZ: 1
+  sizeZ: 0.8
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &1547573015
@@ -6771,9 +6771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1.5
+  sizeX: 1.2
   sizeY: 2.5
-  sizeZ: 1
+  sizeZ: 0.8
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &1824487028
@@ -7095,9 +7095,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1.5
+  sizeX: 1.2
   sizeY: 2.5
-  sizeZ: 1
+  sizeZ: 0.8
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &1851861988
@@ -7615,9 +7615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxType: 0
-  sizeX: 1.5
+  sizeX: 1.2
   sizeY: 2.5
-  sizeZ: 0.6
+  sizeZ: 0.8
   isCenterX: 1
   isCenterY: 0
 --- !u!114 &2001988229
