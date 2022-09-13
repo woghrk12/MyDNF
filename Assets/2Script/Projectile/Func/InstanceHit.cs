@@ -18,7 +18,11 @@ public class InstanceHit : MonoBehaviour
     public void StartCheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
        => runningCo = StartCoroutine(CheckOnHit(p_coEff, p_duration, p_hitBox, p_targets));
     public void StopCheckOnHit()
-        => StopCoroutine(runningCo);
+    {
+        if (runningCo != null)
+            StopCoroutine(runningCo);
+    }
+    
 
     private IEnumerator CheckOnHit(int p_coEff, float p_duration, HitBox p_hitBox, List<HitBox> p_targets)
     {
